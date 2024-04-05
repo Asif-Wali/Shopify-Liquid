@@ -1,0 +1,35 @@
+#cartScroll::-webkit-scrollbar {
+    width:6px;
+      /* Customize the scrollbar width */
+  }
+  #cartScroll::-webkit-scrollbar-track {
+      /* Customize the scrollbar track */
+      background-color: gray;
+      color:gray;
+  }
+  #cartScroll::-webkit-scrollbar-thumb {
+      /* Customize the scrollbar thumb */
+      background-color: #009290;
+      color: #009290;
+  } 
+  .cartProduct{
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 5px 15px;
+    border-radius: 50px;
+  }
+  #CartSideBar::-webkit-scrollbar {
+    width:6px;
+      /* Customize the scrollbar width */
+  }
+  #CartSideBar::-webkit-scrollbar-track {
+      /* Customize the scrollbar track */
+      background-color: gray;
+      color:gray;
+  }
+  #CartSideBar::-webkit-scrollbar-thumb {
+      /* Customize the scrollbar thumb */
+      background-color: #009290;
+      color: #009290;
+  }
+  .CartPageProduct{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }

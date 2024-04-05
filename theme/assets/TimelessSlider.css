@@ -1,0 +1,14 @@
+
+.swiper {
+  width: 100%;
+  height: fit-content;
+
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {  
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+
+  }
