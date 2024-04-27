@@ -1,0 +1,662 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.faqContent {
+  width: 77%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.faqTabHeading {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: "Billgrotia Sans", sans-serif;
+  font-style: normal;
+  font-size: 75px;
+  font-weight: 400;
+  color: #70645c;
+  letter-spacing: 1.5px;
+}
+
+.faqTabIcons {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.faqTabIcons > a > div {
+  max-width: 210px;
+  width: 100%;
+  max-height: 210px;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #707070;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.faqTabIcons > a > div > span:nth-child(1) {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.faqTabIcons > a > div > span:nth-child(2) {
+  width: fit-content;
+  height: auto;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  color: #70645c;
+}
+
+.faqTabHeading {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: "Billgrotia Sans", sans-serif;
+  font-style: normal;
+  font-size: 75px;
+  font-weight: 400;
+  color: #70645c;
+  letter-spacing: 1.5px;
+}
+
+.faqQuesContentLg {
+  width: 77%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.faqQuesContentSm {
+  display: none;
+}
+
+.faqContainer {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.leftSide,
+.rightSide {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.faqBox {
+  width: 100%;
+  height: auto;
+}
+
+.faq-question-set-head {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 12px;
+  color: #009290;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.faq-question-set {
+  display: block;
+  list-style-type: none;
+  padding-left: 0; /* Remove default padding */
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+}
+
+.faq-question {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 7px 12px;
+  color: #009290;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  background-color: #ede9ed;
+  color: black;
+  cursor: pointer;
+}
+
+.faq-answer {
+  width: 100%;
+  height: auto;
+  padding: 3px 5px;
+  display: none;
+}
+
+/* Query Form */
+.faqQueryForm {
+  width: 77%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.queryFormContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #707070;
+}
+
+.queryFormContainer > div:nth-child(1) {
+  width: 30%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.queryFormContainer > div:nth-child(1) > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+}
+
+.queryFormContainer > div:nth-child(1) > span > img {
+  margin-top: 3px;
+}
+
+.queryForm {
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-left: 1px solid #707070;
+  padding: 2px 15px;
+  gap: 30px;
+  padding-bottom: 5px;
+}
+
+.queryForm > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 15px;
+  gap: 25px;
+}
+
+.queryForm > div:nth-child(3) {
+  flex-direction: column;
+}
+
+.queryForm > div > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.queryForm > div > span > label {
+  font-weight: 500;
+  color: black;
+}
+
+.queryForm > div > span > input,
+.queryForm > div:nth-child(3) > span > textarea,
+.queryForm > div:nth-child(3) > span:nth-child(3) > span {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 3px 0;
+  font-weight: 300;
+  color: #707070;
+  outline: none;
+  border-bottom: 1px solid #707070;
+}
+
+.queryForm > div:nth-child(3) > span:nth-child(3) > span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7px;
+  color: black;
+  padding-bottom: 4px;
+}
+
+.queryForm > div:nth-child(3) > span:nth-child(3) > span > p:nth-child(1) {
+  padding: 2px 4px;
+  background-color: #ede9ed;
+  border: 1px solid #707070;
+  border-radius: 3px;
+}
+
+.queryForm > div:nth-child(3) > span:nth-child(3) > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  color: #009290;
+  font-weight: 300;
+  margin-top: -10px;
+}
+
+.queryForm > div:nth-child(4) {
+  max-width: 304px;
+  width: 80%;
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  background-color: #ede9dd;
+  margin-left: 15px;
+}
+
+.queryForm > div:nth-child(4) > div:nth-child(1) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}
+
+.queryForm > div:nth-child(4) > div:nth-child(1) > input {
+  width: 24px;
+  height: 24px;
+}
+
+.queryForm > div:nth-child(4) > div:nth-child(1) > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: Light 300;
+  color: black;
+}
+
+.queryForm > div:nth-child(4) > div:nth-child(2) {
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.queryForm > div:nth-child(5) > button {
+  width: 104px;
+  height: 40px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #009290;
+  border: 1px solid #009290;
+  border-radius: 25px;
+  padding: 1px 7px;
+}
+
+.queryForm > div:nth-child(6) > button {
+  display: none;
+}
+
+/*--- successfullLottieFileModalReview Styling  ---*/
+.successfullLottieFileModalReview {
+  display: none;
+  max-width: 558px;
+  width: 100%;
+  height: 362px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ede9dd;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 50;
+}
+
+.successfullLottieFileModalReview::backdrop {
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.successfullLottieFileModalReview > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+}
+
+.successfullLottieFileModalReview > div > h3 {
+  width: 100%;
+  height: 36px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: 500;
+  text-align: center;
+  color: black;
+}
+
+.successfullLottieFileModalReview > div > span {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.successfullLottieFileModalReview > div > span > img {
+  width: 17px;
+  height: 17px;
+}
+
+.successfullLottieFileModalReview > dotlottie-player {
+  width: 220px;
+  height: 220px;
+}
+
+.successfullLottieFileModalReview > div > p {
+  width: 100%;
+  height: 19px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  color: black;
+}
+
+@media all and (min-width: 600px) and (max-width: 999px) {
+  .faqContent {
+    width: 90%;
+    height: auto;
+  }
+
+  .faqTabIcons {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+
+  .faqQuesContentLg {
+    width: 95%;
+  }
+
+  .faqQuesContentSm {
+    display: none;
+  }
+
+  .faqQueryForm {
+    width: 95%;
+  }
+
+  .queryForm {
+    padding: 2px 0;
+    padding-bottom: 5px;
+  }
+
+  .queryForm > div:nth-child(6) > button {
+    display: none;
+  }
+}
+
+@media all and (min-width: 300px) and (max-width: 599px) {
+  .faqContent {
+    width: 90%;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+  .faqTabHeading {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-family: "Amatic SC", sans-serif;
+    font-style: normal;
+    font-size: 40px;
+    font-weight: 700;
+    color: #70645c;
+  }
+
+  .faqTabIcons {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+
+  .faqQuesContentLg {
+    display: none;
+  }
+
+  .faqQuesContentSm {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 25px;
+    padding-bottom: 0px;
+  }
+
+  .faqQuesContentSm > div:nth-child(1) {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .faqQueryForm {
+    width: 100%;
+  }
+
+  .queryForm {
+    width: 100%;
+    padding: 5px;
+    border: none;
+  }
+  .queryFormContainer {
+    border: none;
+    position: relative;
+  }
+
+  .queryForm > div {
+    flex-direction: column;
+  }
+
+  .queryFormContainer > div:nth-child(1) {
+    display: none;
+  }
+
+  .queryForm > div:nth-child(4) {
+    margin: auto;
+    margin-bottom: 20px;
+  }
+
+  .queryForm > div:nth-child(5) > button {
+    display: none;
+  }
+
+  .queryForm > div:nth-child(6) > button {
+    display: block;
+    width: 100%;
+    height: 48px;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 10px 20px;
+    background-color: #009290;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+  }
+
+  /* Successful Lattoie File */
+  .successfullLottieFileModalMobile {
+    display: none;
+    max-width: 428px;
+    width: 100%;
+    height: 254px;
+    position: fixed;
+    top: calc(100vh - 254px);
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #ede9dd;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 50;
+  }
+
+  .successfullLottieFileModalMobile::backdrop {
+    background-color: #000000;
+    opacity: 0.5;
+  }
+
+  .successfullLottieFileModalMobile > div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+  }
+
+  .successfullLottieFileModalMobile > div > h3 {
+    width: 100%;
+    height: 36px;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 26px;
+    font-weight: 500;
+    text-align: center;
+    color: black;
+  }
+
+  .successfullLottieFileModalMobile > div > span {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+
+  .successfullLottieFileModalMobile > div > span > img {
+    width: 17px;
+    height: 17px;
+  }
+
+  .successfullLottieFileModalMobile > dotlottie-player {
+    width: 220px;
+    height: 220px;
+  }
+
+  .successfullLottieFileModalMobile > div > p {
+    width: 100%;
+    height: 19px;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    color: black;
+  }
+}

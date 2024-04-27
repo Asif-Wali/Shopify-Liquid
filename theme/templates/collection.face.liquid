@@ -1,0 +1,297 @@
+<style>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .Pagination-Parent {
+  width: fit-content;
+  margin: 0 auto;
+ 
+}
+
+.Pagination-Parent > .page{
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 4px 10px;
+}
+
+.Pagination-Parent > .prev,
+.Pagination-Parent > .next{
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 4px 6px;
+}
+
+.Pagination-Parent>.current{
+  border: 1px solid black;
+ 
+}
+
+</style>
+
+
+<aside class="fixed hidden top-0 z-[200] bg-[#EDE9DD] right-0  h-screen overflow-y-auto" id="filterdrawer">
+  <div class="px-4 py-4 h-full" >
+    <div class=" flex flex-col justify-between h-full">
+      <div>
+        <div class="flex items-center justify-between mb-4  mt-4">
+          <p class="text-black">
+            Filters 
+          </p>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="closeDrawer" class="w-6 h-6 rotate-45">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />   
+          </svg>     
+        </div>
+        <form class=" h-full flex flex-col justify-between" id="filter_form1">
+          {%- for filter in collection.filters -%}
+            <details class="" open>
+              {% comment %} this gives us headings {% endcomment %}
+              <summary class="flex border-b">
+                <div class="flex py-2 px-2">
+                  <span class="text-sm font-semibold">{{ filter.label }}</span>
+                </div>
+              </summary>
+              <hr class=""/>
+              <div class="pl-2">
+                <div class="mt-2">
+                  {%- if filter.active_values.size > 0 -%}
+                    <p class="hidden"><a href="{{ filter.url_to_remove }}">Reset</a></p>
+                  {%- endif -%}
+                </div>
+                    
+                {%- case filter.type -%}
+                  {% comment %} displays filter options {% endcomment %}
+                    {%- when 'list' -%}
+                      <ul class="">
+                        {%- for filter_value in filter.values -%}
+                          <li class="flex items-center  px-2 gap-2">
+                            <input type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}"
+                                      id="Filter-{{ filter.param_name }}-{{ forloop.index }}" {% if filter_value.active -%}checked{%- endif %}
+                                      {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                                      onChange="CheckFormData()" />
+                            <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}" class="">{{ filter_value.label }}</label>
+                          </li> 
+                        {%- endfor -%}
+                      </ul>
+                {%- endcase -%}
+              </div>
+            </details>
+          {%- endfor -%}
+          
+          <div class=" hidden">
+            <p class="hidden"><a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a></p>
+            {%- for filter in collection.filters -%}
+              {%- for filter_value in filter.active_values -%}
+                <p>
+                  <a href="{{ filter_value.url_to_remove }}">
+                    {{ filter.label }}: {{ filter_value.label }} X
+                  </a>
+                </p>
+              {%- endfor -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="flex  justify-evenly gap-4 ">
+            <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">
+              <button  class="text-black text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">
+                Reset
+              </button> 
+            </a> 
+            <button  class="text-black  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white"  type="submit" value="Apply">
+              Apply
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</aside>
+
+ <!-- top heading -->
+ <div class=" flex flex-col w-full mt-10 mb-[30px] text-center">
+  <h1 class="text-4xl text-gray-500 mb-1 font-semibold" style="font-family: Amatic SC ;">OUR FACE COLLECTION</h1>
+  <p class="mx-auto text-base text-gray-500 px-8 lg:w-[60%] text-justify mt-6">
+    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum Lorem Ipsum, you need to be sure there isn't anything.
+  </p>
+</div>
+
+<!-- products -->
+<div class="lg:px-[10rem]  py-8 w-full">
+  <div class="lg:flex">
+    <aside id="sidebar" class="w-64 hidden lg:block">
+      {% comment %} new form {% endcomment %}  
+      <form class="" id="filter_form2">
+        {%- for filter in collection.filters -%}
+          <details class="" open>
+            {% comment %} this gives us headings {% endcomment %}
+            <summary class="flex border-b ">
+              <div class="flex py-2 px-2">
+                <span class="text-sm font-semibold">{{ filter.label }}</span>
+              </div>
+            </summary>
+            <hr class=""/>
+            <div class="pl-2">
+              <div class="mt-2">
+                {%- if filter.active_values.size > 0 -%}
+                  <p class="hidden"><a href="{{ filter.url_to_remove }}">Reset</a></p>
+                {%- endif -%}
+              </div>
+              {%- case filter.type -%}
+                {% comment %} displays filter options {% endcomment %}
+                {%- when 'list' -%}
+                <ul class="">
+                  {%- for filter_value in filter.values -%}
+                    <li class="flex items-center  px-2 gap-2">
+                      <input type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}"
+                           id="Filter-{{ filter.param_name }}-{{ forloop.index }}" {% if filter_value.active -%}checked{%- endif %}
+                           {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                           onChange="CheckFormData()" />
+                      <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}" class="">{{ filter_value.label }}</label>
+                    </li> 
+                  {%- endfor -%}
+                </ul>
+              {%- endcase -%}
+            </div>
+          </details>
+        {%- endfor -%}
+
+        <div class=" hidden">
+          <p class="hidden">
+            <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a>
+          </p>
+
+          {%- for filter in collection.filters -%}
+            {%- for filter_value in filter.active_values -%}
+              <p>
+                <a href="{{ filter_value.url_to_remove }}">
+                  {{ filter.label }}: {{ filter_value.label }} X
+                </a>
+              </p>
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
+      </form>
+
+      <script>
+        function CheckFormData(){
+          console.log("CheckboxChanged");
+          form=document.getElementById("filter_form1");
+          const queryString = new URLSearchParams(new FormData(form)).toString()
+          console.log(queryString);
+          currentUrl= "face?"+queryString;
+          window.location.href=currentUrl
+        }
+
+        function CheckFormData(){
+          console.log("CheckboxChanged");
+          form=document.getElementById("filter_form2");
+          const queryString = new URLSearchParams(new FormData(form)).toString()
+          console.log(queryString);
+          currentUrl= "face?"+queryString;
+          window.location.href=currentUrl
+        }
+      </script>
+    </aside>
+   
+    <div class="px-4 pt-16 w-full  relative">
+      <div class="px-4 flex items-center justify-between">
+        <!-- ist option -->
+        <div class="lg:hidden z-50 bg-white text-black border border-black  w-fit px-4 py-2 mt-3 ml-auto absolute top-0 left-12">
+          <button type="button" class="flex items-center justify-between bg-white px-2 text-base font-light  gap-1" id="sidefilterbutton">
+            <span>FILTERS</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class=" text-black mb-2 h-6 w-6">
+              <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- 2nd option -->
+        <select id="sort-by" class="accordian z-50 bg-white flex flex-col items-center justify-center text-black border sm:text-xs      md:text-normal lg:text-normal  border-black lg:rounded-xl w-fit px-4 py-2 mt-3   absolute top-0 right-12">
+          {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+            {% for option in collection.sort_options %}
+              <option value="{{ option.value }}" {% if option.value == sort_by %} selected="selected"{% endif %}>
+                {{ option.name }}
+              </option>
+            {% endfor %}
+        </select>
+
+        <script>
+          Shopify.queryParams = {};
+          // Preserve existing query parameters
+          if (location.search.length) {
+            var params = location.search.substr(1).split('&');
+            for (var i = 0; i < params.length; i++) {
+              var keyValue = params[i].split('=');
+              if (keyValue.length) {
+                Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+              }
+            }
+          }
+              
+          // Update sort_by query parameter on select change
+          document.querySelector('#sort-by').addEventListener('change', function(e) {
+            var value = e.target.value;
+            Shopify.queryParams.sort_by = value;
+            location.search = new URLSearchParams(Shopify.queryParams).toString();
+          });
+        </script>
+      </div>
+
+      {% paginate collection.products by 6 %}
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-2 mb-4">
+          {% for product in collection.products %}
+            <div class=" w-full">
+              {% form "product", product %}
+                <div class="block relative  rounded overflow-hidden ">
+                  <img   height="" width="" class="" src="{{ product.featured_image.src | image_url }}" />
+                </div>
+                <div class=" text-center ">
+                  <h3 class="text-gray-500 text-xs mb-2">{{ product.title }}</h3>
+                  <div class="flex items-center justify-center gap-8">
+                    <img   height="" width=""  src="{{ 'ratings.png' | asset_url }}" />
+                  </div>
+                  <p class="mt-1">₹ {{ product.price }}</p>
+                  <div class="flex justify-center items-center mt-2">
+                    <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                    <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white"  {% unless product.available %} disabled=“disabled” {% endunless %} type="submit">
+                      {% if product.available %}
+                        <p>Add to Cart</p>
+                      {% else %}
+                        <p>Sold Out</p>
+                      {% endif %}
+                    </button>
+                  </div>
+                  <div class="flex justify-center items-center mt">
+                    <a href="{{ product.url }}">
+                      <p class="text-gray-700 underline text-xs">
+                        Quick View 
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              {% endform %} 
+            </div>
+          {% endfor %}
+        </div> 
+       <div class="Pagination-Parent flex gap-2 items-center justify-center"> {{- paginate | default_pagination -}} </div> 
+      {% endpaginate %}
+            <script>
+
+                    document.querySelector( '.next a').innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                    `        
+            </script>
+            <script>
+              document.querySelector('.prev a').innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>`
+            </script>
+    </div>
+  </div>
+</div>
+<hr class="w-10/12 mx-auto mt-2 mb-4">
+
+{{ "Face.js"  |  asset_url | script_tag defer}}
+
+{% render "recentlyViewed" %}

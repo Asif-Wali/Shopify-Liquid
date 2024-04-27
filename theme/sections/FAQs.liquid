@@ -1,0 +1,129 @@
+<link rel="stylesheet" href={{ 'faqsStyles.css' | asset_url }}>
+
+<section>
+  {% render 'FAQs_Header' %}
+  {% render 'FAQs_SearchBox' %}
+
+  <div class="faqContent">
+    <div class="faqTabHeading">
+      <p>help categories</p>
+    </div>
+
+    <div class="faqTabIcons">
+      <a href="./Shipping-FAQs">
+        <div>
+          <span>
+            <img
+              src="{{ 'Shopping-lg.png' | asset_url }}"
+              alt=""
+              height=""
+              width="" />
+          </span>
+          <span>
+            <p>Shopping</p>
+          </span>
+        </div>
+      </a>
+
+      <a href="./Payment-FAQs">
+        <div>
+          <span>
+            <img
+              src="{{ 'Payments-lg.png' | asset_url }}"
+              alt=""
+              height=""
+              width="" />
+          </span>
+          <span>
+            <p>Payment</p>
+          </span>
+        </div>
+      </a>
+
+      <a href="./Order-Related-FAQs">
+        <div>
+          <span>
+            <img
+              src="{{ 'Order_related-lg.png' | asset_url }}"
+              alt=""
+              height=""
+              width="" />
+          </span>
+          <span>
+            <p>Order Related</p>
+          </span>
+        </div>
+      </a>
+
+      <a href="./Timeless-Account-FAQs">
+        <div>
+          <span>
+            <img
+              src="{{ 'Nykaa_Account-lg.png' | asset_url }}"
+              alt=""
+              height=""
+              width="" />
+          </span>
+          <span>
+            <p>Timeless Account</p>
+          </span>
+        </div>
+      </a>
+
+      <a href="./Other-FAQs">
+        <div>
+          <span>
+            <img
+              src="{{ 'Others-lg.png' | asset_url }}"
+              alt=""
+              height=""
+              width="" />
+          </span>
+          <span>
+            <p>Others</p>
+          </span>
+        </div>
+      </a>
+
+      <a href="./FAQs-Query">
+        <div>
+          <span>
+            <img
+              src="{{ 'Write_to_us-lg.png' | asset_url }}"
+              alt=""
+              height=""
+              width="" />
+          </span>
+          <span>
+            <p>Write to us</p>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "FAQs",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "FAQs_Header",
+        "label": "Enable?",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "FAQs_SearchBox",
+        "label": "Enable?",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "faqs"
+      }
+    ]
+  }
+{% endschema %}

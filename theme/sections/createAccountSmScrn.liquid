@@ -1,0 +1,130 @@
+<section class="createAccountMobile">
+  <div class="createAccountModalMobile" style="display: none;">
+    <div class="headingClose">
+      <h3>Create An Account</h3>
+    </div>
+
+    {% form 'create_customer' %}
+      <p>Personal Information</p>
+      <div class="customerTitle">
+        <label for="title">Title</label>
+        <select id="title" name="customer[title]">
+          <option value="">Please Select</option>
+          <option value="Mr.">Mr.</option>
+          <option value="Mrs.">Mrs.</option>
+          <option value="Miss">Miss</option>
+        </select>
+      </div>
+
+      <div class="firstNameBox">
+        <label for="first_name">First Name</label>
+        <input
+          type="text"
+          id="first_name"
+          name="customer[first_name]"
+          required>
+      </div>
+
+      <div class="lastNameBox">
+        <label for="last_name">Last Name</label>
+        <input
+          type="text"
+          id="last_name"
+          name="customer[last_name]"
+          required>
+      </div>
+
+      <div class="contactBox">
+        <label for="phone">Mobile Number</label>
+        <div>
+          <div>
+            <span>
+              <img
+                src="{{ 'IndiaLogo.png' | asset_url }}"
+                alt=""
+                height=""
+                width="" />
+            </span>
+            <p>+91</p>
+          </div>
+          <div>
+            <input
+              type="tel"
+              id="phone"
+              name="customer[phone]"
+              required>
+          </div>
+        </div>
+      </div>
+
+      <div class="emailBox">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="customer[email]"
+          required>
+      </div>
+
+      <p>Security</p>
+
+      <div class="passBox">
+        <label for="password">Create Password</label>
+        <input
+          type="password"
+          id="password"
+          name="customer[password]"
+          required>
+        <div id="password-strength">Password Strength: No password</div>
+      </div>
+
+      <div class="confirmPassBox">
+        <label for="password_confirmation">Confirm Password</label>
+        <input
+          type="password"
+          id="password_confirmation"
+          name="customer[password_confirmation]"
+          required>
+      </div>
+
+      <div class="referralbox">
+        <label for="referral_code">Referral Code</label>
+        <input
+          type="text"
+          id="referral_code"
+          name="customer[referral_code]">
+      </div>
+
+      <div class="Captchabox">
+        <div>
+          <input
+            type="checkbox"
+            id="robot"
+            name="customer[robot]"
+            required>
+          <label for="robot">I'm not a robot</label>
+        </div>
+        <div>
+          <span>
+            <img
+              src="{{ 'captchalogo.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </span>
+
+          <span>
+            <img
+              src="{{ 'captchaText.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </span>
+        </div>
+      </div>
+      <button type="submit" class="createAccountSuccessfulButtonMobile">Create Account</button>
+
+    {% endform %}
+
+  </div>
+</section>

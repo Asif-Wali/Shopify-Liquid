@@ -1,0 +1,259 @@
+<link rel="stylesheet" href={{ 'faqsStyles.css' | asset_url }}>
+<section>
+  {% render 'FAQs_Header' %}
+  {% render 'FAQs_SearchBox' %}
+
+  <div class="faqTabHeading">
+    <p>query</p>
+  </div>
+
+  <div class="faqQueryForm">
+    <div class="queryFormContainer">
+      <div>
+        <span>
+          <p>Submit a Request</p>
+          <img
+            src="{{ 'Expand Icon MobileRight.png' | asset_url }}"
+            alt=""
+            width=""
+            height="" />
+          <span></span>
+        </span>
+      </div>
+
+      <div class="queryForm">
+        <div>
+          <span>
+            <label for="">Name</label>
+            <input type="text" placeholder="Enter your name..." />
+          </span>
+
+          <span>
+            <label for="">Mobile No.</label>
+            <input type="text" placeholder="Please enter your mobile no..." />
+          </span>
+        </div>
+
+        <div>
+          <span>
+            <label for="">Email ID</label>
+            <input type="text" placeholder="Enter your email id..." />
+          </span>
+
+          <span>
+            <label for="">Subject</label>
+            <input type="text" placeholder="Enter Request Title" />
+          </span>
+        </div>
+
+        <div>
+          <span>
+            <label for="">Description</label>
+            <textarea
+              cols="60"
+              rows="5"
+              placeholder="Place your query"></textarea>
+          </span>
+
+          <span>
+            <label for="">Order Number</label>
+            <input type="text" placeholder="Kindly add a relevant order number" />
+          </span>
+
+          <span>
+            <label for="">Upload Image</label>
+            <span>
+              <p>Choose File</p>
+              <p>No file choosen</p>
+            </span>
+            <p>Only png,jpg,jpeg,doc,docx,pdf File Format Allowed</p>
+          </span>
+        </div>
+
+        <div>
+          <div>
+            <input
+              type="checkbox"
+              name=""
+              id="" />
+            <p>I'm not a robot</p>
+          </div>
+          <div>
+            <span>
+              <img
+                src="{{ 'captchalogo.png' | asset_url }}"
+                alt=""
+                width=""
+                height="" />
+            </span>
+            <span>
+              <img
+                src="{{ 'captchaText.png' | asset_url }}"
+                alt=""
+                width=""
+                height="" />
+            </span>
+          </div>
+        </div>
+
+        <div class="QuerySubmitSuccessfulButton">
+          <button>SUBMIT</button>
+        </div>
+
+        <div class="QuerySubmitSuccessfulButtonMobile">
+          <button>SUBMIT A REQUEST</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="successfullLottieFileModalMobile">
+    <div>
+      <span class="successfullLottieFileModalCloseMobile">
+        <img
+          src="{{ 'closeIcon.svg' | asset_url }}"
+          alt=""
+          width=""
+          height="" />
+      </span>
+      <h3>Success</h3>
+      <p>You have successfully submitted your inquiry.</p>
+      <p>We will respond to it at earliest.</p>
+      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+      <dotlottie-player
+        src="https://lottie.host/d1bc28db-0ab8-4c74-bfa8-6b678791ef19/WrTDNzudmi.json"
+        background="transparent"
+        speed="1"
+        style="width: 107px; height: 107px"
+        loop
+        autoplay></dotlottie-player>
+    </div>
+  </dialog>
+
+  <!-- Successfull Lottie file -->
+  <dialog class="successfullLottieFileModalReview">
+    <div>
+      <span class="successfullLottieFileModalReviewClose"><img
+          src="{{ 'closeIcon.svg' | asset_url }}"
+          alt=""
+          width=""
+          height="" /></span>
+      <h3>Success</h3>
+      <p>You have successfully submitted your inquiry.</p>
+      <p>We will respond to it at earliest.</p>
+      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+      <dotlottie-player
+        src="https://lottie.host/d1bc28db-0ab8-4c74-bfa8-6b678791ef19/WrTDNzudmi.json"
+        background="transparent"
+        speed="1"
+        style="width: 220px; height: 220px"
+        loop
+        autoplay></dotlottie-player>
+    </div>
+  </dialog>
+
+</section>
+
+<script>
+  /**Successful lottie file */
+  
+  const QuerySubmitSuccessfulButtonMobile = document.querySelector(
+  ".QuerySubmitSuccessfulButtonMobile"
+  );
+  
+  const successfullLottieFileModalMobile = document.querySelector(
+  ".successfullLottieFileModalMobile"
+  );
+  
+  QuerySubmitSuccessfulButtonMobile.addEventListener("click", () => {
+  successfullLottieFileModalMobile.showModal();
+  successfullLottieFileModalMobile.style.display = "block";
+  });
+  
+  const successfullLottieFileModalCloseMobile = document.querySelector(
+  ".successfullLottieFileModalCloseMobile"
+  );
+  successfullLottieFileModalCloseMobile.addEventListener("click", () => {
+  successfullLottieFileModalMobile.close();
+  successfullLottieFileModalMobile.style.display = "none";
+  });
+  
+  //Function to close modal when clicked outside
+  successfullLottieFileModalMobile.addEventListener("click", (e) => {
+  const dialogDimensions =
+    successfullLottieFileModalMobile.getBoundingClientRect();
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    successfullLottieFileModalMobile.close();
+    successfullLottieFileModalMobile.style.display = "none";
+  }
+  });
+  
+  /**Successful lottie file large screen  */
+  
+  const QuerySubmitSuccessfulButton = document.querySelector(
+  ".QuerySubmitSuccessfulButton"
+  );
+  
+  const successfullLottieFileModalReview = document.querySelector(
+  ".successfullLottieFileModalReview"
+  );
+  
+  QuerySubmitSuccessfulButton.addEventListener("click", () => {
+  successfullLottieFileModalReview.showModal();
+  successfullLottieFileModalReview.style.display = "block";
+  });
+  
+  const successfullLottieFileModalReviewClose = document.querySelector(
+  ".successfullLottieFileModalReviewClose"
+  );
+  successfullLottieFileModalReviewClose.addEventListener("click", () => {
+  successfullLottieFileModalReview.close();
+  successfullLottieFileModalReview.style.display = "none";
+  });
+  
+  //Function to close modal when clicked outside
+  successfullLottieFileModalReview.addEventListener("click", (e) => {
+  const dialogDimensions =
+    successfullLottieFileModalReview.getBoundingClientRect();
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    successfullLottieFileModalReview.close();
+    successfullLottieFileModalReview.style.display = "none";
+  }
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "FAQsQueryForm",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "FAQs_Header",
+        "label": "Enable?",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "FAQs_SearchBox",
+        "label": "Enable?",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "faqsQueryForm"
+      }
+    ]
+  }
+{% endschema %}

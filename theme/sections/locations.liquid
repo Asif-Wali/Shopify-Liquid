@@ -1,0 +1,469 @@
+<link rel="stylesheet" href="{{ 'swiper.css' | asset_url }}">
+
+<section>
+  <!-- Locaion Content -->
+  <div class="locationMainContainer">
+    <div class="locationHeading">
+      <p>TIMELESS BEAUTY SECRETS STORES</p>
+    </div>
+
+    <div class="addressContainer">
+      <div class="addressBox">
+        <div class="addressName">
+          <p>Brigade Orion Mall - Rajajinagar</p>
+        </div>
+        <div class="addressPhotosLg">
+          <div class="swiper myLocationPicsSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="box1"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="box2"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="box3"></div>
+              </div>
+            </div>
+
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </div>
+        <div class="addressDetail">
+          <div>
+            <p>
+              UG Orion Mall, 26/1, Dr. Rajkumar Road, Malleswaram, Opposite  Chaayos, Rajajinagar, Bengaluru, Karnataka 560055
+            </p>
+          </div>
+          <div>
+            <span>
+              <img
+                src={{"phone.png" | asset_url}}
+                alt=""
+                width=""
+                height="" />
+              <p>Mobile- 9090530001</p>
+            </span>
+
+            <span>
+              <img
+                src={{"Left Header.png" | asset_url}}
+                alt=""
+                width=""
+                height="" />
+              <p>MAP VIEW</p>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="addressBox">
+        <div class="addressName">
+          <p>Experience Store - Whitefield</p>
+        </div>
+        <div class="addressPhotosLg">
+          <div class="swiper myLocationPicsSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="box1"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="box2"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="box3"></div>
+              </div>
+            </div>
+
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </div>
+        <div class="addressDetail">
+          <div>
+            <p>
+              175, EPIP Zone Whitefield Rd, Phase 2, Brookefield, Bengaluru, Karnataka 560066
+            </p>
+          </div>
+          <div>
+            <span>
+              <img
+                src={{"phone.png" | asset_url}}
+                alt=""
+                width=""
+                height="" />
+              <p>Mobile- 9090530001</p>
+            </span>
+
+            <span>
+              <img
+                src={{"Left Header.png" | asset_url}}
+                alt=""
+                width=""
+                height="" />
+              <p>MAP VIEW</p>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .locationMainContainer {
+    width: 77%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding-bottom: 25px;
+  }
+
+  .locationHeading {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Amatic SC";
+    font-weight: 700;
+    font-size: 50px;
+    font-style: normal;
+    color: #70645c;
+  }
+
+  .addressContainer,
+  .addressBox {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+  }
+
+  .addressBox {
+    gap: 25px;
+  }
+
+  .addressName {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Noto Sans";
+    font-weight: 400;
+    font-size: 26px;
+    font-style: normal;
+    color: #70645c;
+    letter-spacing: 2.5px;
+  }
+
+  .addressPhotosLg {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .myLocationPicsSwiper {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 30px;
+  }
+
+  .myLocationPicsSwiper > .swiper-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(1),
+  .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(3) {
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(2) {
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .box1,
+  .box3 {
+    width: 400px;
+    height: 400px;
+    background-color: #009290;
+    border: 1px solid #707070;
+  }
+
+  .box2 {
+    width: 500px;
+    height: 500px;
+    background-color: #ede9ed;
+    border: 1px solid #707070;
+  }
+
+  .swiper-scrollbar.swiper-scrollbar-horizontal {
+    width: 214px;
+    height: 13px;
+    margin: auto;
+    background-color: #eeeeee;
+    border: 1px solid #707070;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .swiper-scrollbar-drag {
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid #707070; */
+    cursor: pointer;
+  }
+
+  .swiper-scrollbar-drag:after {
+    content: "";
+    width: 62px;
+    height: 10px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #707070;
+  }
+
+  .addressDetail {
+    max-width: 840px;
+    width: 70%;
+    height: 112px;
+    margin: 20px auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #707070;
+    padding: 10px 0;
+  }
+
+  .addressDetail > div {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Noto Sans";
+    font-weight: 400;
+    font-size: 14px;
+    font-style: normal;
+    color: black;
+  }
+
+  .addressDetail > div:nth-child(2) {
+    flex-direction: row;
+    max-width: 380px;
+    width: 70%;
+  }
+
+  .addressDetail > div:nth-child(2) > span {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+  }
+
+  @media all and (max-width: 1300px) {
+    .locationMainContainer {
+      width: 80%;
+      height: auto;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      padding-bottom: 25px;
+    }
+  }
+
+  @media all and (max-width: 1200px) {
+    .locationMainContainer {
+      width: 95%;
+      height: auto;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      padding-bottom: 25px;
+    }
+
+    .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(1),
+    .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(3) {
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(2) {
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .box1,
+    .box3 {
+      width: 350px;
+      height: 350px;
+      background-color: #009290;
+    }
+
+    .box2 {
+      width: 450px;
+      height: 450px;
+      background-color: #ede9ed;
+    }
+
+    .addressDetail {
+      width: 80%;
+      height: auto;
+      margin: 20px auto auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      border: 1px solid #707070;
+      padding: 10px 0;
+    }
+
+    .addressDetail > div {
+      width: 60%;
+      height: auto;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: "Noto Sans";
+      font-weight: 400;
+      font-size: 14px;
+      font-style: normal;
+      color: black;
+    }
+
+    .addressDetail > div:nth-child(2) {
+      width: 100%;
+    }
+  }
+
+  @media all and (max-width: 599px) {
+    .locationMainContainer {
+      width: 100%;
+      height: auto;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      padding-bottom: 25px;
+    }
+
+    .locationHeading {
+      font-size: 40px;
+    }
+
+    .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(1),
+    .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(3) {
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .myLocationPicsSwiper > .swiper-wrapper > .swiper-slide:nth-child(2) {
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .box1,
+    .box3 {
+      width: 280px;
+      height: 280px;
+      background-color: #009290;
+    }
+
+    .box2 {
+      width: 300px;
+      height: 300px;
+      background-color: #ede9ed;
+    }
+
+    .addressDetail {
+      width: 100%;
+      height: auto;
+      margin: 20px auto auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      border: 1px solid #707070;
+      padding: 10px 0;
+    }
+
+    .addressDetail > div {
+      width: 80%;
+      height: auto;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: "Noto Sans";
+      font-weight: 400;
+      font-size: 14px;
+      font-style: normal;
+      color: black;
+    }
+
+    .addressDetail > div:nth-child(2) {
+      width: 100%;
+    }
+  }
+
+</style>
+
+<script src="{{ "swiper.js" | asset_url }}" defer></script>
+<script src="{{ "locationsSlider.js" | asset_url }}" defer></script>

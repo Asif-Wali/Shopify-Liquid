@@ -1,0 +1,177 @@
+<!-- Banner Slider -->
+<div class="BannerSlides">
+  <div class="BannerSliderContainer">
+    <div class="BannerSliderLgScrn">
+      <img
+        src="{{ 'Banner Slide1-lg.png' | asset_url }}"
+        data-src-small="{{ 'Mobile Slide banner.png' | asset_url }}"
+        data-src-large="{{ 'Banner Slide1-lg.png' | asset_url }}"
+        alt="Slider"
+        width=""
+        height="" />
+
+      <img
+        src="{{ 'Banner Slide2-lg.png' | asset_url }}"
+        data-src-small="{{ 'Mobile Slide banner (State 3).png' | asset_url }}"
+        data-src-large="{{ 'Banner Slide2-lg.png' | asset_url }}"
+        alt="Slider"
+        width=""
+        height="" />
+
+      <img
+        src="{{ 'Banner Slide3-lg.png' | asset_url }}"
+        data-src-small="{{ 'Mobile Slide banner (State 2).png' | asset_url }}"
+        data-src-large="{{ 'Banner Slide3-lg.png' | asset_url }}"
+        alt="Slider"
+        width=""
+        height="" />
+
+      <img
+        src="{{ 'Banner Slide2-lg.png' | asset_url }}"
+        data-src-small="{{ 'Mobile Slide banner (State 4).png' | asset_url }}"
+        data-src-large="{{ 'Banner Slide2-lg.png' | asset_url }}"
+        alt="Slider"
+        width=""
+        height="" />
+
+      <div class="BannerPagination">
+        <span class="dot" onclick="currentBannerSlide(1)"></span>
+        <span class="dot" onclick="currentBannerSlide(2)"></span>
+        <span class="dot" onclick="currentBannerSlide(3)"></span>
+        <span class="dot" onclick="currentBannerSlide(4)"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .BannerSlides {
+    width: 100%;
+    height: auto;
+  }
+
+  .BannerSliderContainer {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .BannerSliderLgScrn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .BannerSliderLgScrn > img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+  }
+
+  .BannerPagination {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .BannerPagination span {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #aaa;
+    margin: 0 8px;
+    cursor: pointer;
+  }
+
+  .BannerPagination span.active {
+    background-color: white;
+  }
+
+  /* Media query for small screens */
+  @media screen and (max-width: 600px) {
+    .BannerSliderLgScrn img {
+      width: 100%;
+      height: 628px;
+    }
+  }
+
+</style>
+
+<script>
+    let bannerSlideIndex = 1;
+    showBannerSlides(bannerSlideIndex);
+  
+    function plusBannerSlides(n) {
+      showBannerSlides((bannerSlideIndex += n));
+    }
+  
+    function currentBannerSlide(n) {
+      showBannerSlides((bannerSlideIndex = n));
+    }
+  
+    function showBannerSlides(n) {
+      let i;
+      const slides = document.querySelectorAll(".BannerSliderLgScrn img");
+      const dots = document.querySelectorAll(".BannerPagination .dot");
+    
+      if (n > slides.length) {
+        bannerSlideIndex = 1;
+      }
+      if (n < 1) {
+        bannerSlideIndex = slides.length;
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+      slides[bannerSlideIndex - 1].style.display = "block";
+      dots[bannerSlideIndex - 1].classList.add("active");
+    }
+  
+    // Automatic slideshow
+    setInterval(() => {
+      plusBannerSlides(1);
+    }, 3500);
+  
+    // Add click event listener to images
+    const images = document.querySelectorAll(".BannerSliderLgScrn img");
+    images.forEach((image, index) => {
+      image.addEventListener("click", () => {
+        currentBannerSlide(bannerSlideIndex + 1);
+      });
+    });
+  
+    // Change image src for small screens
+    function changeImageSource() {
+      isSmallScreen = window.innerWidth <= 600;
+      images.forEach((image) => {
+        const src = isSmallScreen
+          ? image.getAttribute("data-src-small")
+          : image.getAttribute("data-src-large");
+        image.src = src;
+      });
+    }
+  
+    // Check window size when the page loads
+    window.addEventListener("load", () => {
+      changeImageSource();
+    });
+  
+    // Check window size when it's resized
+    window.addEventListener("resize", () => {
+      changeImageSource();
+    });
+</script>

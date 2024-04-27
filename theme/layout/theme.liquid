@@ -1,19 +1,38 @@
 <html>
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          
-            {{ content_for_header }}
-            <link rel="stylesheet" href="{{ 'tailwind.css' | asset_url }}" >
-           
-    </head>
-    
-        
-    <body>
-        {% render "header" %}
-        {{ content_for_layout }}
-        
-        {% render "footer" %}
-    </body>
-    </html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    {{ content_for_header }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    {{ 'tailwindStyles.css' | asset_url | stylesheet_tag }}
+    {{ 'tailwind.css' | asset_url | stylesheet_tag }}
+
+  </head>
+
+  <body>
+
+    {% unless template contains 'index' or template contains 'FAQ' or template contains 'cart' %}
+      {% render 'Header' %}
+      
+    {% endunless %}
+    <Script src="https://cdn.jsdelivr.net/npm/url-parse@1.4.3/dist/url-parse.min.js"> </Script>
+
+
+    <main id="main" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% if template contains 'index' or template contains 'cart' %}
+
+    {% else %}
+      {% render 'Footer' %}
+
+    {% endif %}
+  </body>
+</html>

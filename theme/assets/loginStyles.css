@@ -1,0 +1,1734 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.formContainer {
+  width: 100%;
+  height: auto;
+}
+
+.backGroundImg {
+  width: 100%;
+  height: 84vh;
+  position: relative;
+}
+
+.backGroundImg > img {
+  width: 100%;
+  height: 84vh;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.mobileViewFormContainer {
+  display: none;
+}
+
+.loginMobileView,
+.signUpMobileView {
+  display: none;
+}
+
+.signUpLoginContainer {
+  width: 100%;
+  height: 84vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.signUpBox,
+.loginBox {
+  width: 792px;
+  height: 384px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.signUpBox {
+  display: none;
+}
+
+.askOTPbox,
+.switchTabBox {
+  width: 496px;
+  height: 384px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 25px;
+}
+
+.askOTPbox {
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #ede9dd;
+}
+
+.switchTabBox {
+  justify-content: flex-start;
+  align-items: center;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #a9abb0;
+}
+
+.actionInfo {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  width: 100%;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+.switchTabBox > .actionInfo {
+  text-align: center;
+}
+
+.actionType {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 26px;
+  width: 100%;
+  color: #000000;
+}
+
+.contactNumberBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px 0;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.countryCode {
+  width: 15%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  border-bottom: 1px solid #707070;
+  color: #70645c;
+}
+
+.mobileNumber {
+  width: 65%;
+  height: 100%;
+  border-bottom: 1px solid #707070;
+  display: flex;
+  justify-content: last baseline;
+  align-items: last baseline;
+}
+
+.loginViaOTP {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.loginViaPassword {
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  display: none;
+}
+
+.loginViaPassword > form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.loginViaPassword > form > div {
+  width: 100%;
+  height: 100%;
+  gap: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 5px;
+}
+
+.loginViaPassword > form > div > label {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  height: 22px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.loginViaPassword > form > div > input {
+  width: 100%;
+  height: 30px;
+  padding: 2px 5px;
+  border-bottom: 1px solid #707070;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 300 lighter;
+  color: #70645c;
+  outline: none;
+  background-color: transparent;
+}
+
+.LoginNumberBox {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 2px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #707070;
+}
+
+.LoginNumberBox > input,
+.mobileNumber > input {
+  width: 100%;
+  height: auto;
+  border: none;
+  padding: 8px 5px;
+  background: transparent;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #70645c;
+  outline: none;
+}
+
+/* Remove the default spinner arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.submit-button,
+.switchTab-button {
+  width: 201px;
+  height: 33px;
+  margin: 0 auto;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #009290;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUpBox > .askOTPbox > .submit-button {
+  margin-top: 8px;
+}
+
+.switchTab-button {
+  margin-top: 15px;
+}
+
+.lineOR {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.askOTPbox > .lineOR > hr,
+.switchTabBox > .lineOR > hr {
+  width: 33px;
+  border: 1px solid #707070;
+  margin-top: 2px;
+}
+
+.lineOR > p {
+  width: 21px;
+  height: 19px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.actionInfo2OTP,
+.actionInfo2Pass {
+  display: block;
+  width: 100%;
+  height: 19px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: 1.2px;
+  color: #70645c;
+  cursor: pointer;
+}
+
+.actionInfo2Pass {
+  display: none;
+}
+
+.socialLogos {
+  width: 134px;
+  height: 42px;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loginBox > .switchTabBox > .socialLogos {
+  margin-top: 10px;
+}
+
+.socialLogos > div {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #4267b2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialLogos > div:nth-child(1) {
+  background-color: #4267b2;
+  cursor: pointer;
+}
+
+.socialLogos > div:nth-child(2) {
+  background-color: white;
+  cursor: pointer;
+}
+
+.mainImg {
+  width: 165px;
+  height: 105px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.mainImg > img {
+  width: 100%;
+  height: 100%;
+}
+
+@media all and (max-width: 900px) {
+  .signUpBox,
+  .loginBox {
+    max-width: 642px;
+    width: 90%;
+    height: 484px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 10px;
+  }
+
+  .signUpBox {
+    display: none;
+  }
+
+  .countryCode {
+    width: 20%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    border-bottom: 1px solid #707070;
+    color: #70645c;
+  }
+
+  .submit-button {
+    margin-top: 10px;
+  }
+}
+
+@media all and (max-width: 699px) {
+  .signUpBox,
+  .loginBox {
+    max-width: 520px;
+    width: 90%;
+    height: 484px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 10px;
+  }
+
+  .askOTPbox,
+  .switchTabBox {
+    padding: 15px;
+  }
+
+  .signUpBox {
+    display: none;
+  }
+
+  .contactNumberBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2px 0;
+    gap: 8px;
+    margin-top: 1px;
+  }
+
+  .countryCode {
+    width: 25%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    border-bottom: 1px solid #707070;
+    color: #70645c;
+  }
+
+  .submit-button {
+    margin-top: 9px;
+  }
+}
+
+/*--------- Login Register Otp Verification Overlay Modal For large Screen  ----------*/
+.loginOtpBox,
+.registerOtpBox {
+  max-width: 558px;
+  width: 50%;
+  height: 362px;
+  z-index: 10;
+  border-radius: 10px;
+  background-color: #ede9dd;
+  padding: 15px 20px;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  margin: auto;
+  position: fixed;
+  top: 17%;
+  left: 0%;
+}
+
+.loginOtpBox::backdrop,
+.registerOtpBox::backdrop {
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.loginOtpBox > div:nth-child(1),
+.registerOtpBox > div:nth-child(1) {
+  width: 100%;
+  height: 45px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  border-bottom: 1px solid #707070;
+}
+
+.loginOtpBox > div:nth-child(1) > h3,
+.registerOtpBox > div:nth-child(1) > h3 {
+  width: 100%;
+  height: 36px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 26px;
+}
+
+.loginOtpBox > div:nth-child(1) > span,
+.registerOtpBox > div:nth-child(1) > span {
+  cursor: pointer;
+}
+
+.loginOtpBox > div:nth-child(2),
+.registerOtpBox > div:nth-child(2) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 25px 0;
+  padding-bottom: 50px;
+}
+
+.loginOtpBox > div:nth-child(2) > label,
+.registerOtpBox > div:nth-child(2) > label {
+  width: 100%;
+  height: 24px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.smallScreenInput {
+  display: none;
+}
+
+.largeScreenInput {
+  display: block;
+  width: 100%;
+  height: 24px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #707070;
+  padding: 4px 0;
+  outline: none;
+  background: none;
+  color: #70645c;
+}
+
+.loginOtpBox > div:nth-child(2) > div,
+.registerOtpBox > div:nth-child(2) > div {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+}
+
+.loginOtpBox > div:nth-child(2) > div > .loginResend,
+.loginOtpBox > div:nth-child(2) > div > .loginVerify,
+.registerOtpBox > div:nth-child(2) > div > .registerResend,
+.registerOtpBox > div:nth-child(2) > div > .registerVerify {
+  width: 201px;
+  height: 37px;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  border-radius: 40px;
+}
+
+.loginOtpBox > div:nth-child(2) > div > .loginResend,
+.registerOtpBox > div:nth-child(2) > div > .registerResend {
+  background-color: white;
+  border: 1px solid #70645c;
+  color: #70645c;
+}
+
+.loginOtpBox > div:nth-child(2) > div > .loginVerify,
+.registerOtpBox > div:nth-child(2) > div > .registerVerify {
+  background-color: #009290;
+  border: 1px solid #009290;
+  color: white;
+}
+
+/*--------- Create Account Modal for large Screen -----------*/
+.createAccountModal {
+  max-width: 719px;
+  width: 90%;
+  height: 791px;
+  display: none;
+  padding: 10px 30px;
+  padding-bottom: 5px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  border-radius: 25px;
+  z-index: 25;
+  background-color: #ede9dd;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.createAccountModal::backdrop {
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.createAccountModal > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 45px;
+  position: relative;
+  border: none;
+  border-bottom: 1px solid #707070;
+  height: auto;
+  padding-bottom: 5px;
+}
+
+.createAccountModal > div > h3 {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 26px;
+  height: 36px;
+  font-weight: 400;
+}
+
+.createAccountModal > div > span {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -3px;
+  cursor: pointer;
+}
+
+.createAccountModal > div > span > img {
+  width: 17px;
+  height: 17px;
+}
+
+.createAccountModal > form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border: none;
+}
+
+.createAccountModal > form > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  width: 100%;
+  font-size: 18px;
+  height: 24px;
+  text-align: left;
+}
+
+.createAccountModal > form > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 45px;
+}
+
+.createAccountModal > form > div > div {
+  width: 100%;
+  height: 100%;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.createAccountModal > form > div > div > label,
+.emailContactNumber > .contactBox > label,
+.customerTitle > label {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  height: 22px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.createAccountModal > form > div > div > input {
+  max-width: 296px;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #707070;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 300 lighter;
+  color: #70645c;
+  outline: none;
+  background-color: transparent;
+}
+
+.createAccountModal > form > .customerTitle {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+  border: none;
+  width: 100%;
+  margin-top: -15px;
+}
+
+.customerTitle > select {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  max-width: 296px;
+  width: 100%;
+  height: 40px;
+  font-weight: Light 300;
+  color: #70645c;
+  border: 1px solid #707070;
+  background-color: transparent;
+  outline: none;
+}
+
+.customerTitle > section > option {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  height: 22px;
+}
+
+.emailContactNumber > .contactBox,
+.emailContactNumber > .contactBox > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: auto;
+}
+
+.emailContactNumber > .contactBox > div > div:nth-child(1) {
+  width: 20%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #707070;
+}
+
+.emailContactNumber > .contactBox > div > div:nth-child(1) > span {
+  width: 18px;
+  height: 12px;
+}
+
+.emailContactNumber > .contactBox > div > div:nth-child(1) > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  color: #70645c;
+}
+
+.emailContactNumber > .contactBox > div > div:nth-child(2) {
+  width: 80%;
+  height: 100%;
+}
+
+.emailContactNumber > .contactBox > div > div:nth-child(2) > input {
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #707070;
+  border-left: none;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 300;
+  color: #70645c;
+  outline: none;
+  background-color: transparent;
+}
+
+.passwordBox > .passBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.passwordBox > .passBox > div {
+  background-color: #707070;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 300;
+  width: 100%;
+  color: white;
+  padding-left: 8px;
+  margin-top: -5px;
+}
+
+.referralCaptchabox {
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.referralCaptchabox > .Captchabox {
+  width: 100%;
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  border: 1px solid #707070;
+  margin-top: 11px;
+}
+
+.referralCaptchabox > .Captchabox > div:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}
+
+.referralCaptchabox > .Captchabox > div:nth-child(1) > input {
+  width: 24px;
+  height: 24px;
+}
+
+.referralCaptchabox > .Captchabox > div:nth-child(1) > label {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 300 lighter;
+  color: black;
+}
+
+.referralCaptchabox > .Captchabox > div:nth-child(2) {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.createAccountSuccessfulButton {
+  width: 201px;
+  height: 37px;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  border-radius: 20px;
+  background-color: #009290;
+  color: white;
+  padding: 4px 8px;
+  margin-bottom: 10px;
+}
+
+/* Style for the scrollbar */
+.createAccountModal::-webkit-scrollbar {
+  width: 5px; /* Adjust width as needed */
+}
+
+/* Style for the scrollbar track */
+.createAccountModal::-webkit-scrollbar-track {
+  background-color: transparent; /* Change to desired color */
+}
+
+/* Style for the scrollbar thumb */
+.createAccountModal::-webkit-scrollbar-thumb {
+  background-color: #707070; /* Change to desired color */
+  border-radius: 10px; /* Adjust border-radius as needed */
+}
+
+/*--- successfullLottieFileModal Styling  ---*/
+.successfullLottieFileModal {
+  display: none;
+  max-width: 558px;
+  width: 100%;
+  height: 362px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ede9dd;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 50;
+}
+
+.successfullLottieFileModal::backdrop {
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.successfullLottieFileModal > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+}
+
+.successfullLottieFileModal > div > h3 {
+  width: 100%;
+  height: 36px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: 500;
+  text-align: center;
+  color: black;
+}
+
+.successfullLottieFileModal > div > span {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.successfullLottieFileModal > div > span > img {
+  width: 17px;
+  height: 17px;
+}
+
+.successfullLottieFileModal > dotlottie-player {
+  width: 220px;
+  height: 220px;
+}
+
+.successfullLottieFileModal > div > p {
+  width: 100%;
+  height: 19px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  color: black;
+}
+
+/*--------- Small Screen Login Register form   ----------*/
+@media all and (max-width: 599px) {
+  .formContainer {
+    display: none;
+  }
+
+  .backGroundImg {
+    display: none;
+  }
+
+  .signUpLoginContainer {
+    display: none;
+  }
+
+  .signUpBox,
+  .loginBox {
+    display: none;
+  }
+
+  .mobileViewFormContainer {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .loginMobileView,
+  .signUpMobileView {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+  .signUpMobileView {
+    background-color: #e8e8e8;
+  }
+
+  .mobileOtpBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 22px 10px;
+    margin: auto;
+  }
+
+  .mobileOtpBox > .actionInfo,
+  .switchingTab > .actionInfo {
+    width: 100%;
+    height: 24px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+    width: 100%;
+    letter-spacing: 2px;
+    color: #000000;
+    text-align: center;
+  }
+
+  .mobileOtpBox > .actionType {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 26px;
+    width: 100%;
+    color: #000000;
+    text-align: center;
+  }
+
+  .loginViaOTPMobile {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .loginViaPasswordMobile {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    display: none;
+  }
+
+  .loginViaPasswordMobile > form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .loginViaPasswordMobile > form > div {
+    width: 100%;
+    height: 100%;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5px;
+  }
+
+  .loginViaPasswordMobile > form > div > label {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    height: 22px;
+    font-weight: 400;
+    color: #000000;
+    display: block;
+  }
+
+  .loginViaPasswordMobile > form > div > input {
+    width: 100%;
+    height: 30px;
+    padding: 2px 5px;
+    border-bottom: 1px solid #707070;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 300 lighter;
+    color: #70645c;
+    outline: none;
+    background-color: transparent;
+  }
+
+  .mobileOtpBox > .loginViaOTPMobile > .LoginNumberBox {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 2px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #707070;
+    margin-bottom: 10px;
+  }
+
+  .mobileOtpBox > .loginViaOTPMobile > .LoginNumberBox > input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0 5px;
+    background: transparent;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #70645c;
+    outline: none;
+  }
+
+  .mobileOtpBox > .loginViaOTPMobile > .submit-button,
+  .mobileOtpBox > .loginViaPasswordMobile > form > .submit-button,
+  .switchingTab > .submit-button {
+    width: 95%;
+    height: 48px;
+    margin: 0 auto;
+    cursor: pointer;
+    background-color: #70645c;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+  }
+
+  .mobileOtpBox > .lineOR {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3px;
+    margin: auto;
+    gap: 4px;
+    margin-top: -5px;
+  }
+
+  .loginMobileView > .mobileOtpBox > .lineOR > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobileOtpBox > .lineOR > div > hr {
+    width: 33px;
+    border: 1px solid #707070;
+    margin-top: 2px;
+  }
+
+  .lineOR > p {
+    width: 21px;
+    height: 19px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  .mobileOtpBox > .lineOR > .actionInfo2 {
+    width: 100%;
+    height: 19px;
+    text-align: center;
+    margin: 0 auto;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 1.2px;
+    color: #70645c;
+  }
+
+  .actionInfo2OTPMobile,
+  .actionInfo2PassMobile {
+    display: block;
+    width: 100%;
+    height: 19px;
+    text-align: center;
+    margin: 0 auto;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 1.2px;
+    color: #70645c;
+    cursor: pointer;
+  }
+
+  .actionInfo2PassMobile {
+    display: none;
+  }
+
+  .loginMobileView > .switchingTab {
+    width: 100%;
+    height: auto;
+    background-color: #ede9dd;
+    padding: 20px 10px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .switchingTab > .lineOR {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .switchingTab > .lineOR > hr {
+    width: 33px;
+    border: 1px solid #707070;
+    margin-top: 2px;
+  }
+
+  .signUpMobileView {
+    display: none;
+  }
+
+  .signUpMobileView > .mobileOtpBox > .contactNumberBox {
+    width: 99%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 2px 0;
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  .signUpMobileView > .mobileOtpBox > .contactNumberBox > .countryCode {
+    width: 15%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    border-bottom: 1px solid #707070;
+    color: #70645c;
+  }
+
+  .signUpMobileView > .mobileOtpBox > .contactNumberBox > .mobileNumber {
+    width: 80%;
+    height: auto;
+    padding: 6px 0;
+    border-bottom: 1px solid #707070;
+    display: flex;
+    justify-content: last baseline;
+    align-items: last baseline;
+  }
+
+  .mobileOtpBox > .contactNumberBox > .mobileNumber > input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0 5px;
+    background: transparent;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #70645c;
+  }
+
+  .signUpMobileView > .mobileOtpBox > .lineOR {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3px;
+    margin: auto;
+    gap: 20px;
+    margin-top: -5px;
+  }
+
+  .mobileOtpBox > .lineOR > div:nth-child(1) {
+    width: 134px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobileOtpBox > .lineOR > div:nth-child(1) > hr {
+    width: 33px;
+    border: 1px solid #707070;
+    margin-top: 2px;
+  }
+
+  .lineOR > p {
+    width: 21px;
+    height: 19px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  .lineOR > .socialLogos {
+    width: 134px;
+    height: 42px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .socialLogos > div {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #4267b2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .socialLogos > div:nth-child(1) {
+    background-color: #4267b2;
+  }
+
+  .socialLogos > div:nth-child(2) {
+    background-color: white;
+  }
+
+  .signUpMobileView > .switchingTab {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    background-color: #ede9dd;
+  }
+}
+
+/* Login Register Overlay Modal for small screen Screen */
+@media all and (max-width: 599px) {
+  .loginOtpBox,
+  .registerOtpBox {
+    max-width: 428px;
+    width: 100%;
+    height: 254px;
+    background-color: #ede9dd;
+    padding: 10px 40px;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    margin: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: fixed;
+    top: calc(100vh - 254px);
+    left: 0;
+  }
+
+  /* .modalActiveSmall {
+    display: flex;
+  } */
+
+  .loginOtpBox::backdrop,
+  .registerOtpBox::backdrop {
+    background-color: #000000;
+    opacity: 0.5;
+  }
+
+  .loginOtpBox > div:nth-child(1),
+  .registerOtpBox > div:nth-child(1) {
+    width: 100%;
+    height: 45px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+    border-bottom: 1px solid #707070;
+  }
+
+  .loginOtpBox > div:nth-child(1) > h3,
+  .registerOtpBox > div:nth-child(1) > h3 {
+    width: 100%;
+    height: 36px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 26px;
+  }
+
+  .loginOtpBox > div:nth-child(1) > span,
+  .registerOtpBox > div:nth-child(1) > span {
+    cursor: pointer;
+  }
+
+  .loginOtpBox > div:nth-child(2),
+  .registerOtpBox > div:nth-child(2) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 25px 0;
+    padding-bottom: 50px;
+  }
+
+  .largeScreenInput {
+    display: none;
+  }
+
+  label {
+    display: none;
+  }
+
+  .smallScreenInput {
+    display: block;
+    width: 100%;
+    height: 24px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+    border: none;
+    border-bottom: 1px solid #707070;
+    padding: 8px 0;
+    outline: none;
+    background: none;
+    color: #70645c;
+  }
+
+  .loginOtpBox > div:nth-child(2) > div,
+  .registerOtpBox > div:nth-child(2) > div {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .loginOtpBox > div:nth-child(2) > div > .loginResend,
+  .loginOtpBox > div:nth-child(2) > div > .loginVerify,
+  .registerOtpBox > div:nth-child(2) > div > .registerResend,
+  .registerOtpBox > div:nth-child(2) > div > .registerVerify {
+    max-width: 128px;
+    width: 100%;
+    height: 37px;
+    text-align: center;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .loginOtpBox > div:nth-child(2) > div > .loginResend,
+  .registerOtpBox > div:nth-child(2) > div > .registerResend {
+    background-color: white;
+    border: 1px solid #70645c;
+    color: #70645c;
+  }
+
+  .loginOtpBox > div:nth-child(2) > div > .loginVerify,
+  .registerOtpBox > div:nth-child(2) > div > .registerVerify {
+    background-color: #009290;
+    border: 1px solid #009290;
+    color: white;
+  }
+}
+
+/* --------- Create Account Modal for Small Screens ---------  */
+@media all and (max-width: 599px) {
+  .createAccountModal {
+    max-width: 428px;
+    width: 90%;
+    height: 100%;
+    display: none;
+    padding: 25px;
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    gap: 20px;
+    position: relative;
+  }
+
+  .createAccountModal > div {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    background-color: white;
+    padding-top: 20px;
+  }
+
+  .createAccountModal > div > h3 {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    height: 24px;
+    font-weight: 500;
+    letter-spacing: 2px;
+  }
+
+  .createAccountModal > div > span {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+  .createAccountModal > form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    border: none;
+    margin-top: 5px;
+  }
+
+  .createAccountModal > form > p {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    width: 100%;
+    font-size: 18px;
+    height: 24px;
+    text-align: left;
+  }
+
+  .createAccountModal > form > div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .createAccountModal > form > div > div {
+    width: 100%;
+    height: 100%;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .createAccountModal > form > div > div > label,
+  .emailContactNumber > .contactBox > label,
+  .customerTitle > label {
+    display: block;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    height: 22px;
+    font-weight: 400;
+    color: #000000;
+    letter-spacing: 1.5px;
+  }
+
+  .createAccountModal > form > div > div > input {
+    max-width: 380px;
+    width: 100%;
+  }
+
+  .createAccountModal > form > .customerTitle {
+    gap: 10px;
+    border: none;
+  }
+
+  .customerTitle > select {
+    max-width: 380px;
+    width: 100%;
+  }
+
+  .emailContactNumber > .contactBox {
+    order: -1;
+  }
+
+  .referralCaptchabox {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .referralCaptchabox > .Captchabox {
+    max-width: 296px;
+    width: 80%;
+    height: 72px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #707070;
+    margin: auto;
+    margin-top: 11px;
+    border-radius: 5px;
+    background-color: #ede9dd;
+  }
+
+  .referralCaptchabox > .Captchabox > div:nth-child(1) > label {
+    display: block;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 300 lighter;
+    color: black;
+  }
+
+  .createAccountSuccessfulButton {
+    max-width: 428px;
+    width: 100%;
+    height: 48px;
+    padding: 10px 20px;
+    background-color: #70645c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/*--- successfullLottieFileModal Styling Small screen ---*/
+@media all and (max-width: 599px) {
+  .successfullLottieFileModalMobile {
+    display: none;
+    max-width: 428px;
+    width: 100%;
+    height: 254px;
+    position: fixed;
+    top: calc(100vh - 254px);
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #ede9dd;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 50;
+  }
+
+  .successfullLottieFileModalMobile::backdrop {
+    background-color: #000000;
+    opacity: 0.5;
+  }
+
+  .successfullLottieFileModalMobile > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+  }
+
+  .successfullLottieFileModalMobile > div > h3 {
+    width: 100%;
+    height: 36px;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 26px;
+    font-weight: 500;
+    text-align: center;
+    color: black;
+  }
+
+  .successfullLottieFileModalMobile > div > span {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+
+  .successfullLottieFileModalMobile > div > span > img {
+    width: 17px;
+    height: 17px;
+  }
+
+  .successfullLottieFileModalMobile > div > p {
+    width: 100%;
+    height: 19px;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    color: black;
+  }
+}

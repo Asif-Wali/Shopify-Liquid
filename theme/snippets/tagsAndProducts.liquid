@@ -1,0 +1,691 @@
+<link rel="stylesheet" href="{{ 'swiper.css' | asset_url }}">
+
+{% assign faceCollection = collections['Face'] %}
+{% assign hairCollection = collections['Hair'] %}
+{% assign bodyCollection = collections['Body'] %}
+
+<div class="tagsAndProducts">
+  <div class="productTags">
+    <div class="FaceTag active">
+      <img
+        src="{{ 'Component 14.png' | asset_url }}"
+        alt="TagPic"
+        width=""
+        height="" />
+      <p>FACE</p>
+    </div>
+    <div class="HairTag">
+      <img
+        src="{{ 'Component 15.png' | asset_url }}"
+        alt="TagPic"
+        width=""
+        height="" />
+      <p>HAIR</p>
+    </div>
+    <div class="BodyTag">
+      <img
+        src="{{ 'Component 16.png' | asset_url }}"
+        alt="TagPic"
+        width=""
+        height="" />
+      <p>BODY</p>
+    </div>
+  </div>
+
+  <div class="ProductSliderContainer">
+    <!-- Face Product Swiper -->
+    <div class="faceSliderContainer">
+      <div class="swiper myFaceProductSwiper">
+        <div class="swiper-wrapper">
+          {% for product in faceCollection.products limit: 8 %}
+            <div class="swiper-slide">
+              <div class="ProductCard">
+                <img
+                  src="{{ product.featured_image.src | image_url }}"
+                  alt="{{ product.title }}"
+                  width=""
+                  height="" />
+                <h4>{{ product.title }}</h4>
+                <div>
+                  <img
+                    src="{{ '4.5 star rating.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                  <p>{{ product.reviews }}</p>
+                </div>
+                <p>₹{{ product.price }}</p>
+                <button>
+                  <a href="{{ product.url }}">ADD TO CART</a>
+                </button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <button class="viewAllButton">
+        <a href="{{ shop.url }}/collections/face">
+          View All</a>
+      </button>
+    </div>
+
+
+    <!-- Hair Product Swiper -->
+    <div class="hairSliderContainer">
+      <div class="swiper myHairProductSwiper">
+        <div class="swiper-wrapper">
+          {% for product in hairCollection.products limit: 8 %}
+            <div class="swiper-slide">
+              <div class="ProductCard">
+                <img
+                  src="{{ product.featured_image.src | image_url }}"
+                  alt="{{ product.title }}"
+                  width=""
+                  height="" />
+                <h4>{{ product.title }}</h4>
+                <div>
+                  <img
+                    src="{{ '4.5 star rating.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                  <p>{{ product.reviews }}</p>
+                </div>
+                <p>₹{{ product.price }}</p>
+                <button>
+                  <a href="{{ product.url }}">ADD TO CART</a>
+                </button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <button class="viewAllButton">
+        <a href="{{ shop.url }}/collections/hair">
+          View All</a>
+      </button>
+    </div>
+
+
+    <!-- Body Product Swiper -->
+    <div class="bodySliderContainer">
+      <div class="swiper myBodyProductSwiper">
+        <div class="swiper-wrapper">
+          {% for product in bodyCollection.products limit: 8 %}
+            <div class="swiper-slide">
+              <div class="ProductCard">
+                <img
+                  src="{{ product.featured_image.src | image_url }}"
+                  alt="{{ product.title }}"
+                  width=""
+                  height="" />
+                <h4>{{ product.title }}</h4>
+                <div>
+                  <img
+                    src="{{ '4.5 star rating.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                  <p>{{ product.reviews }}</p>
+                </div>
+                <p>₹{{ product.price }}</p>
+                <button>
+                  <a href="{{ product.url }}">ADD TO CART</a>
+                </button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <button class="viewAllButton">
+        <a href="{{ shop.url }}/collections/body">
+          View All</a>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .tagsAndProducts {
+    max-width: 1240px;
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: auto auto 20px;
+    gap: 10px;
+    padding: 30px 15px 15px;
+  }
+
+  .tagsAndProducts > .productTags {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .tagsAndProducts > .productTags > div {
+    width: 100%;
+    height: 149px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 3px solid #707070;
+    border-radius: 70px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px
+    , rgba(0, 0, 0, 0.23) 0 3px 6px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .tagsAndProducts > .productTags > div > img {
+    width: 208px;
+    height: 139px;
+  }
+
+  .active {
+    color: white;
+    background-color: #70645c;
+  }
+
+  .tagsAndProducts > .productTags > div > p {
+    width: 80px;
+    height: 43px;
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .viewAllButton {
+    display: block;
+    width: 128px;
+    height: 32px;
+    border-radius: 70px;
+    border: 1px #70645c solid;
+    color: #70645c;
+    cursor: pointer;
+    box-shadow: #70645c 0 5px 15px;
+    margin: 20px auto auto;
+  }
+
+  .viewAllButton > a {
+    width: 56px;
+    height: 19px;
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* Product Slider */
+
+  .ProductSliderContainer {
+    width: 100%;
+    height: auto;
+  }
+
+  .faceSliderContainer,
+  .hairSliderContainer,
+  .bodySliderContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .hairSliderContainer,
+  .bodySliderContainer {
+    display: none;
+  }
+
+
+  .myFaceProductSwiper,
+  .myHairProductSwiper,
+  .myBodyProductSwiper {
+    width: 100%;
+    height: 400px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s ease-in-out;
+    position: relative;
+    margin: auto;
+  }
+
+  .faceSliderContainer > .swiper,
+  .hairSliderContainer > .swiper,
+  .bodySliderContainer > .swiper {
+    width: 100%;
+    height: auto;
+    padding: 15px 15px 20px;
+  }
+
+  .myFaceProductSwiper > .swiper-pagination,
+  .myHairProductSwiper > .swiper-pagination,
+  .myBodyProductSwiper > .swiper-pagination {
+    position: absolute;
+    bottom: -4px;
+  }
+
+  .myFaceProductSwiper > .swiper-button-prev,
+  .myHairProductSwiper > .swiper-button-prev,
+  .myBodyProductSwiper > .swiper-button-prev {
+    position: absolute;
+    opacity: 1;
+    left: -8px;
+  }
+
+  .myFaceProductSwiper > .swiper-button-next,
+  .myHairProductSwiper > .swiper-button-next,
+  .myBodyProductSwiper > .swiper-button-next {
+    position: absolute;
+    opacity: 1;
+    right: -8px;
+  }
+
+  .myFaceProductSwiper > .swiper-button-prev::after,
+  .myHairProductSwiper > .swiper-button-prev::after,
+  .myBodyProductSwiper > .swiper-button-prev::after,
+  .myFaceProductSwiper > .swiper-button-next::after,
+  .myHairProductSwiper > .swiper-button-next::after,
+  .myBodyProductSwiper > .swiper-button-next::after {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+
+
+  .ProductCard {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    text-align: center;
+    margin: auto;
+    gap: 5px;
+    padding-bottom: 5px;
+  }
+
+  .ProductCard > img:nth-child(1) {
+    width: 100%;
+    height: 284px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .ProductCard > h4 {
+    width: 100%;
+    height: 39px;
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  .ProductCard > div {
+    width: 90%;
+    height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ProductCard > div > p {
+    height: 17px;
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+  }
+
+  .ProductCard > p {
+    width: auto;
+    height: 19px;
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  .ProductCard > button {
+    display: none;
+  }
+
+  @media all and (max-width: 1300px) {
+    .tagsAndProducts > .productTags {
+      width: 100%;
+      padding: 0 10px;
+      gap: 20px;
+    }
+
+    .tagsAndProducts > .productTags > div {
+      width: 90%;
+      height: 130px;
+      padding: 5px 8px;
+      text-align: center;
+      gap: 5px;
+    }
+
+    .tagsAndProducts > .productTags > div > img {
+      width: 170px;
+      height: 120px;
+    }
+
+    .tagsAndProducts > .productTags > div > p {
+      font-size: 32px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media all and (max-width: 1050px) {
+    .tagsAndProducts {
+      width: 95%
+    }
+
+    .tagsAndProducts > .productTags {
+      width: 100%;
+      padding: 0 10px;
+      gap: 20px;
+    }
+
+    .tagsAndProducts > .productTags > div {
+      width: 90%;
+      height: 110px;
+      padding: 5px 8px;
+      text-align: center;
+      gap: 5px;
+    }
+
+    .tagsAndProducts > .productTags > div > img {
+      width: 120px;
+      height: 80px;
+    }
+
+    .tagsAndProducts > .productTags > div > p {
+      font-size: 28px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media all and (max-width: 800px) {
+    .tagsAndProducts {
+      width: 100%
+    }
+
+    .tagsAndProducts > .productTags {
+      width: 100%;
+      padding: 0 10px;
+      gap: 20px;
+    }
+
+    .tagsAndProducts > .productTags > div {
+      width: 100%;
+      height: 110px;
+      padding: 5px 8px;
+      text-align: center;
+      gap: 5px;
+    }
+
+    .tagsAndProducts > .productTags > div > img {
+      width: 100px;
+      height: 70px;
+    }
+
+    .tagsAndProducts > .productTags > div > p {
+      font-size: 26px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media all and (max-width: 600px) {
+    .tagsAndProducts {
+      width: 100%;
+    }
+
+    .tagsAndProducts > .productTags {
+      width: 90%;
+      padding: 0 10px;
+    }
+
+    .tagsAndProducts > .productTags > div {
+      width: 111px;
+      height: 45px;
+    }
+
+    .tagsAndProducts > .productTags > div > img {
+      width: 43px;
+      height: 29px;
+    }
+
+    .tagsAndProducts > .productTags > div > p {
+      font-size: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ProductCard {
+      width: 100%;
+      height: auto;
+      padding-bottom: 5px;
+    }
+
+    .ProductCard > img:nth-child(1) {
+      width: 100%;
+      height: 320px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .ProductCard > h4 {
+      width: 95%;
+      height: 37px;
+    }
+
+    .ProductCard > div {
+      width: 100%;
+      height: 17px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: auto;
+    }
+
+    .ProductCard > div > p {
+      height: 17px;
+      font-family: "Noto Sans"
+      , sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 12px;
+    }
+
+    .ProductCard > p {
+      width: auto;
+      height: 19px;
+      font-family: "Noto Sans"
+      , sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    .ProductCard > button {
+      display: block;
+      width: 122px;
+      height: 22px;
+      background-color: #009290;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 25px;
+    }
+
+    .ProductCard > button > a {
+      text-decoration: none;
+      height: 17px;
+      font-family: "Noto Sans"
+      , sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 12px;
+      text-align: center;
+      color: white;
+    }
+  }
+
+  @media all and (max-width: 424px) {
+    .tagsAndProducts {
+      width: 100%;
+    }
+
+    .tagsAndProducts > .productTags {
+      width: 95%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .tagsAndProducts > .productTags > div {
+      max-width: 100px;
+      width: 100%;
+      height: 45px;
+    }
+
+    .tagsAndProducts > .productTags > div > img {
+      width: 43px;
+      height: 29px;
+    }
+
+    .tagsAndProducts > .productTags > div > p {
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ProductCard {
+      width: 100%;
+      height: auto;
+      padding-bottom: 5px;
+    }
+
+    .ProductCard > img:nth-child(1) {
+      width: 100%;
+      height: 320px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .ProductCard > h3 {
+      width: 100%;
+      height: 37px;
+    }
+
+    .ProductCard > div {
+      width: 100%;
+      height: 17px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: auto;
+    }
+
+    .ProductCard > div > p {
+      height: 17px;
+      font-family: "Noto Sans"
+      , sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 12px;
+    }
+
+    .ProductCard > p {
+      width: auto;
+      height: 19px;
+      font-family: "Noto Sans"
+      , sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    .ProductCard > button {
+      display: block;
+      width: 122px;
+      height: 22px;
+      background-color: #009290;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 25px;
+    }
+
+    .ProductCard > button > a {
+      text-decoration: none;
+      height: 17px;
+      font-family: "Noto Sans"
+      , sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 12px;
+      text-align: center;
+      color: white;
+    }
+  }
+</style>
+
+
+<script src="{{ "swiper.js" | asset_url }}" defer></script>
+<script src="{{ "tagAndProductSlider.js" | asset_url }}" defer></script>

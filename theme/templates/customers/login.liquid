@@ -1,0 +1,230 @@
+<link rel="stylesheet" href="{{ 'loginStyles.css' | asset_url }}">
+
+<!-- Form Main Container for larger screen -->
+<div class="formContainer">
+  <div class="backGroundImg">
+    <img
+      src="{{ "20629.png" | asset_url }}"
+      alt=""
+      width=""
+      height="" />
+
+    <div class="signUpLoginContainer">
+      <!-- Login box -->
+      <div class="loginBox">
+        <div class="askOTPbox">
+          <h4 class="actionInfo">Have an account ?</h4>
+          <h2 class="actionType">Sign In</h2>
+
+          <div class="loginViaOTP">
+            <div class="LoginNumberBox">
+              <input type="text" placeholder="Enter Mobile Number/Email ID" />
+            </div>
+            <button id="submitButton" class="submit-button openLoginModal">
+              Send OTP
+            </button>
+          </div>
+
+          <div class="loginViaPassword">
+            {% form 'customer_login' %}
+              {{ form.errors | default_errors }}
+
+              <div class="emailBox">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="customer[email]"
+                  required>
+              </div>
+
+              <div class="passBox">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="customer[password]"
+                  required>
+              </div>
+
+
+              <button type="submit" class="submit-button">
+                Sign in</button>
+
+            {% endform %}
+          </div>
+
+
+          <div class="lineOR">
+            <hr/>
+            <p>OR</p>
+            <hr/>
+          </div>
+
+          <h3 class="actionInfo2OTP" onclick="switchToLoginPass()">Sign in via password</h3>
+          <h3 class="actionInfo2Pass" onclick="switchToLoginOTP()">Sign in via OTP</h3>
+        </div>
+
+        <div class="switchTabBox">
+          <h4 class="actionInfo">Don't have an account ?</h4>
+          <div class="mainImg">
+            <img
+              width=""
+              height=""
+              src=" {{ 'signup_main_img.svg' |  asset_url }} " />
+          </div>
+          <a
+            id="switchTabButton"
+            class="switchTab-button switchToRegister"
+            href="/account/register">
+            REGISTER
+          </a>
+
+          <div class="lineOR">
+            <hr/>
+            <p>OR</p>
+            <hr/>
+        </div>
+
+          {% comment %} <div class="socialLogos">
+                        <div>
+                          <img
+                            width=""
+                            height=""
+                            src=" {{ 'facebook-icon.svg' |  asset_url }} " />
+                        </div>
+                        <div>
+                          <img
+                            width=""
+                            height=""
+                            src=" {{ 'google-plus-icon-color.svg' |  asset_url }} " />
+                        </div>
+  
+                    </div> {% endcomment %}
+          {% section 'socialLoginSection' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Verify OTP Modal -->
+<dialog class="loginOtpBox">
+  <div>
+    <h3>Verify OTP</h3>
+    <span class="closeLoginModal">
+      <img
+        width=""
+        height=""
+        src=" {{ 'closeIcon.svg' |  asset_url }} "
+        alt="" />
+    </span>
+  </div>
+  <div>
+    <label>OTP*</label>
+    <input type="text" class="largeScreenInput" />
+
+    <input
+      type="text"
+      placeholder="OTP*"
+      class="smallScreenInput" />
+    <div>
+      <button class="loginResend">RESEND OTP</button>
+      <button class="loginVerify">VERIFY OTP</button>
+    </div>
+  </div>
+</dialog>
+
+
+<!-- Mobile View Starts here -->
+<!-- Form Container for small screen -->
+<div class="mobileViewFormContainer">
+  <div class="loginMobileView">
+    <div class="mobileOtpBox">
+      <h3 class="actionInfo">Have an account ?</h3>
+      <h2 class="actionType">Sign In</h2>
+
+      <div class="loginViaOTPMobile">
+        <div class="LoginNumberBox">
+          <input type="text" placeholder="Enter Mobile Number/Email ID" />
+        </div>
+        <button id="submitButton" class="submit-button openloginModalSmall">
+          Send OTP
+        </button>
+      </div>
+
+      <div class="loginViaPasswordMobile">
+        {% form 'customer_login' %}
+          {{ form.errors | default_errors }}
+
+          <div class="emailBox">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="customer[email]"
+              required>
+          </div>
+
+          <div class="passBox">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="customer[password]"
+              required>
+          </div>
+
+
+          <button type="submit" class="submit-button">
+            Sign in</button>
+
+        {% endform %}
+      </div>
+
+
+      <div class="lineOR">
+        <div>
+          <hr/>
+          <p>OR</p>
+          <hr/>
+        </div>
+        <h3 class="actionInfo2OTPMobile" onclick="switchToLoginPassMobile()">Sign in via password</h3>
+        <h3 class="actionInfo2PassMobile" onclick="switchToLoginOTPMobile()">Sign in via OTP</h3>
+      </div>
+    </div>
+
+    <div class="switchingTab">
+      <h3 class="actionInfo">Don't have an account ?</h3>
+      <a class="submit-button switchToLoginMobile" href="/account/register">
+        SIGN UP
+      </a>
+
+      <div class="lineOR">
+        <hr/>
+        <p>OR</p>
+        <hr/>
+    </div>
+
+      {% comment %} <div class="socialLogos">
+                        <div>
+                          <img
+                            width=""
+                            height=""
+                            src=" {{ 'facebook-icon.svg' |  asset_url }} " />
+                        </div>
+                        <div>
+                          <img
+                            width=""
+                            height=""
+                            src=" {{ 'google-plus-icon-color.svg' |  asset_url }} " />
+                        </div>
+    
+                  </div> {% endcomment %}
+      {% section 'socialLoginSection' %}
+    </div>
+  </div>
+</div>
+
+
+<script src="{{ "loginScripts.js" | asset_url }}" defer></script>

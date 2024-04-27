@@ -1,0 +1,404 @@
+<section>
+  <div class="referAfriend">
+    <div>
+      <img
+        src="{{ 'ReferImage.png' | asset_url }}"
+        alt=""
+        width=""
+        height="" />
+    </div>
+
+    <div>
+      <span>
+        <p>REFERRAL PROGRAM</p>
+        <p>GET *** FOR EVERY BFF THAT YOU TREAT!</p>
+      </span>
+
+      <span>
+        <p>Thank you for choosing , Share the love by...</p>
+        <p>
+          Treating your friend to ** off & 5 complimentary samples on their first order. Then, earn ** off your next order once your friend has made their purchase.*
+        </p>
+      </span>
+
+      <span>
+        <p>*offer available on orders of minimum $50. Shipping is on us! Available Online Only.</p>
+      </span>
+    </div>
+
+    <div>
+      <span>
+        <label for="customer_name">Your Name
+        </label>
+        <input
+          type="text"
+          id="customer_name"
+          name="customer_name"
+          placeholder="Enter your name..." />
+      </span>
+
+      <span>
+        <label for="customer_email">Your Email</label>
+        <input
+          type="text"
+          id="customer_email"
+          name="customer_email"
+          placeholder="Enter your email..." />
+      </span>
+    </div>
+
+    <div>
+      <button>Invite Friends</button>
+      <span>
+        <hr style="width: 95px; height: 0; color: #707070; margin: auto" />
+        <p>or login with</p>
+        <hr style="width: 95px; height: 0; color: #707070; margin: auto" />
+      </span>
+
+      <span>
+        <span>
+          <img
+            src="{{ 'facebook-icon.svg' | asset_url }}"
+            alt=""
+            width=""
+            height="" />
+        </span>
+
+        <span>
+          <img
+            src="{{ 'google-plus-icon-color.svg' | asset_url }}"
+            alt=""
+            width=""
+            height="" />
+        </span>
+      </span>
+    </div>
+
+    <div>
+      <button>INVITE FRIENDS</button>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .referAfriend {
+    width: 78%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 10px 20px;
+    gap: 30px;
+  }
+
+  .referAfriend > div:nth-child(1) {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .referAfriend > div:nth-child(2),
+  .referAfriend > div:nth-child(2) > span {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .referAfriend > div:nth-child(2) > span {
+    justify-content: space-between;
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-style: normal;
+    color: black;
+    text-align: left;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .referAfriend > div:nth-child(2) > span:nth-child(1) {
+    font-size: 26px;
+    font-weight: 400;
+    color: #70645c;
+  }
+
+  .referAfriend > div:nth-child(2) > span:nth-child(2) > p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .referAfriend > div:nth-child(2) > span:nth-child(2) > p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .referAfriend > div:nth-child(3) {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .referAfriend > div:nth-child(3) > span {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-style: normal;
+    color: black;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .referAfriend > div:nth-child(3) > span > input {
+    width: 70%;
+    height: auto;
+    padding: 5px 0;
+    outline: none;
+    border-bottom: 1px solid #707070;
+    color: #70645c;
+  }
+
+  .referAfriend > div:nth-child(4) {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .referAfriend > div:nth-child(4) > button {
+    width: 296px;
+    height: 48px;
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-style: normal;
+    color: white;
+    text-align: center;
+    gap: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #009290;
+    border: 1px solid #009290;
+    border-radius: 25px;
+    padding: 3px 6px;
+  }
+
+  .referAfriend > div:nth-child(5) {
+    display: none;
+  }
+
+  .referAfriend > div:nth-child(4) > span {
+    width: fit-content;
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .referAfriend > div:nth-child(4) > span > p {
+    font-family: "Noto Sans"
+    , sans-serif;
+    font-style: normal;
+    color: black;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .referAfriend > div:nth-child(4) > span:nth-child(3) {
+    width: 134px;
+    height: 42px;
+    gap: 40px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+  }
+
+  .referAfriend > div:nth-child(4) > span:nth-child(3) > span {
+    width: fit-content;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.09) 0 3px 12px;
+  }
+
+  .referAfriend > div:nth-child(4) > span:nth-child(3) > span:nth-child(1) {
+    background-color: #4267b2;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+  }
+
+  .referAfriend > div:nth-child(4) > span:nth-child(3) > span {
+    background-color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+  }
+
+  @media all and (max-width: 999px) {
+    .referAfriend {
+      width: 85%;
+    }
+
+    .referAfriend > div:nth-child(5) {
+      display: none;
+    }
+  }
+
+  @media all and (max-width: 599px) {
+    .referAfriend {
+      width: 100%;
+      padding: 0;
+      position: relative;
+    }
+
+    .referAfriend > div:nth-child(1) {
+      width: 100%;
+      height: 628px;
+    }
+
+    .referAfriend > div:nth-child(1) > img {
+      width: 100%;
+      height: 628px;
+    }
+
+    .referAfriend > div:nth-child(2),
+    .referAfriend > div:nth-child(2) > span {
+      padding: 0 10px;
+    }
+
+    .referAfriend > div:nth-child(2) > span {
+      justify-content: space-between;
+      font-family: "Noto Sans"
+      , sans-serif;
+      font-style: normal;
+      color: black;
+      text-align: left;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .referAfriend > div:nth-child(2) > span:nth-child(2) {
+      gap: 15px;
+      color: black;
+    }
+
+    .referAfriend > div:nth-child(2) > span:nth-child(1) > p:nth-child(1) {
+      font-size: 26px;
+      font-weight: 400;
+      color: #70645c;
+    }
+
+    .referAfriend > div:nth-child(2) > span:nth-child(1) > p:nth-child(2) {
+      color: black;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .referAfriend > div:nth-child(2) > span:nth-child(2) > p:nth-child(1) {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .referAfriend > div:nth-child(2) > span:nth-child(2) > p:nth-child(2) {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .referAfriend > div:nth-child(3) {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      gap: 20px;
+    }
+
+    .referAfriend > div:nth-child(3) > span > input {
+      width: 100%;
+      height: auto;
+      padding: 5px 0;
+      outline: none;
+      border-bottom: 1px solid #707070;
+      color: #70645c;
+    }
+
+    .referAfriend > div:nth-child(4) {
+      gap: 8px;
+    }
+
+    .referAfriend > div:nth-child(4) > button {
+      display: none;
+    }
+
+    .referAfriend > div:nth-child(5) {
+      display: block;
+      width: 100%;
+      height: 48px;
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      padding: 10px 20px;
+      background-color: #009290;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      font-family: "Noto Sans"
+      , sans-serif;
+      font-style: normal;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+    }
+  }
+
+</style>
+
+{% schema %}
+  {
+    "name": "Refer A Friend",
+    "settings": [],
+    "presets": [
+      {
+        "name": "referAFriend"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,368 @@
+<link rel="stylesheet" href="{{ 'swiper.css' | asset_url }}">
+
+{% assign testimonials_count = shop.customer_testimonials.size | minus: 1 %}
+<div class="customerTestimonials">
+  <h1>Customer Testimonials</h1>
+
+  <div class="testimonialSlider">
+    <div class="swiper mytestimonialSwiper relative">
+      <div class="swiper-wrapper">
+        {% assign testimonials_limit = 8 %}
+        {% if testimonials_count >= testimonials_limit %}
+          {% assign start_index = testimonials_count | minus: testimonials_limit %}
+          {% assign end_index = testimonials_count %}
+          {% for i in (start_index..end_index) %}
+            <div class="swiper-slide">
+              <div class="testimonialCard">
+                <div>
+                  <img
+                    src="{{ 'Icon awesome-quote-left.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                </div>
+
+                <div>
+                  <p class="review">
+                    {{ shop.customer_testimonials[i].review }}
+                  </p>
+                </div>
+
+                <div>
+                  <img
+                    src="{{ '4.5-star-rating-testimonial.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                  <p>{{ shop.customer_testimonials[i].name }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for i in (1..testimonials_limit) %}
+            <div class="swiper-slide">
+              <div class="testimonialCard">
+                <div>
+                  <img
+                    src="{{ 'Icon awesome-quote-left.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                </div>
+
+                <div>
+                  <p class="review">
+                    Highly recommended organic product because of its natural ingredients which perfectly suit all lips.
+                  </p>
+                </div>
+
+                <div>
+                  <img
+                    src="{{ '4.5-star-rating-testimonial.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                  <p>John Doe</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="swiper-pagination"></div>
+
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  /* Testimonial CSS Start here */
+  .customerTestimonials {
+    max-width: 1240px;
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: auto;
+    padding: 20px 0;
+  }
+
+  .customerTestimonials > h1 {
+    font-family: "Amatic SC"
+    , sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #70645c;
+    font-size: 50px;
+  }
+
+  .testimonialSlider {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mytestimonialSwiper {
+    width: 100%;
+    height: 400px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s ease-in-out;
+    position: relative;
+    margin: auto;
+  }
+
+  .testimonialSlider > .swiper {
+    width: 100%;
+    height: 400px;
+    padding: 0 15px;
+  }
+
+  .mytestimonialSwiper > .swiper-button-prev {
+    position: absolute;
+    opacity: 1;
+    left: -8px;
+  }
+
+  .mytestimonialSwiper > .swiper-button-next {
+    right: -8px;
+    position: absolute;
+    opacity: 1;
+  }
+
+  .mytestimonialSwiper > .swiper-button-next::after,
+  .mytestimonialSwiper > .swiper-button-prev::after {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .testimonialCard {
+    width: 98%;
+    height: 380px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-color: #70645c;
+    box-shadow: 6px 6px 5px #70645c;
+    position: relative;
+  }
+
+  .testimonialCard > div > p {
+    font-family: "Playfair Display"
+    , serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .testimonialCard > div {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .testimonialCard > div:nth-child(1) {
+    position: absolute;
+    top: 30px;
+  }
+
+  .testimonialCard > div:nth-child(1) > img {
+    height: 22px;
+    width: 25px;
+  }
+
+  .testimonialCard > div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+  }
+
+  .testimonialCard > div:nth-child(3) {
+    gap: 25px;
+    position: absolute;
+    bottom: 15px;
+    flex-direction: column;
+  }
+
+  @media all and (max-width: 1050px) {
+    .customerTestimonials {
+      width: 95%;
+    }
+  }
+
+  @media all and (max-width: 600px) {
+    .customerTestimonials {
+      width: 100%;
+    }
+
+    .customerTestimonials > h1 {
+      font-family: "Amatic SC"
+      , sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      color: #70645c;
+      font-size: 40px;
+    }
+
+    .testimonialSlider {
+      padding: 0 5px;
+    }
+
+    .mytestimonialSwiper {
+      height: 250px;
+    }
+
+    .testimonialSlider > .swiper {
+      height: 250px;
+      padding: 0 12px;
+    }
+
+    .mytestimonialSwiper > .swiper-wrapper > .swiper-slide {
+      width: 80%;
+    }
+
+    .testimonialCard {
+      width: 100%;
+      height: 230px;
+    }
+
+    .testimonialCard > div {
+      width: 100%;
+      height: auto;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .testimonialCard > div:nth-child(1) {
+      top: 15px;
+    }
+
+    .testimonialCard > div:nth-child(1) > img {
+      height: 22px;
+      width: 25px;
+    }
+
+    .testimonialCard > div:nth-child(2) {
+      position: absolute;
+      top: 50px;
+    }
+
+    .testimonialCard > div:nth-child(3) {
+      width: 100%;
+      flex-direction: row;
+      margin: auto;
+      justify-content: space-between;
+      text-align: center;
+      padding-left: 40px;
+    }
+
+    .mytestimonialSwiper > .swiper-button-next {
+      right: -8px;
+      position: absolute;
+      opacity: 1;
+    }
+  }
+
+  @media all and (max-width: 424px) {
+    .customerTestimonials {
+      width: 100%;
+    }
+
+    .testimonialSlider {
+      padding: 0 5px;
+    }
+
+    .mytestimonialSwiper {
+      height: 240px;
+    }
+
+    .testimonialSlider > .swiper {
+      height: 250px;
+      padding: 0 12px;
+    }
+
+    .testimonialSlider > .swiper {
+      height: 240px;
+      padding: 0 10px;
+    }
+
+    .mytestimonialSwiper > .swiper-wrapper > .swiper-slide {
+      width: 92%;
+    }
+
+    .testimonialCard {
+      width: 100%;
+      height: 220px;
+    }
+
+    .testimonialCard > div {
+      width: 100%;
+      height: auto;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .testimonialCard > div:nth-child(1) {
+      top: 15px;
+    }
+
+    .testimonialCard > div:nth-child(1) > img {
+      height: 22px;
+      width: 25px;
+    }
+
+    .testimonialCard > div:nth-child(2) {
+      position: absolute;
+      top: 50px;
+    }
+
+    .testimonialCard > div:nth-child(3) {
+      width: 100%;
+      flex-direction: row;
+      margin: auto;
+      justify-content: space-between;
+      text-align: center;
+      padding-left: 40px;
+    }
+
+    .mytestimonialSwiper > .swiper-button-next {
+      right: -8px;
+      position: absolute;
+      opacity: 1;
+    }
+  }
+
+</style>
+
+
+<script src="{{ "swiper.js" | asset_url }}" defer></script>
+
+<script src="{{ "customerTestimonialSlider.js" | asset_url }}" defer></script>

@@ -1,14 +1,31 @@
-
-.swiper {
+.myTimelessSwiper > .swiper-wrapper {
   width: 100%;
-  height: fit-content;
-
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {  
-    font-size: 12px;
-    font-weight: bold;
-    color: #000;
+.myTimelessSwiper > .swiper-button-prev {
+  position: absolute;
+  opacity: 1;
+  left: -8px;
+}
 
-  }
+.myTimelessSwiper > .swiper-button-next {
+  right: -8px;
+  position: absolute;
+  opacity: 1;
+}
+
+/* .swiper {
+  width: 100%;
+  height: fit-content;
+} */
+
+.myTimelessSwiper > .swiper-button-prev::after,
+.myTimelessSwiper > .swiper-button-next::after {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}

@@ -1,0 +1,36 @@
+<div class="formContainer">
+  <div class="backGroundImg">
+</div>
+
+  <!-- Large Screen Form Container -->
+{% section 'largeScreenFormContainer' %}
+
+  <!-- From Container for small screen -->
+  {% section 'mobileViewFormContainer' %}
+</div>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .formContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .backGroundImg {
+    position: absolute;
+    width: 100%;
+    height: 84vh;
+    background: url("../Utilities/CreateAccount/20629.png");
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-position: center;
+    overflow: hidden;
+    z-index: -1;
+  }
+</style>

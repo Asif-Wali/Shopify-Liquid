@@ -1,0 +1,361 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.formContainer {
+  width: 100%;
+  height: auto;
+}
+
+.backGroundImg {
+  width: 100%;
+  height: 84vh;
+  position: relative;
+}
+
+.backGroundImg > img {
+  width: 100%;
+  height: 84vh;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.signUpLoginContainer {
+  width: 100%;
+  height: 84vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.signUpBox,
+.loginBox {
+  max-width: 792px;
+  width: 100%;
+  height: 384px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.askOTPbox,
+.switchTabBox {
+  width: 396px;
+  height: 384px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 25px;
+}
+
+.askOTPbox {
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #ede9dd;
+}
+
+.switchTabBox {
+  justify-content: flex-start;
+  align-items: center;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #a9abb0;
+}
+
+.actionInfo {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  width: 100%;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+.switchTabBox > .actionInfo {
+  text-align: center;
+}
+
+.actionType {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 26px;
+  width: 100%;
+  color: #000000;
+}
+
+.contactNumberBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px 0;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.countryCode {
+  width: 15%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  border-bottom: 1px solid #707070;
+  color: #70645c;
+}
+
+.mobileNumber {
+  width: 65%;
+  height: 100%;
+  border-bottom: 1px solid #707070;
+  display: flex;
+  justify-content: last baseline;
+  align-items: last baseline;
+}
+
+.LoginNumberBox {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 35px;
+  padding: 2px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.LoginNumberBox > input,
+.mobileNumber > input {
+  width: 100%;
+  height: 48px;
+  border: none;
+  padding: 0 5px;
+  background: transparent;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #70645c;
+  outline: none;
+  border-bottom: 1px solid #707070;
+}
+
+.custom-phone-input.valid {
+  border: 1px solid #70645c;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+}
+
+/* Remove the default spinner arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*   Firefox  */
+/* input[type="number"] {
+  -moz-appearance: textfield;
+} */
+
+.submit-button,
+.switchTab-button {
+  width: 201px;
+  height: 33px;
+  margin: 0 auto;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #009290;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  text-align: center;
+}
+
+.switchTab-button {
+  margin-top: 25px;
+}
+
+.lineOR {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* .loginBox > .switchTabBox > .lineOR {
+  margin-top: 10px;
+} */
+
+.askOTPbox > .lineOR > hr,
+.switchTabBox > .lineOR > hr {
+  width: 33px;
+  border: 1px solid #707070;
+  margin-top: 2px;
+}
+
+.lineOR > p {
+  width: 21px;
+  height: 19px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.actionInfo2 {
+  width: 100%;
+  height: 19px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: 1.2px;
+  color: #70645c;
+}
+
+.socialLogos {
+  width: 134px;
+  height: 42px;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loginBox > .switchTabBox > .socialLogos {
+  margin-top: 10px;
+}
+
+.socialLogos > div {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #4267b2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialLogos > div:nth-child(1) {
+  background-color: #4267b2;
+}
+
+.socialLogos > div:nth-child(2) {
+  background-color: white;
+}
+
+.mainImg {
+  width: 165px;
+  height: 105px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.mainImg > img {
+  width: 100%;
+  height: 100%;
+}
+
+@media all and (max-width: 900px) {
+  .signUpBox,
+  .loginBox {
+    max-width: 632px;
+    width: 90%;
+    height: 384px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 10px;
+  }
+
+  .countryCode {
+    width: 20%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    border-bottom: 1px solid #707070;
+    color: #70645c;
+  }
+
+  .submit-button {
+    margin-top: 10px;
+  }
+}
+
+@media all and (max-width: 699px) {
+  .signUpBox,
+  .loginBox {
+    max-width: 520px;
+    width: 90%;
+    height: 384px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 10px;
+  }
+
+  .askOTPbox,
+  .switchTabBox {
+    padding: 15px;
+  }
+
+  .contactNumberBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2px 0;
+    gap: 8px;
+    margin-top: 1px;
+  }
+
+  .countryCode {
+    width: 25%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    border-bottom: 1px solid #707070;
+    color: #70645c;
+  }
+
+  .submit-button {
+    margin-top: 9px;
+  }
+}

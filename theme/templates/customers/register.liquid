@@ -1,0 +1,367 @@
+<link rel="stylesheet" href="{{ 'registerStyles.css' | asset_url }}">
+
+<!-- Form Main Container for larger screen -->
+<div class="formContainer">
+  <div class="backGroundImg">
+    <img
+      src="{{ "20629.png" | asset_url }}"
+      alt=""
+      width=""
+      height="" />
+
+    <div class="signUpLoginContainer">
+      <!-- RegisterBox -->
+      <div class="signUpBox">
+        <div class="askOTPbox">
+          <h4 class="actionInfo">Don't have an account ?</h4>
+          <h2 class="actionType">Register</h2>
+          <div class="contactNumberBox">
+            <div class="countryCode">
+              <img
+                width=""
+                height=""
+                src=" {{ 'IndiaLogo.png' |  asset_url }} " />
+              <p>+91</p>
+            </div>
+            <div class="mobileNumber">
+              <input
+                type="number"
+                id="phoneNumberInput"
+                class="custom-phone-input"
+                placeholder="Mobile Number"
+                maxlength=10 />
+            </div>
+          </div>
+
+          <button id="submitButton" class="submit-button openRegisterModal">
+            Send OTP
+          </button>
+
+          <div class="lineOR">
+            <hr/>
+            <p>OR</p>
+            <hr/>
+          </div>
+
+          <h3 class="actionInfo2">You can also register with</h3>
+
+          <div class="socialLogos">
+            <div>
+              <img
+                width=""
+                height=""
+                src=" {{ 'facebook-icon.svg' |  asset_url }} " />
+            </div>
+            <div>
+              <img
+                width=""
+                height=""
+                src=" {{ 'google-plus-icon-color.svg' |  asset_url }} " />
+            </div>
+          </div>
+        </div>
+
+        <div class="switchTabBox">
+          <h4 class="actionInfo">Have an account ?</h4>
+          <div class="mainImg">
+            <img
+              width=""
+              height=""
+              src=" {{ 'signup_main_img.svg' |  asset_url }} " />
+          </div>
+          <a
+            id="switchTabButton"
+            class="switchTab-button switchToLogin"
+            href="/account/login">
+            SIGN IN
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Registration Verify OTP Modal -->
+<dialog class="registerOtpBox">
+  <div>
+    <h3>Verify OTP</h3>
+    <span class="closeRegisterModal">
+      <img
+        width=""
+        height=""
+        src=" {{ 'closeIcon.svg' |  asset_url }} "
+        alt="" />
+    </span>
+  </div>
+  <div>
+    <label>OTP*</label>
+    <input type="text" class="largeScreenInput" />
+
+    <input
+      type="text"
+      placeholder="OTP*"
+      class="smallScreenInput" />
+    <div>
+      <button class="registerResend">RESEND OTP</button>
+      <button class="registerVerify">VERIFY OTP</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Create Account Modal for Large screen -->
+<div class="createAccountModal">
+  <div class="headingClose">
+    <h3>Create An Account</h3>
+    <span class="accountModalClose">
+      <img
+        src="{{ 'closeIcon.svg' | asset_url }}"
+        alt=""
+        width=""
+        height="" />
+    </span>
+  </div>
+  {% form 'create_customer' %}
+
+    <p>Personal Information</p>
+
+    <div class="customerTitle">
+      <label for="title">Title</label>
+      <select
+        id="title"
+        name="customer[title]"
+        required>
+        <option value="">Please Select</option>
+        <option value="Mr.">Mr.</option>
+        <option value="Mrs.">Mrs.</option>
+        <option value="Miss">Miss</option>
+      </select>
+    </div>
+
+    <div class="firstLastName">
+      <div class="firstNameBox">
+        <label for="first_name">First Name</label>
+        <input
+          type="text"
+          id="first_name"
+          name="customer[first_name]"
+          required>
+      </div>
+
+      <div class="lastNameBox">
+        <label for="last_name">Last Name</label>
+        <input
+          type="text"
+          id="last_name"
+          name="customer[last_name]"
+          required>
+      </div>
+    </div>
+
+    <div class="emailContactNumber">
+      <div class="emailBox">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="customer[email]"
+          required>
+      </div>
+      <div class="contactBox">
+        <label for="phone">Mobile Number</label>
+        <div>
+          <div>
+            <span>
+              <img
+                src="{{ 'IndiaLogo.png' | asset_url }}"
+                alt=""
+                height=""
+                width="" />
+            </span>
+            <p>+91</p>
+          </div>
+          <div>
+            <input
+              type="tel"
+              id="phone"
+              name="customer[phone]"
+              required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>Security</p>
+
+    <div class="passwordBox">
+      <div class="passBox">
+        <label for="password">Create Password</label>
+        <input
+          type="password"
+          id="password"
+          name="customer[password]"
+          required>
+        <div id="password-strength">Password Strength: No password</div>
+      </div>
+
+      <div class="confirmPassBox">
+        <label for="password_confirmation">Confirm Password</label>
+        <input
+          type="password"
+          id="password_confirmation"
+          name="customer[password_confirmation]"
+          required>
+      </div>
+    </div>
+
+    <div class="referralCaptchabox">
+      <div class="referralbox">
+        <label for="referral_code">Referral Code</label>
+        <input
+          type="text"
+          id="referral_code"
+          name="customer[referral_code]">
+      </div>
+      <div class="Captchabox">
+        <div>
+          <input
+            type="checkbox"
+            id="robot"
+            name="customer[robot]"
+            required>
+          <label for="robot">I'm not a robot</label>
+        </div>
+        <div>
+          <span>
+            <img
+              src="{{ 'captchalogo.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </span>
+
+          <span>
+            <img
+              src="{{ 'captchaText.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="createAccountSuccessfulButton">Create Account</button>
+  {% endform %}
+</div>
+
+<!-- Successfull Lottie file -->
+<dialog class="successfullLottieFileModal">
+  <div>
+    <span class="successfullLottieFileModalClose">
+      <img
+        src="{{ 'closeIcon.svg' | asset_url }}"
+        alt=""
+        width=""
+        height="" />
+    </span>
+    <h3>Success</h3>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+    <dotlottie-player
+      src="https://lottie.host/d1bc28db-0ab8-4c74-bfa8-6b678791ef19/WrTDNzudmi.json"
+      background="transparent"
+      speed="1"
+      style="width: 220px; height: 220px"
+      loop
+      autoplay></dotlottie-player>
+
+    <p>Welcome to the world of Timeless</p>
+  </div>
+</dialog>
+
+
+<!-- Mobile View Starts here -->
+<!-- From Container for small screen -->
+<div class="mobileViewFormContainer">
+  <div class="signUpMobileView">
+    <div class="mobileOtpBox">
+      <h3 class="actionInfo">Don't have an account ?</h3>
+      <h2 class="actionType">Register</h2>
+      <div class="contactNumberBox">
+        <div class="countryCode">
+          <img
+            width=""
+            height=""
+            src=" {{ 'IndiaLogo.png' |  asset_url }} " />
+          <p>+91</p>
+        </div>
+        <div class="mobileNumber">
+          <input
+            type="number"
+            id="phoneNumberInput"
+            class="custom-phone-input"
+            placeholder="Mobile Number"
+            maxlength="10" />
+        </div>
+      </div>
+      <button id="submitButton" class="submit-button openRegisterModalSmall">
+        Send OTP
+      </button>
+      <div class="lineOR">
+        <div>
+          <hr/>
+          <p>OR</p>
+          <hr/>
+        </div>
+        <div class="socialLogos">
+          <div>
+            <img
+              width=""
+              height=""
+              src=" {{ 'facebook-icon.svg' |  asset_url }} " />
+          </div>
+          <div>
+            <img
+              width=""
+              height=""
+              src=" {{ 'google-plus-icon-color.svg' |  asset_url }} " />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="switchingTab">
+      <h3 class="actionInfo">Have an account ?</h3>
+      <a class="submit-button switchToRegisterMobile" href="/account/login">
+        SIGN IN
+      </a>
+    </div>
+  </div>
+</div>
+
+<dialog class="successfullLottieFileModalMobile">
+  <div>
+    <span class="successfullLottieFileModalCloseMobile">
+      <img
+        src="{{ 'closeIcon.svg' | asset_url }}"
+        alt=""
+        width=""
+        height="" />
+    </span>
+    <h3>Success</h3>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+    <dotlottie-player
+      src="https://lottie.host/d1bc28db-0ab8-4c74-bfa8-6b678791ef19/WrTDNzudmi.json"
+      background="transparent"
+      speed="1"
+      style="width: 107px; height: 107px"
+      loop
+      autoplay></dotlottie-player>
+
+    <p>Welcome to the world of Timeless</p>
+  </div>
+</dialog>
+
+
+<script src="{{ "login-register.js" | asset_url }}" defer></script>

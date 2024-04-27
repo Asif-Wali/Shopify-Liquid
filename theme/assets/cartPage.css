@@ -1,0 +1,517 @@
+.cartSectionLg {
+  width: 81%;
+  /* height: 100%; */
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: first baseline;
+  align-items: center;
+  padding: 0;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+.cartSectionLg > .active {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  position: sticky;
+  top: 115px;
+  left: 0;
+  z-index: 50;
+  background-color: white;
+}
+
+#cartNavbar {
+  display: none;
+}
+
+.stepperContainer {
+  width: 100%;
+  height: 107px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  position: relative;
+}
+
+.stepperContainer > button {
+  width: 68px;
+  height: 24px;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  text-align: left;
+  display: none;
+}
+
+.stepperBox {
+  width: fit-content;
+  height: 49px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.steps {
+  width: 98%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.stepHeading {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.stepHeading > p {
+  width: 100%;
+  height: auto;
+  font-family: "Noto Sans" sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.stepHeading > p:nth-child(1) {
+  text-align: left;
+}
+
+.stepHeading > p:nth-child(2) {
+  text-align: center;
+}
+
+.stepHeading > p:nth-child(3) {
+  text-align: right;
+}
+
+.steps > .step {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.steps > .step.active {
+  border: 2px dashed #009290;
+}
+
+.steps > span {
+  width: 200px;
+  height: 1px;
+  margin: auto;
+  border: 1px solid #707070;
+}
+
+.bulletDot {
+  display: block; /* Make the dot appear inline with text */
+  width: 10px; /* Set width to ensure consistent size */
+  height: 10px; /* Set height to ensure consistent size */
+  border-radius: 50%; /* Make it round */
+  background-color: #707070; /* Color of the bullet dot */
+}
+
+.bulletDot.active {
+  background-color: #009290;
+}
+
+.bulletDot.completed {
+  background-color: #009290;
+}
+
+.cartStep {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Shipping Cart Step 3 */
+.sampleContainer {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.sampleContainer > p {
+  width: 100%;
+  height: 100%;
+  font-family: "Noto Sans" sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sampleContainer > p {
+  width: 100%;
+  height: 100%;
+  font-family: "Noto Sans" sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sampleContainer > p:nth-child(1) {
+  font-size: 26px;
+  color: #70645c;
+}
+
+.sampleContainer > p:nth-child(1) > span {
+  color: #009290;
+}
+
+.sampleContainer > p:nth-child(2) {
+  font-size: 18px;
+  color: black;
+}
+
+.tierBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 40px;
+}
+
+.tierBox > div {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #70645c;
+  color: white;
+  font-family: "Noto Sans" sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  font-style: normal;
+}
+
+.tierBox > div.active {
+  background-color: #009290;
+}
+
+.tierBox > div:nth-child(1) {
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+.tierBox > div:nth-child(3) {
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.cartProducts {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartProducts > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.cartProducts > div > span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  color: #70645c;
+  font-family: "Noto Sans" sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  font-style: normal;
+  letter-spacing: 1.2px;
+}
+
+.cartProducts > div > span:nth-child(1) {
+  padding: 15px;
+  padding-bottom: 0;
+}
+
+.addToOrderButton {
+  width: 296px;
+  height: 48px;
+  margin: auto;
+  background-color: #009290;
+  color: white;
+  font-family: "Noto Sans" sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  font-style: normal;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.sampleFooter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: #70645c;
+  font-family: "Noto Sans" sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  font-style: normal;
+  letter-spacing: 1.2px;
+  border-top: 1px solid #707070;
+}
+
+.sampleFooter > div:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+.sampleFooter > div:nth-child(2) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  gap: 20px;
+}
+
+@media all and (min-width: 600px) and (max-width: 999px) {
+  .cartSectionLg {
+    width: 95%;
+  }
+
+  .steps > span {
+    width: 150px;
+    height: 1px;
+    margin: auto;
+    border: 1px solid #707070;
+  }
+
+  .stepperContainer > button {
+    top: 28px;
+    padding-left: 15px;
+  }
+
+  .cartProducts {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media all and (min-width: 300px) and (max-width: 599px) {
+  .cartSectionLg {
+    width: 100%;
+  }
+
+  .cartSectionLg > div:nth-child(1) {
+    width: 100%;
+    height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    position: sticky;
+    top: 117px;
+    left: 0;
+    z-index: 200;
+    background-color: white;
+  }
+
+  .steps > span {
+    width: 70px;
+    height: 1px;
+    margin: auto;
+    border: 1px solid #707070;
+  }
+
+  .stepperContainer > button {
+    top: 28px;
+    padding-left: 15px;
+  }
+
+  .sampleContainer {
+    gap: 15px;
+    margin: 0;
+    position: relative;
+    padding-bottom: 25px;
+  }
+
+  .sampleContainer > p {
+    padding: 0 15px;
+  }
+
+  .sampleContainer > p:nth-child(1) {
+    font-size: 18px;
+    color: #70645c;
+  }
+
+  .sampleContainer > p:nth-child(1) > span {
+    color: #009290;
+  }
+
+  .sampleContainer > p:nth-child(2) {
+    font-size: 14px;
+    color: black;
+  }
+  .tierBox {
+    padding: 0 15px;
+    margin: 0;
+  }
+
+  .tierBox > div {
+    width: 100%;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #70645c;
+    color: white;
+    font-family: "Noto Sans" sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    font-style: normal;
+  }
+
+  .cartProducts {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  .sampleFooter {
+    padding: 0 15px;
+    color: #70645c;
+    font-family: "Playfair Display" sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: normal;
+    letter-spacing: 1.2px;
+    border-top: 1px solid #707070;
+  }
+
+  .sampleFooter > div:nth-child(1) {
+    justify-content: center;
+  }
+
+  .sampleFooter > div:nth-child(1) > p:nth-child(1) {
+    display: none;
+  }
+
+  .sampleFooter > div:nth-child(2) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    gap: 20px;
+  }
+
+  .addToOrderButton {
+    width: 100%;
+    height: 48px;
+    margin: auto;
+    background-color: #70645c;
+    color: white;
+    font-family: "Noto Sans" sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    font-style: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-top: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 50;
+    border-radius: 0;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .backButton::before {
+    content: "< Back"; /* Text for larger screens */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .backButton::before {
+    content: "<"; /* Text for smaller screens */
+  }
+}
+
+#productScroll::-webkit-scrollbar {
+  width: 6px;
+  /* Customize the scrollbar width */
+}
+#productScroll::-webkit-scrollbar-track {
+  /* Customize the scrollbar track */
+  background-color: gray;
+  border-radius: 10px;
+  color: gray;
+}
+#productScroll::-webkit-scrollbar-thumb {
+  /* Customize the scrollbar thumb */
+  background-color: #009290;
+  border-radius: 10px;
+  color: #009290;
+}
