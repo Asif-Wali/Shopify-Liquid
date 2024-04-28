@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ product.title }}</title>
-    <link rel="stylesheet" href="{{ 'swiper.css' | asset_url }}">
-    <style>
-      .selected{
+<link rel="stylesheet" href="{{ 'swiper.css' | asset_url }}">
+  <style>
+    .selected{
         border:2px solid red;
-      }
-    </style>
-  </head>
-  <body class="relative">
-    <main class="relative">
+    }
+  </style>
+   {% comment %} <div class="relative">
       {% form "product", product %}
-        <div class="fixed lg:hidden bottom-[3px] z-[100] w-screen flex gap-4 items-center justify-evenly px-4">
+        <div class="fixed lg:hidden bottom-[10px] z-[100] w-screen flex gap-4 items-center justify-evenly px-4 add-to-cart-container border border-[red]">
           <button class="px-8 py-2 bg-[#70645C] text-white w-full " type="submit">
             Add to Cart
           </button>
         </div>
-     
+  
 
       <!-- productDetail -->
  
@@ -261,8 +253,6 @@
 
               <script>
                 const product= {{ product | json }}
-                console.log(product)
-             
                 document.getElementById("weightOptions").addEventListener("change", (e)=>{
                
                   let newvariant;
@@ -276,7 +266,7 @@
                     
                     let productValue= document.getElementById("product-id")
                     productValue.value=newvariant.id;
-                    console.log(productValue.value);
+                   
                     document.getElementById("product-price").textContent=formatMoney(newvariant.price, "{{ shop.money_format }}");
                     let newUrl = new URLParse(window.location.href, true);
                     newUrl.query.variant= newvariant.id;
@@ -297,7 +287,6 @@
                     e.preventDefault();
                     console.log("BuyNow was Clicked");
                     var form= document.querySelector(".shopify-product-form");
-                    console.log(form);
                     var input= document.createElement("input");
                     input.value="/checkout";
                   input.type="hidden";
@@ -395,7 +384,6 @@
 
 
               <!-- key benefits -->
-
               <div class="ml-2 mt-4 rounded-3xl w-full flex flex-col lg:flex-row justify-between gap-4 ">
                 <div class="flex flex-col  pt-2  lg:w-1/2  w-3/5">
                   <h1 class="underline text-black font-semibold  mb-2">
@@ -1503,8 +1491,1497 @@
 
       <hr class="text-gray-700 decoration-2 block w-[95%] mx-auto">
       {% render "animation" %}
+  </div>   {% endcomment %}
+
+    <main class="">
+      {% form "product", product %}
+        <div class="fixed lg:hidden bottom-[5px] z-[100] w-screen flex gap-4 items-center justify-evenly px-4 add-to-cart-container">
+          <button class="px-8 py-2 bg-[#70645C] text-white w-full " type="submit">
+            Add to Cart
+          </button>
+        </div>
+
+
+      <!-- productDetail -->
+
+      <div class="text-gray-600 ">
+        <div class=" flex lg:px-48 px-4 lg:py-12 py-4  lg:flex-row flex-col  items-start gap-4 ">
+
+          <div class=" w-full ">
+            {% if product.selected_or_first_available_variant.featured_image %}
+              {%  assign featuredImage = product.selected_or_first_available_variant.featured_image.src  %} 
+            <img
+              class="object-cover object-center rounded "
+              width=""
+              id="productImage"
+              height=""
+              alt="hero"
+              src="{{ featuredImage | image_url }}" />
+            {% else %}
+            {%  assign featuredImage = product.featured_image.src  %}
+              <img
+                class="object-cover object-center rounded "
+                id="productImage"
+                width=""
+                height=""
+                alt="hero"
+                src="{{ featuredImage | image_url }}" />
+
+            {% endif %}
+
+
+            <div class="mt-2 overflow-x-auto ">
+              <div class=" flex items-center gap-2 productswatches">
+                
+                {% for image in product.images %} 
+                
+                <img
+                class="h-20 w-20 {% if image.src contains featuredImage %}selected{% endif %}"
+                  
+                  height=""
+                  width=""
+                  src="{{ image | image_url }}"
+                  alt="">
+                {% endfor %}
+              
+
+              </div>
+            </div>
+            <!-- offers -->
+            <div class="bg-[#EDE9DD] mt-4 hidden lg:block">
+              <h1 class="text-center text-gray-700">Offers</h1>
+              <hr class="text-text-gray-700 border border-gray-700 mt-2">
+
+              <div class="flex items-center justify-center gap-2 px-4 py-6">
+                <div class="border-r border-gray-700 px-2">
+                  <h3 class="text-xs">Buy 2 Get 1</h3>
+                </div>
+                <div class="border-r border-gray-700 px-2">
+                  <h3 class="text-xs">Super Bill Buster</h3>
+                </div>
+                <div class="border-r border-gray-700 px-2">
+                  <h3 class="text-xs">25% off on 2500</h3>
+                </div>
+                <div class=" px-2">
+                  <h3 class="text-xs">Welcome Offer</h3>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class=" w-full flex flex-col justify-center ">
+            <h1 class="title-font text-base lg:text-2xl mb-4 font-normal lg:font-medium text-gray-600 text-center px-6    lg:text-left " >{{ product.title }}</h1>
+
+            <div class="lg:p-4  ">
+              <div class="flex  lg:justify-start justify-center ">
+                <div class="border-r-2 border-gray-900 px-2">
+                  <p class="text-sm font-normal text-left text-center">Reduces Blemish</p>
+                </div>
+                <div class="border-r-2 border-gray-900 px-2 ">
+                  <p class="text-sm font-normal text-left">Firms Skin</p>
+                </div>
+                <div class=" px-2">
+                  <p class="text-sm font-normal text-left">Intense Moisturising</p>
+                </div>
+              </div>
+              <div class="lg:px-2 mt-2  flex  lg:justify-start justify-center">
+                <img
+                  height=""
+                  width=""
+                  src="{{ 'ratings.png' | asset_url }}">
+              </div>
+
+              <div class="flex  lg:justify-start justify-center">
+                <div class="ml-2 mt-2  rounded-2xl border border-gray-700 gap-2 flex items-center  lg:w-[60%] w-[80%]">
+                  <div class=" lg:bg-[#009290] bg-[#000000] px-2 w-fit rounded-l-2xl h-full self-start ">
+                    <p id="product-price" class=" text-center text-white font-semibold"> {{ product.selected_or_first_available_variant.price |  money }}</p>
+                  </div>
+                  <div class="w-fit">
+                    <p class="text-center text-xs px-2">MRP Inclusive of All Taxes</p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="ml-2 mt-2 flex items-center justify-between gap-10 w-full">
+                <input type="hidden" id="product-id"  name="id" value="{{ product.selected_or_first_available_variant.id }}"/>
+                <div class=" w-full">
+                  <p>Size</p>
+                  
+                <select id="weightOptions" class="w-full border border-gray-700 rounded-3xl py-[9.5px]  px-2 w-full bg-white " style="outline: none;" default="{{ product.selected_or_first_available_variant }}">
+                  {% if product.variants.size > 1 %}
+                      {% for option in product.options_with_values %}
+                        {% if option.name == "Size" %}
+                          {% for value in option.values %}
+                            <option name="{{ option.name }}" value={{ value }} id="{{ option.name |  handleize}}-{{ value | handleize }}"
+                          {% if value == product.selected_or_first_available_variant.option1 %} selected {% endif %}> {{ value }}</option>
+                          {% endfor %}
+                        {% endif %}
+                      {% endfor %}
+                  {% endif %}
+                </select>
+
+              </div>
+            
+
+                <div class=" w-full">
+                  <p>Quantity</p>
+                  <div class="w-full border border-gray-700 rounded-3xl py-2 ">
+                    <div class="flex items-center justify-between px-4 ">
+
+                      <div class="  rounded-r-2xl ">
+                        <p class="text-center text-xs">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            class="w-5 h-5">
+                            <path
+                              fill-rule="evenodd"
+                              d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"
+                              clip-rule="evenodd" />
+                          </svg>
+
+                        </p>
+                      </div>
+                      <div class="">
+                        <p class="text-center text-md  font-semibold">5</p>
+                      </div>
+                      <div class="  rounded-r-2xl ">
+                        <p class="text-center text-xs">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            class="w-5 h-5">
+                            <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                          </svg>
+
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+        
+
+            
+              <!-- offers -->
+              <div class="bg-[#EDE9DD] mt-4 block lg:hidden mb-4 mx-2">
+                <h1 class="text-center text-gray-700">Offers</h1>
+                <hr class="text-text-gray-700 border border-gray-700 mt-2">
+
+                <div class="flex items-center justify-center gap-2 px-3 py-4">
+                  <div class="border-r-2 border-gray-700 px-2">
+                    <h3 class="text-sm">Welcome Offer</h3>
+                    <h3 class="text-sm">Super Bill Buster</h3>
+                  </div>
+
+                  <div class=" px-2">
+                    <h3 class="text-sm">Buy 2 Get 1</h3>
+                    <h3 class="text-sm">25% off on 2500
+                    </h3>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Three Buttons -->
+              <div class=" mt-2 hidden  lg:flex items-center justify-between w-full ml-2 ">
+                <button class="  py-[3px] px-4  flex items-center lg:text-sm text-xs rounded-full justify-around bg-[#009290] gap-4 text-white" type="submit">
+                  <span>Add to Cart</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="w-4 h-4">
+                    <path
+                      fill-rule="evenodd"
+                      d="M6 5v1H4.667a1.75 1.75 0 0 0-1.743 1.598l-.826 9.5A1.75 1.75 0 0 0 3.84 19H16.16a1.75 1.75 0 0 0 1.743-1.902l-.826-9.5A1.75 1.75 0 0 0 15.333 6H14V5a4 4 0 0 0-8 0Zm4-2.5A2.5 2.5 0 0 0 7.5 5v1h5V5A2.5 2.5 0 0 0 10 2.5ZM7.5 10a2.5 2.5 0 0 0 5 0V8.75a.75.75 0 0 1 1.5 0V10a4 4 0 0 1-8 0V8.75a.75.75 0 0 1 1.5 0V10Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <button class="  py-[3px] px-4 flex items-center lg:text-sm text-xs rounded-full justify-around bg-[#70645C] gap-4 text-white" id="BuyItNow" type="submit">
+                  <span>Buy Now</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+
+                </button>
+                <button class=" py-[3px] px-4 flex items-center lg:text-sm text-xs rounded-full justify-around bg-[black] gap-4 text-white">
+                  <span>Add to Wishlist</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                  </svg>
+
+
+                </button>
+              </div>
+
+              <script>
+                const product= {{ product | json }}
+                document.getElementById("weightOptions").addEventListener("change", (e)=>{
+              
+                  let newvariant;
+                  for(var i=0; i<product.variants.length; i++){
+                    if(product.variants[i].option1==e.target.value){
+                    
+                      newvariant=product.variants[i];
+                    }
+                  }
+              
+                    
+                    let productValue= document.getElementById("product-id")
+                    productValue.value=newvariant.id;
+                  
+                    document.getElementById("product-price").textContent=formatMoney(newvariant.price, "{{ shop.money_format }}");
+                    let newUrl = new URLParse(window.location.href, true);
+                    newUrl.query.variant= newvariant.id;
+                    window.history.replaceState(null, null, newUrl.toString());
+                    
+
+                })
+
+                document.querySelectorAll(".productswatches img").forEach(img=>{
+                  img.addEventListener("click", (e)=>{
+                    document.querySelector(".productswatches img.selected").classList.remove("selected");
+                    img.classList.add("selected");
+                    document.querySelector("#productImage").setAttribute("src", img.src);
+                  })
+                })
+                var buybutton= document.querySelector("#BuyItNow");
+                buybutton.addEventListener("click", (e)=>{
+                    e.preventDefault();
+                    console.log("BuyNow was Clicked");
+                    var form= document.querySelector(".shopify-product-form");
+                    var input= document.createElement("input");
+                    input.value="/checkout";
+                  input.type="hidden";
+                input.name="return_to" ;
+              form.appendChild(input);  
+              
+              form.submit();
+              })
+              
+        
+              </script>
+
+
+              <div class="ml-2 mt-4 rounded-2xl w-full">
+
+                <div class="  rounded-r-2xl full">
+                  <h1 class="flex items-center justify-start gap-2">
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-4 h-4">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                      </svg>
+                    </span>
+                    <p class="text-center text-xs">Avail free shipping on any order above 495/- all over India</p>
+                  </h1>
+
+                </div>
+              </div>
+
+              <div class="ml-2 mt-4 rounded-2xl w-full">
+
+                <div class="  rounded-r-2xl full pl-2">
+                  <h1 class="flex items-center justify-start gap-2">
+                    <span><img
+                        height=""
+                        width=""
+                        src="{{ 'free-sample-outline-glyph-icon-260nw-1798019332.png' | asset_url }}"
+                        alt="">
+                    </span>
+                    <p class="text-left text-xs">We are pleased to gift you 1 free sample for every purchase of ₹ 500 and you can earn up to a max of 5 nos. on a bill.</p>
+                  </h1>
+
+                </div>
+              </div>
+
+              <div class="ml-2 mt-4 rounded-2xl lg:w-1/2 w-[100%] ">
+                <div class="  rounded-r-2xl full pl-2 ">
+                  <h1 class="flex items-center justify-start gap-2">
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="w-6 h-6 text-[black]">
+                        <path d="M3.375 4.5C2.339 4.5 1.5 5.34 1.5 6.375V13.5h12V6.375c0-1.036-.84-1.875-1.875-1.875h-8.25ZM13.5 15h-12v2.625c0 1.035.84 1.875 1.875 1.875h.375a3 3 0 1 1 6 0h3a.75.75 0 0 0 .75-.75V15Z" />
+                        <path d="M8.25 19.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0ZM15.75 6.75a.75.75 0 0 0-.75.75v11.25c0 .087.015.17.042.248a3 3 0 0 1 5.958.464c.853-.175 1.522-.935 1.464-1.883a18.659 18.659 0 0 0-3.732-10.104 1.837 1.837 0 0 0-1.47-.725H15.75Z" />
+                        <path d="M19.5 19.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+                      </svg>
+
+
+                    </span>
+                    <p class="text-left text-xs text-black font-semibold">CHECK DELIVERY TIME</p>
+                  </h1>
+
+                </div>
+                <div class=" mt-2 rounded-r-2xl full pl-2 flex items-center justify-start gap-4  ">
+                  <input
+                    type="text"
+                    placeholder="ENTER PIN CODE"
+                    class=" outline-none focus:outline-none border-b text-sm border-[black] w-1/2">
+                  <button class="  py-[3px] px-4 text-sm rounded-full d bg-[#70645C] text-white">Check
+
+                  </button>
+
+                </div>
+              </div>
+
+              <div class="ml-2 mt-4 rounded-full w-full bg-[#009290] lg:bg-white py-2 px-2 border border-gray-700">
+
+                <div class="px-2">
+                  <h1 class="text-xs text-left text-white lg:text-black">
+                    Timeless Club can earn upto 9999.99 points on the purchase of this product.</h1>
+                  <p class="text-left underline text-xs text-white lg:text-black">Know more</p>
+
+                </div>
+              </div>
+
+
+              <!-- key benefits -->
+              <div class="ml-2 mt-4 rounded-3xl w-full flex flex-col lg:flex-row justify-between gap-4 ">
+                <div class="flex flex-col  pt-2  lg:w-1/2  w-3/5">
+                  <h1 class="underline text-black font-semibold  mb-2">
+                Clean Beauty Ingredients
+                  </h1>
+                  <ul class="flex flex-col space-y-1">
+
+                    <l1 class=" text-gray-700 text-xs">-9% (Amino Acids, Hyaluronic Acid, Sorbic Acid, Anisic Acid, Pea Extract, Willow Bark Extract, Sodium PCA Licorice, Green Tea)</l1>
+                  
+
+                  </ul>
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endform %}
     </main>
-  </body>
-</html>
-<script src="{{ "swiper.js" | asset_url }}" defer></script>
-<script src="{{ "productDetail.js" | asset_url }}" defer></script>
+
+    <!-- why you should buy -->
+    <div class=" lg:px-48 py-12 bg-[#71645c] border-2 border-[red]">
+      <div class="flex flex-col text-center  mb-4  w-full">
+        <h1 class=" lg:text-6xl text-4xl font-medium mb-4 text-white" style="font-family: Amatic SC;">Why You Should Buy?</h1>
+      </div>
+
+      <div class=" gap-4 mb-4 px-4  hidden lg:flex">
+
+        <div class="  w-full lg:px-0 px-12 ">
+          <div class=" testimonials h-full p-8 bg-[#EDE9DD] flex flex-col relative overflow-hidden items-center justify-startr rounded-3xl">
+
+            <h3 class=" text-large font-semibold text-gray-700 text-center mb-4">Timeless Secret</h3>
+            <p class="text-xs  text-gray-700 text-justify">
+              We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill.
+            </p>
+
+
+          </div>
+        </div>
+        <div class="  w-full lg:px-0 px-12 ">
+          <div class=" testimonials h-full p-8 bg-[#EDE9DD] flex flex-col relative overflow-hidden items-center justify-startr rounded-3xl">
+
+            <h3 class=" text-large font-semibold text-gray-700 text-center mb-4">Our Formulation</h3>
+            <p class="text-xs  text-gray-700 text-justify">
+              We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill.
+            </p>
+
+
+          </div>
+        </div>
+        <div class="  w-full lg:px-0 px-12 ">
+          <div class=" testimonials h-full p-8 bg-[#EDE9DD] flex flex-col relative overflow-hidden items-center justify-startr rounded-3xl">
+
+            <h3 class=" text-large font-semibold text-gray-700 text-center mb-4">Clean Beauty</h3>
+            <p class="text-xs text-gray-700 text-justify">
+              We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                  you can earn up to a max of 5 nos. on a bill.
+            </p>
+
+
+          </div>
+        </div>
+
+      </div>
+      <!-- Buy Slider -->
+      <div class="block lg:hidden">
+        <div class=" swiper BuySwiper w-9/12 h-auto border-2 border-[white]">
+          <div class="swiper-wrapper " style="height: auto;">
+            <div class="swiper-slide px-2 ">
+              <div class="  w-full lg:px-0  ">
+                <div class=" testimonials h-auto p-8 bg-[#EDE9DD] flex flex-col relative overflow-hidden items-center justify-startr rounded-3xl">
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-center mb-4">Timeless Secret</h3>
+                  <p class="text-xs  text-gray-700 text-justify">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide px-2">
+              <div class="  w-full lg:px-0  ">
+                <div class=" testimonials h-auto p-8 bg-[#EDE9DD] flex flex-col relative overflow-hidden items-center justify-startr rounded-3xl">
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-center mb-4">Our Formulation</h3>
+                  <p class="text-xs  text-gray-700 text-justify">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide px-2">
+              <div class="  w-full lg:px-0  ">
+                <div class=" testimonials h-auto p-8 bg-[#EDE9DD] flex flex-col relative overflow-hidden items-center justify-startr rounded-3xl">
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-center mb-4">Our Formulation</h3>
+                  <p class="text-xs  text-gray-700 text-justify">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                      you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="swiper-pagination " style="position: relative; top: 130%;"></div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Timeless Ingredients -->
+    <div class=" lg:px-48 py-10 bg-[#DEDEDE]  w-full border-2 border-[blue]">
+      <div class="flex flex-col text-center  mb-4  w-full">
+        <h1 class="text-gray-600 lg:text-6xl text-4xl font-medium mb-4 " style="font-family: Bilgrotia Sans;">Timeless Ingredients</h1>
+      </div>
+
+      <div class=" px-4  ">
+        <div class="swiper ingredientsSwiper ">
+          <div class="swiper-wrapper" style="height: auto;">
+            <div class="swiper-slide ">
+              <div class="  w-full lg:px-0 px-12 py-4 bg-[#EDE9DD] rounded-xl">
+                <div class=" testimonials  px-8   flex flex-col relative overflow-hidden items-center justify-start ">
+
+                  <img
+                    class="mt-6 mb-2"
+                    alt=""
+                    height=""
+                    width=""
+                    src="{{  "Mahodaya Rose Paint.png" |  asset_url}}">
+
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Argan Drops</h3>
+                  <p class="text-xs  text-center">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                              you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                              you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div class="swiper-slide">
+              <div class="  w-full lg:px-0 px-12 py-4 bg-[#EDE9DD] rounded-xl">
+                <div class=" testimonials  px-8   flex flex-col relative overflow-hidden items-center justify-start ">
+
+                  <img
+                    class="mt-6 mb-2"
+                    alt=""
+                    height=""
+                    width=""
+                    src="{{  "Mahodaya Rose Paint.png" |  asset_url}}">
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Argan Drops</h3>
+                  <p class="text-xs  text-center">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                              you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                              you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div class="swiper-slide">
+              <div class="  w-full lg:px-0 px-12 py-4 bg-[#EDE9DD] rounded-xl">
+                <div class=" testimonials  px-8   flex flex-col relative overflow-hidden items-center justify-start ">
+
+                  <img
+                    class="mt-6 mb-2"
+                    alt=""
+                    height=""
+                    width=""
+                    src="{{  "Mahodaya Rose Paint.png" |  asset_url}}">
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Argan Drops</h3>
+                  <p class="text-xs  text-center">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                              you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                              you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div class="swiper-slide">
+              <div class="  w-full lg:px-0 px-12 py-4 bg-[#EDE9DD] rounded-xl">
+                <div class=" testimonials  px-8   flex flex-col relative overflow-hidden items-center justify-start ">
+
+                  <img
+                    class="mt-6 mb-2"
+                    alt=""
+                    height=""
+                    width=""
+                    src="{{  "Mahodaya Rose Paint.png" |  asset_url}}">
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Argan Drops</h3>
+                  <p class="text-xs  text-center">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                              you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                              you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div class="swiper-slide">
+              <div class="  w-full lg:px-0 px-12 py-4 bg-[#EDE9DD] rounded-xl">
+                <div class=" testimonials  px-8   flex flex-col relative overflow-hidden items-center justify-start ">
+
+                  <img
+                    class="mt-6 mb-2"
+                    alt=""
+                    height=""
+                    width=""
+                    src="{{  "Mahodaya Rose Paint.png" |  asset_url}}">
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Argan Drops</h3>
+                  <p class="text-xs  text-center">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                              you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                              you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div class="swiper-slide">
+              <div class="  w-full lg:px-0 px-12 py-4 bg-[#EDE9DD] rounded-xl">
+                <div class=" testimonials  px-8   flex flex-col relative overflow-hidden items-center justify-start ">
+
+                  <img
+                    class="mt-6 mb-2"
+                    alt=""
+                    height=""
+                    width=""
+                    src="{{  "Mahodaya Rose Paint.png" |  asset_url}}">
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Argan Drops</h3>
+                  <p class="text-xs  text-center">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                              you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                              you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div class="swiper-slide">
+              <div class="  w-full lg:px-0 px-12 py-4 bg-[#EDE9DD] rounded-xl">
+                <div class=" testimonials  px-8   flex flex-col relative overflow-hidden items-center justify-start ">
+
+                  <img
+                    class="mt-6 mb-2"
+                    alt=""
+                    height=""
+                    width=""
+                    src="{{  "Mahodaya Rose Paint.png" |  asset_url}}">
+
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Argan Drops</h3>
+                  <p class="text-xs  text-center">
+                    We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+
+
+
+
+
+
+
+
+
+
+
+                              you can earn up to a max of 5 nos. on a bill. We are pleased to gift you 1 free sample for every purchase of ₹ 500 and
+                              you can earn up to a max of 5 nos. on a bill.
+                  </p>
+
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="swiper-pagination" style="position: relative; top: 120%;"></div>
+        
+
+
+        </div>
+       
+      </div>
+
+
+    </div>
+
+    <!-- one of the safest -->
+    <div class=" lg:px-[11rem] bg-[#DEDEDE] pt-12 pb-8 border-2 border-[red]">
+      <div class="flex flex-col text-center  mb-4  w-full">
+        <h1 class="text-gray-600 lg:text-6xl text-4xl font-medium mb-4 " style="font-family: Bilgrotia Sans;">One of the Safest</h1>
+      </div>
+
+      <div class="grid lg:grid-cols-10 md:grid-cols-5 grid-cols-3 gap-4 mb-4 px-4">
+
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy 2.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy 3.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy 4.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy 5.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy 6.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy 7.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full hidden lg:block">
+          <div class="block relative  rounded overflow-hidden">
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy 8.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy 9.png" |  asset_url}}">
+          </div>
+
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full h-full mb-2"
+              height=""
+              width=""
+              src="{{  "Artboard 30 copy.png" |  asset_url}}">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flex justify-center items-center mt-8">
+        <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl  shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Know More</button>
+      </div>
+    </div>
+  
+    <!-- disclaimer -->
+    <div class=" lg:grid grid-cols-2 items-stretch justify-center border-2 border-[blue]">
+      <!-- ist half -->
+      <div class="  p-8 pb-32 bg-[#71645c] h-auto w-full lg:pl-48 py-12">
+        <div class="flex flex-col text-center  mb-12  w-full">
+          <h1 class="lg:text-6xl text-4xl font-semibold mb-4 text-white " style="font-family: Bilgrotia Sans;">What Else</h1>
+        </div>
+    
+        <div class="space-y-2">
+          <div class=" w-full px-2 border border-b-0 border-[#71645c] ">
+            <div class="flex items-center justify-between mt-2 mb-2 ">
+              <h2 class=" font-medium text-white  text-sm   text-left ">Disclaimer 1</h2>
+              <button class="text-white font-bold text-md hover:cursor-pointer " id="Disclaimer1Toggle">+</button>
+            </div>
+    
+            <nav class="hidden mb-10 text-white sm:content-start" id="Disclaimer1content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor suscipit rem ex ipsum accusantium optio nihil, illum natus dolores temporibus nisi impedit sit quibusdam numquam saepe tempore eos error aut.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                  Ducimus iure dolores ipsa nesciunt molestias modi provident esse alias, maxime omnis, iusto, voluptatibus vero enim culpa corrupti cumque necessitatibus minus dolorum? Animi, hic soluta voluptatibus sint nam porro quam.
+                  Tenetur a nostrum praesentium ipsum soluta alias fugiat corrupti. Nisi inventore doloribus qui minus numquam. Eius fuga voluptas rerum est quo. Molestiae suscipit eius soluta quos quasi vel tempore.
+    
+              </p>
+            </nav>
+            <hr class="text-white decoration-2 block ">
+          </div>
+          <div class="  w-full px-2 border border-b-0  border-[#71645c] ">
+            <div class="flex items-center justify-between mt-2 mb-2 ">
+              <h2 class=" font-medium text-white  text-sm   text-left ">Disclaimer 2</h2>
+              <button class="text-white font-bold text-md " id="Disclaimer2Toggle">+</button>
+            </div>
+    
+            <nav class="hidden  mb-10 text-white sm:content-start" id="Disclaimer2content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor suscipit rem ex ipsum accusantium optio nihil, illum natus dolores temporibus nisi impedit sit quibusdam numquam saepe tempore eos error aut.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                  Ducimus iure dolores ipsa nesciunt molestias modi provident esse alias, maxime omnis, iusto, voluptatibus vero enim culpa corrupti cumque necessitatibus minus dolorum? Animi, hic soluta voluptatibus sint nam porro quam.
+                  Tenetur a nostrum praesentium ipsum soluta alias fugiat corrupti. Nisi inventore doloribus qui minus numquam. Eius fuga voluptas rerum est quo. Molestiae suscipit eius soluta quos quasi vel tempore.
+    
+              </p>
+            </nav>
+            <hr class="text-white decoration-2 block ">
+          </div>
+          <div class=" w-full px-2 border border-b-0  border-[#71645c] ">
+            <div class="flex items-center justify-between mt-2 mb-2 ">
+              <h2 class=" font-medium text-white  text-sm   text-left ">Disclaimer 3</h2>
+              <button class="text-white font-bold text-md " id="Disclaimer3Toggle">+</button>
+            </div>
+    
+            <nav class="hidden  mb-10 text-white sm:content-start" id="Disclaimer3content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor suscipit rem ex ipsum accusantium optio nihil, illum natus dolores temporibus nisi impedit sit quibusdam numquam saepe tempore eos error aut.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                  Ducimus iure dolores ipsa nesciunt molestias modi provident esse alias, maxime omnis, iusto, voluptatibus vero enim culpa corrupti cumque necessitatibus minus dolorum? Animi, hic soluta voluptatibus sint nam porro quam.
+                  Tenetur a nostrum praesentium ipsum soluta alias fugiat corrupti. Nisi inventore doloribus qui minus numquam. Eius fuga voluptas rerum est quo. Molestiae suscipit eius soluta quos quasi vel tempore.
+    
+              </p>
+            </nav>
+            <hr class="text-white decoration-2 block ">
+          </div>
+          <div class="  w-full px-2 border border-b-0  border-[#71645c]">
+            <div class="flex items-center justify-between mt-2 mb-2 ">
+              <h2 class=" font-medium text-white  text-sm   text-left ">Disclaimer 4</h2>
+              <button class="text-white font-bold text-md " id="Disclaimer4Toggle">+</button>
+            </div>
+    
+            <nav class="hidden mb-10 text-white sm:content-start" id="Disclaimer4content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor suscipit rem ex ipsum accusantium optio nihil, illum natus dolores temporibus nisi impedit sit quibusdam numquam saepe tempore eos error aut.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                  Ducimus iure dolores ipsa nesciunt molestias modi provident esse alias, maxime omnis, iusto, voluptatibus vero enim culpa corrupti cumque necessitatibus minus dolorum? Animi, hic soluta voluptatibus sint nam porro quam.
+                  Tenetur a nostrum praesentium ipsum soluta alias fugiat corrupti. Nisi inventore doloribus qui minus numquam. Eius fuga voluptas rerum est quo. Molestiae suscipit eius soluta quos quasi vel tempore.
+    
+              </p>
+            </nav>
+            <hr class="text-white decoration-2 block ">
+          </div>
+    
+    
+        </div>
+      </div>
+    
+      <!-- 2nd half -->
+      <div class=" p-8 pb-32 bg-[#EDE9DD] h-auto w-full lg:pr-48 py-12">
+        <div class="flex flex-col text-center mb-12 w-full">
+          <h1 class="lg:text-6xl text-4xl font-medium mb-4 " style="font-family: Bilgrotia Sans;">Ask Us</h1>
+        </div>
+    
+        <div class="space-y-2">
+          <div class=" w-full px-2 border border-gray-600 ">
+            <div class="flex items-center justify-between mt-2 mb-2 ">
+              <h2 class=" font-medium text-gray-600  text-sm   text-left ">Disclaimer 1</h2>
+              <button class="text-gray-600 font-bold text-md " id="AskDisclaimer1Toggle">+</button>
+            </div>
+    
+            <nav class=" hidden  mb-10 text-gray-600 sm:content-start" id="AskDisclaimer1content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor suscipit rem ex ipsum accusantium optio nihil, illum natus dolores temporibus nisi impedit sit quibusdam numquam saepe tempore eos error aut.
+    
+              </p>
+            </nav>
+    
+          </div>
+          <div class=" w-full px-2 border border-gray-600 ">
+            <div class="flex items-center justify-between mt-2 mb-2 ">
+              <h2 class=" font-medium text-gray-600  text-sm   text-left ">Disclaimer 2</h2>
+              <button class="text-gray-600 font-bold text-md " id="AskDisclaimer2Toggle">+</button>
+            </div>
+    
+            <nav class=" hidden  mb-10 text-gray-600 sm:content-start" id="AskDisclaimer2content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor suscipit rem ex ipsum accusantium optio nihil, illum natus dolores temporibus nisi impedit sit quibusdam numquam saepe tempore eos error aut.
+    
+              </p>
+            </nav>
+    
+          </div>
+          <div class=" w-full px-2 border border-gray-600 ">
+            <div class="flex items-center justify-between mt-2 mb-2 ">
+              <h2 class=" font-medium text-gray-600  text-sm   text-left ">Disclaimer 3</h2>
+              <button class="text-gray-600 font-bold text-md " id="AskDisclaimer3Toggle">+</button>
+            </div>
+    
+            <nav class=" hidden  mb-10 text-gray-600 sm:content-start" id="AskDisclaimer3content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor suscipit rem ex ipsum accusantium optio nihil, illum natus dolores temporibus nisi impedit sit quibusdam numquam saepe tempore eos error aut.
+    
+              </p>
+            </nav>
+    
+          </div>
+          <div class=" w-full px-2 border border-gray-600 ">
+            <div class="flex items-center justify-between mt-2 mb-2 ">
+              <h2 class=" font-medium text-gray-600  text-sm   text-left ">Disclaimer 4</h2>
+              <button class="text-gray-600 font-bold text-md " id="AskDisclaimer4Toggle">+</button>
+            </div>
+    
+            <nav class=" hidden  mb-10 text-gray-600 sm:content-start" id="AskDisclaimer4content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor suscipit rem ex ipsum accusantium optio nihil, illum natus dolores temporibus nisi impedit sit quibusdam numquam saepe tempore eos error aut.
+    
+              </p>
+            </nav>
+    
+          </div>
+    
+    
+        </div>
+      </div>
+    </div>
+  
+    <!-- you are heard -->
+    <div class=" lg:px-48 py-10 bg-[#DEDEDE] border-2 border-[red]">
+    
+        <div class="flex flex-col text-center  mb-4  w-full  ">
+          <h1 class="lg:text-6xl text-4xl font-normal mb-4 " style="font-family: Bilgrotia Sans;">You are Heard</h1>
+        </div>
+    
+        <!-- heardSlider -->
+        <div class="swiper heardSwiper w-9/12 lg:w-full mb-4  px-4 ">
+          <div class="swiper-wrapper  " style="height: auto;">
+            <div class="swiper-slide  h-max px-2 bg-[#DEDEDE]">
+              <div class="  w-full lg:px-0 border-l border-r border-gray-700">
+                <div class=" px-4 py-2 bg-[#DEDEDE] flex flex-col relative overflow-hidden items-center justify-start ">
+    
+    
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Name</h3>
+                  <p class="text-xs  text-center">
+                    Honestly, I was skeptical to use this product. I have oily skin and oil on oily skin doesn’t sound fun. But this was a game-changer. I now use it a couple of times a week and it’s perfect. My skin is so nourished and happy. Definitely worth buying.
+                  </p>
+                  <img
+                    class="mt-6 mb-2"
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}"
+                    alt="">
+    
+                  <p class="text-sm ">Bangalore: 01/01/2022</p>
+    
+    
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-max px-2 bg-[#DEDEDE] ">
+              <div class="  w-full lg:px-0 border-l border-r border-gray-700">
+                <div class="  px-4 py-2 bg-[#DEDEDE] flex flex-col relative overflow-hidden items-center justify-start ">
+    
+    
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Name</h3>
+                  <p class="text-xs  text-center">
+                    Honestly, I was skeptical to use this product. I have oily skin and oil on oily skin doesn’t sound fun. But this was a game-changer. I now use it a couple of times a week and it’s perfect. My skin is so nourished and happy. Definitely worth buying.
+                  </p>
+                  <img
+                    class="mt-6 mb-2"
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}"
+                    alt="">
+    
+                  <p class="text-sm ">Bangalore: 01/01/2022</p>
+    
+    
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-max  px-2 bg-[#DEDEDE] ">
+              <div class="  w-full lg:px-0 border-l border-r border-gray-700">
+                <div class="  px-4 py-2 bg-[#DEDEDE] flex flex-col relative overflow-hidden items-center justify-start ">
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Name</h3>
+                  <p class="text-xs  text-center">
+                    Honestly, I was skeptical to use this product. I have oily skin and oil on oily skin doesn’t sound fun. But this was a game-changer. I now use it a couple of times a week and it’s perfect. My skin is so nourished and happy. Definitely worth buying.
+                  </p>
+                  <img
+                    class="mt-6 mb-2"
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}"
+                    alt="">
+    
+                  <p class="text-sm ">Bangalore: 01/01/2022</p>
+    
+    
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide  h-max px-2 bg-[#DEDEDE] ">
+              <div class="  w-full lg:px-0  border-l border-r border-gray-700">
+                <div class="   px-4 py-2 bg-[#DEDEDE] flex flex-col relative overflow-hidden items-center justify-start ">
+    
+    
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Name</h3>
+                  <p class="text-xs  text-center">
+                    Honestly, I was skeptical to use this product. I have oily skin and oil on oily skin doesn’t sound fun. But this was a game-changer. I now use it a couple of times a week and it’s perfect. My skin is so nourished and happy. Definitely worth buying.
+                  </p>
+                  <img
+                    class="mt-6 mb-2"
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}"
+                    alt="">
+    
+                  <p class="text-sm ">Bangalore: 01/01/2022</p>
+    
+    
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-max px-2 bg-[#DEDEDE]">
+              <div class="  w-full lg:px-0  border-l border-r border-gray-700">
+                <div class="   px-4 py-2 bg-[#DEDEDE] flex flex-col relative overflow-hidden items-center justify-start ">
+    
+    
+                  <h3 class=" text-large font-semibold text-gray-700 text-left mb-4">Name</h3>
+                  <p class="text-xs  text-center">
+                    Honestly, I was skeptical to use this product. I have oily skin and oil on oily skin doesn’t sound fun. But this was a game-changer. I now use it a couple of times a week and it’s perfect. My skin is so nourished and happy. Definitely worth buying.
+                  </p>
+                  <img
+                    class="mt-6 mb-2"
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}"
+                    alt="">
+    
+                  <p class="text-sm ">Bangalore: 01/01/2022</p>
+    
+    
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <div class="swiper-pagination " style="position: relative; top: 120%;"></div>
+        </div>
+    
+    
+        <div class="flex flex-col lg:flex-row  justify-center items-center mt-2 gap-4 lg:gap-8 ">
+          <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Write a Review</button>
+    
+          <button class="text-gray-400  text-xs border border-gray-600 px-8 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Show More</button>
+        </div>
+    
+    </div>
+  
+  
+    <!-- you may like to choose -->
+    <div class="">
+    
+      <div class=" flex flex-col w-full mt-[20px] text-center">
+    
+        <h1 class=" text-4xl font-normal mb-4 " style="font-family: Bilgrotia Sans;">You May Like to Choose</h1>
+      </div>
+    
+      <div class="lg:px-[11rem] px-8 flex  justify-center items-center border-gray-500 py-4">
+    
+    
+        <div>
+          <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-2 mb-4">
+    
+            <div class=" w-full">
+              <div class="block relative  rounded overflow-hidden">
+                <img
+                  alt="ecommerce"
+                  class="object-contain object-center w-full  mb-2"
+                  height=""
+                  width=""
+                  src="{{ 'Kumkumadi 35ml Paint.png' | asset_url }}">
+              </div>
+              <div class=" text-center">
+                <h3 class="text-gray-500 text-xs mb-2">Mahodaya Kannauj Rose Organic
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                  Lip Butter - Pink</h3>
+                <div class="flex items-center justify-center gap-8">
+                  <img
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}">
+                </div>
+                <p class="mt-1">₹650.00</p>
+                <div class="flex justify-center items-center mt-2">
+                  <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Add to Cart</button>
+                </div>
+    
+    
+              </div>
+            </div>
+            <div class=" w-full">
+              <div class="block relative  rounded overflow-hidden">
+                <img
+                  alt="ecommerce"
+                  class="object-contain object-center w-full  mb-2"
+                  height=""
+                  width=""
+                  src="{{ 'Morrocan Argan Paint.png' | asset_url }}">
+    
+              </div>
+              <div class=" text-center">
+                <h3 class="text-gray-500 text-xs mb-2">Mahodaya Kannauj Rose Organic
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                Lip Butter - Pink</h3>
+                <div class="flex items-center justify-center gap-8">
+                  <img
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}">
+                </div>
+                <p class="mt-1">₹650.00</p>
+                <div class="flex justify-center items-center mt-2">
+                  <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Add to Cart</button>
+                </div>
+    
+    
+              </div>
+            </div>
+            <div class=" w-full">
+              <div class="block relative  rounded overflow-hidden">
+                <img
+                  alt="ecommerce"
+                  class="object-contain object-center w-full  mb-2"
+                  height=""
+                  width=""
+                  src="{{ 'Kushuma 35ml Paint.png' | asset_url }}">
+              </div>
+              <div class=" text-center">
+                <h3 class="text-gray-500 text-xs mb-2">Mahodaya Kannauj Rose Organic
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+              Lip Butter - Pink</h3>
+                <div class="flex items-center justify-center gap-8">
+                  <img
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}">
+                </div>
+                <p class="mt-1">₹650.00</p>
+                <div class="flex justify-center items-center mt-2">
+                  <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Add to Cart</button>
+                </div>
+    
+    
+              </div>
+            </div>
+            <div class=" w-full">
+              <div class="block relative  rounded overflow-hidden">
+                <img
+                  alt="ecommerce"
+                  class="object-contain object-center w-full  mb-2"
+                  height=""
+                  width=""
+                  src="{{ 'Mahodaya Rose Paint.png' | asset_url }}">
+              </div>
+              <div class=" text-center">
+                <h3 class="text-gray-500 text-xs mb-2">Mahodaya Kannauj Rose Organic
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                Lip Butter - Pink</h3>
+                <div class="flex items-center justify-center gap-8">
+                  <img
+                    height=""
+                    width=""
+                    src="{{ 'ratings.png' | asset_url }}">
+                </div>
+                <p class="mt-1">₹650.00</p>
+                <div class="flex justify-center items-center mt-2">
+                  <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Add to Cart</button>
+                </div>
+    
+    
+              </div>
+            </div>
+    
+    
+          </div>
+        </div>
+    
+    
+      </div>
+    
+    </div>
+  
+   <hr class="text-gray-700 decoration-2 block w-[95%] mx-auto">
+
+  
+    {% render "animation" %}  
+
+    <script src="{{ "swiper.js" | asset_url }}" defer></script>
+    <script src="{{ "productDetail.js" | asset_url }}" defer></script>
