@@ -1,0 +1,1705 @@
+<link rel="stylesheet" href="{{'myAccount.css' |  asset_url}}" />
+<link rel="stylesheet" href="{{'myAccountMobile.css' |  asset_url}}" />
+
+<div class="myAccountMainContainer">
+  <div class="myAccountSidebar">
+    <span>
+      <h2>My Account</h2>
+    </span>
+
+    <div class="accountTabs">
+      <p
+        class="activeTab"
+        onclick="showContent('profileDashboard')"
+        data-section="profileDashboard">
+        Profile Dashboard
+      </p>
+      <p onclick="showContent('addressBook')" data-section="addressBook">
+        Address Book
+      </p>
+      <p onclick="showContent('orderHistory')" data-section="orderHistory">
+        Order History
+      </p>
+      <p onclick="showContent('productReview')" data-section="productReview">
+        Product Review
+      </p>
+      <p onclick="showContent('wishlist')" data-section="wishlist">
+        Wishlist
+      </p>
+      <p onclick="showContent('myReturns')" data-section="myReturns">
+        My Returns
+      </p>
+      <p onclick="showContent('timelessClub')" data-section="timelessClub">
+        Timeless Club
+      </p>
+      <p>
+        <a href="{{ shop.url }}/pages/Contact-Us">Get In Touch</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="tabContentContainer">
+    <div class="tabContent active" id="profileDashboard">
+      <div class="sectionHeading">
+        <span>
+          <h2>Profile Dashboard</h2>
+        </span>
+
+        <span>
+          <img
+            src="{{ 'edit-shape-icon.png' | asset_url }}"
+            alt=""
+            width=""
+            height="" />
+          <p>Edit</p>
+        </span>
+      </div>
+      <div class="sectionContent">
+        <div class="userSignOut">
+          <span>
+            <img
+              src="{{ 'verified-user-icon.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+            <p>Verified User</p>
+          </span>
+
+          <p>SIGN OUT</p>
+        </div>
+        <div class="userDetail">
+          <span>
+            <p>Name</p>
+            <p>{{ customer.first_name }} {{ customer.last_name }}</p>
+          </span>
+
+          <span>
+            <p>Email ID</p>
+            <p>{{ customer.email }}</p>
+          </span>
+        </div>
+
+        <div class="userDetail">
+          <span>
+            <p>Mobile Number</p>
+            <p>{{ customer.phone }}</p>
+          </span>
+
+          <span>
+            <p>Password</p>
+            <p>
+              <a href="/account/password">Change Password</a>
+            </p>
+          </span>
+        </div>
+      </div>
+
+      <div class="newsletter">
+        <div>
+          <h2>Newsletter</h2>
+          <span>
+            <img
+              src="{{ 'toggleIcon.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+            <p>On</p>
+          </span>
+        </div>
+
+        <p>
+          You have subscribed to our newsletters! Now you will get updates on offers, articles etc.
+        </p>
+      </div>
+
+      <div class="whatsApp">
+        <div>
+          <h2>WhatsApp Updates</h2>
+          <span>
+            <img
+              src="{{ 'toggleIcon.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+            <p>On</p>
+          </span>
+        </div>
+
+        <p>
+          Now you will receive updates on
+          <span><img
+              src="{{ 'whatsapp-app.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" /></span>
+          WhatsApp!
+        </p>
+      </div>
+    </div>
+
+    <div class="tabContent" id="addressBook">
+      <div class="sectionHeading">
+        <span>
+          <h2>Address Book</h2>
+        </span>
+
+        <span>
+          <img
+            src="{{ 'edit-shape-icon.png' | asset_url }}"
+            alt=""
+            width=""
+            height="" />
+          <p>Add New Address</p>
+        </span>
+      </div>
+
+      <div class="addressContent">
+        {% if customer %}
+          {% if customer.default_address %}
+            <div class="addressBox">
+              <span>
+                <img
+                  src="{{ 'house-solid-black.png' | asset_url }}"
+                  alt=""
+                  width=""
+                  height=" " />
+                <p>Default Address</p>
+              </span>
+
+              <div>
+                <p>{{ customer.default_address.name }}</p>
+                <p>{{ customer.default_address.address1 }},</p>
+                <p>{{ customer.default_address.city }}, {{ customer.default_address.province }}</p>
+                <p>{{ customer.default_address.country }}, {{ customer.default_address.zip }}</p>
+              </div>
+
+              <div>
+                <p>{{ customer.default_address.phone }}</p>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if customer.addresses.size > 1 %}
+            {% for address in customer.addresses %}
+              {% unless address.id == customer.default_address.id %}
+                <div class="addressBox">
+                  <span>
+                    <img
+                      src="{{ 'house-solid-gray.png' | asset_url }}"
+                      alt=""
+                      width=""
+                      height="" />
+                    <p>Address</p>
+                  </span>
+
+                  <div>
+                    <p>{{ address.name }}</p>
+                    <p>{{ address.address1 }},</p>
+                    <p>{{ address.city }}, {{ address.province }}</p>
+                    <p>{{ address.country }}, {{ address.zip }}</p>
+                  </div>
+
+                  <div>
+                    <p>{{ address.phone }}</p>
+                  </div>
+                </div>
+              {% endunless %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="tabContent" id="orderHistory">
+      <div class="sectionHeading">
+        <span>
+          <h2>Order History</h2>
+        </span>
+
+        <span>
+          <img
+            src="{{ 'edit-shape-icon.png' | asset_url }}"
+            alt=""
+            width=""
+            height="" />
+          <p>Reload</p>
+        </span>
+      </div>
+
+      <div class="orderContent">
+        {% if customer %}
+          {% if customer.orders.size > 0 %}
+            {% for order in customer.orders %}
+              <div class="orderBox">
+                <div class="orderDetails">
+                  <div>
+                    <div>
+                      <span>
+                        <p>Order ID:</p>
+                        <p>{{ order.order_number }}</p>
+                      </span>
+                      <span>
+                        <p>Order Value:</p>
+                        <p>{{ order.total_price | money }}</p>
+                      </span>
+                      <span>
+                        <p>Contact Details:</p>
+                        <p>{{ customer.phone }}</p>
+                      </span>
+                    </div>
+                    <div>
+                      <span>
+                        <p>Status:</p>
+                        <p>{{ order.financial_status }}</p>
+                      </span>
+                      <span>
+                        <p>Return:</p>
+                        <p>Return window available till {{ order.created_at | date: "%d/%m/%y" }}</p>
+                      </span>
+                    </div>
+                  </div>
+                  <span>
+                    <p>Shipping Address:</p>
+                    <p>
+                      <b>{{ order.shipping_address.name }}</b>
+                      - {{ order.shipping_address.address1 }},
+                      {{ order.shipping_address.city }}, {{ order.shipping_address.province }},
+                      {{ order.shipping_address.country }}, {{ order.shipping_address.zip }}
+                    </p>
+                  </span>
+                </div>
+                <button class="viewOrderModalButton" data-order-id="{{ order.id }}">View Details</button>
+              </div>
+
+              <!-- Modal of order view details -->
+              <dialog class="viewOrderDetailsModal">
+                <div>
+                  <h2>Order Details</h2>
+                  <span class="closeViewOrderModal">
+                    <img
+                      src="{{'closeIcon.svg' | asset_url}}"
+                      alt=""
+                      width=""
+                      height="" />
+                  </span>
+                </div>
+                <div class="viewOrderDetailBoxLg">
+                  <div>
+                    <span>
+                      <p>Order ID</p>
+                      <p>{{ order.order_number }}</p>
+                    </span>
+                    <span>
+                      <p>Total</p>
+                      <p>{{ order.total_price | money }}</p>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <p>Placed</p>
+                      <p>{{ order.created_at | date: "%a, %d %b %Y" }}</p>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="OrderShippingAddresslg">
+                  <div>
+                    <p>Shipping Address</p>
+                  </div>
+                  <div>
+                    <p>{{ order.shipping_address.name }}</p>
+                    <p>
+                      {{ order.shipping_address.address1 }},
+                      {{ order.shipping_address.city }},
+                      {{ order.shipping_address.province }},
+                      {{ order.shipping_address.country }} - {{ order.shipping_address.zip }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="shipmentOrderProductDetail">
+                  <div>
+                    <p>Shipment Details</p>
+                    <p>{{ order.line_items.size }} Item(s) In Shipping</p>
+                  </div>
+
+                  <div>
+                    <span>
+                      <p>Estimated Time of Arrival</p>
+                      {% if order.fulfillments.size > 0 %}
+                        {% assign fulfillment = order.fulfillments.first %}
+                        {% if fulfillment.estimated_delivery_at %}
+                          <p>{{ fulfillment.estimated_delivery_at | date: "%a, %d %b %Y" }}</p>
+                        {% else %}
+                          <p>N/A</p>
+                        {% endif %}
+                      {% else %}
+                        <p>N/A</p>
+                      {% endif %}
+                    </span>
+                    <span>
+                      <img
+                        src="{{ 'Icon material-twotone-expand-more.png' |  asset_url }}"
+                        alt=""
+                        width=""
+                        height="" />
+                    </span>
+                  </div>
+
+                  <div>
+                    <div>
+                      <span>
+                        <img
+                          src="{{'Group 842.png' | asset_url}}"
+                          alt=""
+                          width=""
+                          height="" />
+                        <p>Order Confirmed</p>
+                      </span>
+                      <span>
+                        {% if order.created_at %}
+                          <p>{{ order.created_at | date: "%a, %d %b %Y" }}</p>
+                        <!-- Display order creation date -->
+                        {% else %}
+                          <p>N/A</p>
+                          <!-- Display "N/A" if creation date is not available -->
+                        {% endif %}
+                      </span>
+                    </div>
+                    <span></span>
+                    <div>
+                      <span>
+                        <img
+                          src="{{'Group 842.png' | asset_url}}"
+                          alt=""
+                          width=""
+                          height="" />
+                        <p>Shipped</p>
+                      </span>
+                      <span>
+                        {% if order.fulfillment.size > 0 %}
+                          <p>{{ order.fulfillment.created_at | date: "%a, %d %b %Y" }}</p>
+                        <!-- Display first fulfillment creation date -->
+                        {% else %}
+                          <p>N/A</p>
+                          <!-- Display "N/A" if no fulfillment is available -->
+                        {% endif %}
+                      </span>
+                    </div>
+                    <span></span>
+                    <div>
+                      <span>
+                        <img
+                          src="{{'Group 842.png' | asset_url}}"
+                          alt=""
+                          width=""
+                          height="" />
+                        <p>Delivered</p>
+                      </span>
+                      <span>
+                        {% if order.fulfillments.size > 0 and order.fulfillments.first.status == 'delivered' %}
+                          <p>{{ order.fulfillments.first.updated_at | date: "%a, %d %b %Y" }}</p>
+                        <!-- Display first fulfillment update date -->
+                        {% else %}
+                          <p>N/A</p>
+                          <!-- Display "N/A" if no delivered fulfillment is available -->
+                        {% endif %}
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Product details loop -->
+                  <div class="viewOrderProducts">
+                    {% for item in order.line_items %}
+                      <div class="viewProductItem">
+                        <div>
+                          <img
+                            src="{{ item.product.image.src | image_url }}"
+                            alt="{{ item.product.title }}"
+                            width=""
+                            height="" />
+                        </div>
+                        <div>
+                          <p>{{ item.product.title }}</p>
+                          <span>
+                            <p>Qty: {{ item.quantity }}</p>
+                            <p>{{ item.price | money }}</p>
+                          </span>
+
+                          <span class="showReviewModal">
+                            <p>Review this product</p>
+                            <img
+                              src="{{'4.5 star rating.png' |  asset_url }}"
+                              alt=""
+                              width=""
+                              height="" />
+                          </span>
+                        </div>
+                      </div>
+
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <!-- Replacement info and button -->
+                <div class="replacementiNFOLGButton">
+                  <div>
+                    <span>
+                      <img
+                        src="{{'b82196e49ba798cfb429a600366c766c.png' |  asset_url}}"
+                        alt=""
+                        width=""
+                        height="" />
+                    </span>
+                    <p>Return/replacement period - 7 days from date of purchase</p>
+                  </div>
+                  <div>
+                    <button class="viewOrderModalClose">RETURN THIS ORDER</button>
+                  </div>
+                </div>
+
+                <!-- Delivery, invoice, and help info -->
+                <div class="deliveryInvoiceHelpLg">
+                  <div>
+                    <span>
+                      <p>Courier Partner</p>
+                      <p>{{ order.fulfillment.tracking_company }}</p>
+                    </span>
+                    <span>
+                      <p>AWB</p>
+                      <p>{{ order.fulfillment.tracking_number }}</p>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <p>Download Invoice</p>
+                    </span>
+                    <span>
+                      <img
+                        src="{{'downloadIcon.png' |  asset_url }}"
+                        alt=""
+                        width=""
+                        height="" />
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <p>Need Help</p>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Payment details -->
+                <div class="paymentDetailsLg">
+                  <span>
+                    <h2>Payment Details</h2>
+                  </span>
+                  <div>
+                    <span>
+                      <p>Payment Method</p>
+                      <p>{{ order.transaction.gateway }}</p>
+                    </span>
+                    <span>
+                      <p>Subtotal (Inclusive tax)</p>
+                      <p>{{ order.subtotal_price | money }}</p>
+                    </span>
+                    <span>
+                      <p>Discount</p>
+                      <p>(-){{ order.total_discounts | money }}</p>
+                    </span>
+                    <span>
+                      <p>Shipping charge</p>
+                      <p>{{ order.shipping_price | money }}</p>
+                    </span>
+                    <span>
+                      <p>Rewards Points redeemed</p>
+                      <p>{{ order.total_discounts | money }}</p>
+                    </span>
+                    <span>
+                      <p>Total:</p>
+                      <p>{{ order.total_price | money }}</p>
+                    </span>
+                  </div>
+                  <span>
+                    <p>Total savings:</p>
+                    <p>{{ order.total_discounts | money }}</p>
+                  </span>
+                </div>
+              </dialog>
+            {% endfor %}
+          {% else %}
+            <p>No orders found.</p>
+          {% endif %}
+        {% else %}
+          <p>Please log in to view order history.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="tabContent" id="productReview">
+      <div class="sectionHeading">
+        <span>
+          <h2>Product Review</h2>
+        </span>
+
+        <span>
+          <img
+            src="{{'edit-shape-icon.png' |  asset_url }}"
+            alt=""
+            width=""
+            height="" />
+          <p>Update</p>
+        </span>
+      </div>
+
+      <div class="productReviewContent">
+        <div class="productReviewBox">
+          <div>
+            <img
+              src="{{'Activated Carbon Paint.png' |  asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </div>
+          <div>
+            <span>
+              <p>Product:</p>
+              <p>Nile Activated Charcoal & Oats Butter Bar</p>
+            </span>
+            <textarea
+              cols="50"
+              rows="3"
+              disabled
+              class="productReviewDesc">Trusted Products And Am A Big Fan Of Timeless Beauty. Their Products Stand By What They Say.</textarea>
+            <span>
+              <p>Rating:</p>
+              <img
+                src="{{'4.5 star rating.png' |  asset_url}}"
+                alt=""
+                height=""
+                width="" />
+            </span>
+          </div>
+        </div>
+
+        <div class="productReviewBox">
+          <div>
+            <img
+              src="{{'Activated Carbon Paint.png' |  asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </div>
+          <div>
+            <span>
+              <p>Product:</p>
+              <p>Nile Activated Charcoal & Oats Butter Bar</p>
+            </span>
+            <textarea
+              cols="50"
+              rows="3"
+              disabled
+              class="productReviewDesc">Trusted Products And Am A Big Fan Of Timeless Beauty. Their Products Stand By What They Say.</textarea>
+            <span>
+              <p>Rating:</p>
+              <img
+                src="{{'4.5 star rating.png' |  asset_url}}"
+                alt=""
+                height=""
+                width="" />
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="productReturnDetails">
+        <div class="productReturnSectionHeading">
+          <span>
+            <h2>Product Return</h2>
+            <p>(choose product/s to return)</p>
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tabContent" id="wishlist">
+      <div class="sectionHeading">
+        <span>
+          <h2>Wishlist</h2>
+        </span>
+      </div>
+
+      <div class="wishListContent">
+        <div class="wishlistProductBox">
+          <div>
+            <img
+              src="{{'Mahodaya Rose Paint - Copy.png' |  asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </div>
+          <div>
+            <p>Mahodaya Kannauj Rose Organic Lip Butter - Pink</p>
+            <p>
+              A deeply moisturising and nourishing lip colour butter that imparts long lasting colour, heals dryness and softens lips.
+            </p>
+            <span>
+              <p>₹595.00</p>
+              <button>ADD TO CART</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="wishlistProductBox">
+          <div>
+            <img
+              src="{{'Mahodaya Rose Paint - Copy.png' |  asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </div>
+          <div>
+            <p>Mahodaya Kannauj Rose Organic Lip Butter - Pink</p>
+            <p>
+              A deeply moisturising and nourishing lip colour butter that imparts long lasting colour, heals dryness and softens lips.
+            </p>
+            <span>
+              <p>₹595.00</p>
+              <button>ADD TO CART</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="wishlistProductBox">
+          <div>
+            <img
+              src="{{'Mahodaya Rose Paint - Copy.png' |  asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </div>
+          <div>
+            <p>Mahodaya Kannauj Rose Organic Lip Butter - Pink</p>
+            <p>
+              A deeply moisturising and nourishing lip colour butter that imparts long lasting colour, heals dryness and softens lips.
+            </p>
+            <span>
+              <p>₹595.00</p>
+              <button>ADD TO CART</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="shareCartButtons">
+          <button>SHARE WISHLIST</button>
+          <button>ADD ALL TO CART</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabContent" id="myReturns">
+      <div class="sectionHeading">
+        <span>
+          <h2>My Returns</h2>
+        </span>
+        <span>
+          <img
+            src="{{ 'edit-shape-icon.png' | asset_url }}"
+            alt=""
+            width=""
+            height="" />
+          <p>Edit</p>
+        </span>
+      </div>
+
+      <div class="returnContent">
+        {% assign returned_orders = customer.orders | where: 'financial_status', 'Refunded' %}
+        {% if returned_orders.size > 0 %}
+          {% for order in returned_orders %}
+            <div class="returnBox">
+              <div class="returnOrderDetails">
+                <div>
+                  <div>
+                    <span>
+                      <p>Order ID:</p>
+                      <p>{{ order.order_number }}</p>
+                    </span>
+                    <span>
+                      <p>Order Value:</p>
+                      <p>{{ order.total_price | money }}</p>
+                    </span>
+                    <span>
+                      <p>Contact Details:</p>
+                      <p>{{ order.billing_address.phone }}</p>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <p>Status:</p>
+                      <p>{{ order.financial_status }}</p>
+                    </span>
+                    <span>
+                      <p>Return:</p>
+                      <p>Return initiated on {{ order.created_at | date: "%d/%m/%Y" }}</p>
+                    </span>
+                  </div>
+                </div>
+                <span>
+                  <p>Shipping Address:</p>
+                  <p>
+                    <b>{{ order.shipping_address.name }}</b>
+                    -
+                    {{ order.shipping_address.address1 }},
+                    {{ order.shipping_address.city }},
+                    {{ order.shipping_address.province }},
+                    {{ order.shipping_address.country }} - {{ order.shipping_address.zip }}
+                  </p>
+                </span>
+              </div>
+              <button class="returnOrderModalButton" data-order-id="{{ order.id }}">View Details</button>
+            </div>
+
+            <!-- Return order Product details -->
+            <dialog class="returnOrderDetailsModal">
+              <div>
+                <h2>Order Details</h2>
+                <span class="closeReturnOrderModal">
+                  <img
+                    src="{{'closeIcon.svg' | asset_url}}"
+                    alt=""
+                    width=""
+                    height="" />
+                </span>
+              </div>
+              <div class="viewOrderDetailBoxLg">
+                <div>
+                  <span>
+                    <p>Order ID</p>
+                    <p>{{ order.order_number }}</p>
+                  </span>
+                  <span>
+                    <p>Total</p>
+                    <p>{{ order.total_price | money }}</p>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <p>Placed</p>
+                    <p>{{ order.created_at | date: "%a, %d %b %Y" }}</p>
+                  </span>
+                </div>
+              </div>
+
+              <div class="OrderShippingAddresslg">
+                <div>
+                  <p>Shipping Address</p>
+                </div>
+                <div>
+                  <p>{{ order.shipping_address.name }}</p>
+                  <p>
+                    {{ order.shipping_address.address1 }},
+                    {{ order.shipping_address.city }},
+                    {{ order.shipping_address.province }},
+                    {{ order.shipping_address.country }} - {{ order.shipping_address.zip }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="shipmentOrderProductDetail">
+                <div>
+                  <p>Return Details</p>
+                  <p>{{ order.line_items.size }} Item(s) To Return</p>
+                  <p>Return Items value {{ order.total_price | money }}</p>
+                </div>
+
+                <div>
+                  <span>
+                    <p>Estimated Time of Arrival</p>
+                    {% if order.fulfillments.size > 0 %}
+                      {% assign fulfillment = order.fulfillments.first %}
+                      {% if fulfillment.estimated_delivery_at %}
+                        <p>{{ fulfillment.estimated_delivery_at | date: "%a, %d %b %Y" }}</p>
+                      {% else %}
+                        <p>N/A</p>
+                      {% endif %}
+                    {% else %}
+                      <p>N/A</p>
+                    {% endif %}
+                  </span>
+                  <span>
+                    <img
+                      src="{{ 'Icon material-twotone-expand-more.png' |  asset_url }}"
+                      alt=""
+                      width=""
+                      height="" />
+                  </span>
+                </div>
+
+                <div>
+                  <div>
+                    <span>
+                      <img
+                        src="{{'Group 842.png' | asset_url}}"
+                        alt=""
+                        width=""
+                        height="" />
+                      <p>Return Order Confirmed</p>
+                    </span>
+                    <span>
+                      <p>
+                        {% if order.created_at %}
+                          <p>{{ order.created_at | date: "%a, %d %b %Y" }}</p>
+                        <!-- Display order creation date -->
+                        {% else %}
+                          <p>N/A</p>
+                          <!-- Display "N/A" if creation date is not available -->
+                        {% endif %}
+                      </p>
+                    </span>
+                  </div>
+                  <span></span>
+                  <div>
+                    <span>
+                      <img
+                        src="{{'Group 842.png' | asset_url}}"
+                        alt=""
+                        width=""
+                        height="" />
+                      <p>Out for pickup</p>
+                    </span>
+                    <span>
+                      <p>Thu, 19 May 2023</p>
+                    </span>
+                  </div>
+                  <span></span>
+                  <div>
+                    <span>
+                      <img
+                        src="{{'Group 842.png' | asset_url}}"
+                        alt=""
+                        width=""
+                        height="" />
+                      <p>Received at Warehouse</p>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="viewOrderProducts">
+                  {% for item in order.line_items %}
+                    <div class="viewProductItem">
+                      <div>
+                        <img
+                          src="{{ item.product.image.src | asset_url }}"
+                          alt="{{ item.product.title }}"
+                          width=""
+                          height="" />
+                      </div>
+                      <div>
+                        <p>{{ item.product.title }}</p>
+                        <span>
+                          <p>Qty: {{ item.quantity }}</p>
+                          <p>{{ item.price | money }}</p>
+                        </span>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="deliveryInvoiceHelpLg">
+                <div>
+                  <span>
+                    <p>Courier Partner</p>
+                    <p>{{ order.fulfillment.tracking_company }}</p>
+                  </span>
+                  <span>
+                    <p>AWB</p>
+                    <p>{{ order.fulfillment.tracking_number }}</p>
+                  </span>
+                </div>
+
+                <div>
+                  <span>
+                    <p>Courier Partner</p>
+                    <p>{{ order.fulfillment.tracking_company }}</p>
+                  </span>
+                  <span>
+                    <p>N/A</p>
+                    <p>N/A</p>
+                  </span>
+                </div>
+
+                <div>
+                  <span>
+                    <p>Need Help</p>
+                  </span>
+                </div>
+              </div>
+            </dialog>
+          {% endfor %}
+        {% else %}
+          <p>No returned orders found.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="tabContent" id="timelessClub">
+      <div class="sectionHeading">
+        <span>
+          <h2>Timeless Club</h2>
+        </span>
+
+        <span>
+          <img
+            src="{{ 'edit-shape-icon.png' | asset_url }}"
+            alt=""
+            height=""
+            width="" />
+          <p>Edit</p>
+        </span>
+      </div>
+
+      <div class="timelessContent">
+        <div class="imgAndSlogan">
+          <div class="backgroundImg">
+            <img
+              src="{{ 'CreateAccountBackground.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+          </div>
+          <h1 class="clubSlogan">ITS Time Youu pay less for more</h1>
+          <div>
+            <h2>Hi, {{ customer.first_name }} {{ customer.last_name }}</h2>
+            <p>We are happy to see your interest in our Timeless Club program.</p>
+          </div>
+        </div>
+
+        <div class="benefitSlogan">
+          <h1>The world of exciting benefits awaits you</h1>
+          <p>Earn points and benefits when you join our Clubs</p>
+        </div>
+
+        <div class="timelessIcons">
+          <img
+            src="{{ 'timelessIcons.png' | asset_url }}"
+            alt=""
+            width=""
+            height="" />
+        </div>
+
+        <button>KNOW MORE ABOUT CLUB MEMBER</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- you may like to choose -->
+<div class="mayLikeProduct">
+  <div class=" flex flex-col w-full mt-[20px] text-center">
+    <h1 class=" text-5xl font-normal mb-4 " style="font-family: Bilgrotia Sans;">You May Like to Choose</h1>
+  </div>
+  <div class="px-8 flex  justify-center items-center border-gray-500 py-4">
+    <div>
+      <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-2 mb-4">
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full  mb-2"
+              height=""
+              width=""
+              src="{{ 'Kumkumadi 35ml Paint.png' | asset_url }}">
+          </div>
+          <div class=" text-center">
+            <h3 class="text-gray-500 text-xs mb-2">Mahodaya Kannauj Rose Organic Lip Butter - Pink</h3>
+            <div class="flex items-center justify-center gap-8">
+              <img
+                height=""
+                width=""
+                src="{{ 'ratings.png' | asset_url }}">
+            </div>
+            <p class="mt-1">₹650.00</p>
+            <div class="flex justify-center items-center mt-2">
+              <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full  mb-2"
+              height=""
+              width=""
+              src="{{ 'Morrocan Argan Paint.png' | asset_url }}">
+          </div>
+          <div class=" text-center">
+            <h3 class="text-gray-500 text-xs mb-2">Mahodaya Kannauj Rose Organic Lip Butter - Pink</h3>
+            <div class="flex items-center justify-center gap-8">
+              <img
+                height=""
+                width=""
+                src="{{ 'ratings.png' | asset_url }}">
+            </div>
+            <p class="mt-1">₹650.00</p>
+            <div class="flex justify-center items-center mt-2">
+              <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full  mb-2"
+              height=""
+              width=""
+              src="{{ 'Kushuma 35ml Paint.png' | asset_url }}">
+          </div>
+          <div class=" text-center">
+            <h3 class="text-gray-500 text-xs mb-2">Mahodaya Kannauj Rose Organic Lip Butter - Pink</h3>
+            <div class="flex items-center justify-center gap-8">
+              <img
+                height=""
+                width=""
+                src="{{ 'ratings.png' | asset_url }}">
+            </div>
+            <p class="mt-1">₹650.00</p>
+            <div class="flex justify-center items-center mt-2">
+              <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class=" w-full">
+          <div class="block relative  rounded overflow-hidden">
+            <img
+              alt="ecommerce"
+              class="object-contain object-center w-full  mb-2"
+              height=""
+              width=""
+              src="{{ 'Mahodaya Rose Paint.png' | asset_url }}">
+          </div>
+          <div class=" text-center">
+            <h3 class="text-gray-500 text-xs mb-2">Mahodaya Kannauj Rose Organic Lip Butter - Pink</h3>
+            <div class="flex items-center justify-center gap-8">
+              <img
+                height=""
+                width=""
+                src="{{ 'ratings.png' | asset_url }}">
+            </div>
+            <p class="mt-1">₹650.00</p>
+            <div class="flex justify-center items-center mt-2">
+              <button class="text-gray-400  text-xs border border-gray-600 px-6 py-2 rounded-2xl mb-2 shadow-inner shadow-lg  hover:bg-[#71645c] hover:text-white">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Review Product Modal -->
+<dialog class="reviewProductModal">
+  <div>
+    <h2>Create Review</h2>
+    <span class="closereviewModal">
+      <img
+        src="{{'closeIcon.svg' |  asset_url }}"
+        alt=""
+        width=""
+        height="" />
+    </span>
+  </div>
+
+  <div>
+    <div>
+      <img
+        id="productImage"
+        src="{{ 'Mahodaya Rose Paint.png' | asset_url }}"
+        alt=""
+        width=""
+        height="" />
+    </div>
+    <div>
+      <p id="productName"></p>
+      <span>
+        <p>Overall Rating</p>
+        <img
+          src="{{'4.5 star rating.png' |   asset_url }}"
+          alt=""
+          width=""
+          height="" />
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <textarea
+      id="reviewTextarea"
+      cols="80"
+      rows="4"
+      placeholder="Tell us about your Experience with our product..."></textarea>
+  </div>
+
+  <button id="submitReviewButton" class="reviewSubmitSuccess">Submit</button>
+</dialog>
+
+<!-- Successfull Lottie file -->
+<dialog class="successfullLottieFileModalReview">
+  <div>
+    <span class="successfullLottieFileModalReviewClose">
+      <img
+        src="{{'closeIcon.svg' |  asset_url }}"
+        alt=""
+        width=""
+        height="" />
+    </span>
+    <h3>Success</h3>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+    <dotlottie-player
+      src="https://lottie.host/d1bc28db-0ab8-4c74-bfa8-6b678791ef19/WrTDNzudmi.json"
+      background="transparent"
+      speed="1"
+      style="width: 220px; height: 220px"
+      loop
+      autoplay></dotlottie-player>
+
+    <p>We value your feedback</p>
+  </div>
+</dialog>
+
+<!-- Mobile View of My Account Dashboard -->
+<div class="myAccountMobileView">
+  <div class="pageHeading">
+    <h1>MY ACCOUNT</h1>
+  </div>
+  <div class="accordianContainer">
+    <div class="accordianSection" id="profileDashboardMobile">
+      <div class="sectionHeadingMobile" onclick="toggleAccordian('profileDashboardMobile')">
+        <h2>Profile Dashboard</h2>
+      </div>
+      <div class="accordianSectionContent active">
+        <div class="verifiedUserEdit">
+          <div class="verifiedUser">
+            <span><img
+                src="{{ 'verified-user-icon.png' | asset_url }}"
+                alt=""
+                width=""
+                height="" /></span>
+            <p>Verified User</p>
+          </div>
+          <div class="editIcon">
+            <span><img
+                src="{{ 'edit-shape-icon.png' | asset_url }}"
+                alt=""
+                width=""
+                height="" /></span>
+            <p>Edit</p>
+          </div>
+        </div>
+
+        <div class="userDetailsMobile">
+          <div>
+            <p>Name</p>
+            <p>{{ customer.first_name }} {{ customer.last_name }}</p>
+          </div>
+          <div>
+            <p>Mobile Number</p>
+            <p>{{ customer.phone }}</p>
+          </div>
+          <div>
+            <p>Email ID</p>
+            <p>{{ customer.email }}</p>
+          </div>
+          <div>
+            <span>
+              <p>Password</p>
+              <p>
+                <a href="/account/password">Change Password</a>
+              </p>
+            </span>
+            <span>SIGN OUT</span>
+          </div>
+        </div>
+
+        <div class="newsletter">
+          <div>
+            <h2>Newsletter</h2>
+            <span>
+              <img
+                src="{{ 'toggleIcon.png' | asset_url }}"
+                alt=""
+                width=""
+                height="" />
+              <p>On</p>
+            </span>
+          </div>
+
+          <p>
+            You have subscribed to our newsletters! Now you will get updates on offers, articles etc.
+          </p>
+        </div>
+
+        <div class="whatsApp">
+          <div>
+            <h2>WhatsApp Updates</h2>
+            <span>
+              <img
+                src="{{ 'toggleIcon.png' | asset_url }}"
+                alt=""
+                width=""
+                height="" />
+              <p>On</p>
+            </span>
+          </div>
+
+          <p>
+            Now you will receive updates on
+            <span><img
+                src="{{ 'whatsapp-app.png' | asset_url }}"
+                alt=""
+                width=""
+                height="" /></span>
+            WhatsApp!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordianSection" id="addressBookMobile">
+      <div class="sectionHeadingMobile" onclick="toggleAccordian('addressBookMobile')">
+        <h2>Address Book</h2>
+      </div>
+
+      <div class="accordianSectionContent">
+        {% if customer %}
+          {% if customer.default_address %}
+            <div class="addressBoxMobile">
+              <div>
+                <span>
+                  <img
+                    src="{{ 'house-solid-black.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height=" " />
+                  <p>Default Address</p>
+                </span>
+
+                <span>
+                  <img
+                    src="{{ 'edit-shape-icon.png' | asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                  <p>Edit</p>
+                </span>
+              </div>
+
+              <div>
+                <p>{{ customer.default_address.name }}</p>
+                <p>{{ customer.default_address.address1 }},</p>
+                <p>{{ customer.default_address.city }}, {{ customer.default_address.province }}</p>
+                <p>{{ customer.default_address.country }}, {{ customer.default_address.zip }}</p>
+              </div>
+
+              <div>
+                <p>{{ customer.default_address.phone }}</p>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if customer.addresses.size > 1 %}
+            {% for address in customer.addresses %}
+              {% unless address.id == customer.default_address.id %}
+                <div class="addressBoxMobile">
+                  <div>
+                    <span>
+                      <img
+                        src="{{ 'house-solid-gray.png' | asset_url }}"
+                        alt=""
+                        width=""
+                        height="" />
+                      <p>Address</p>
+                    </span>
+
+                    <span>
+                      <img
+                        src="{{ 'edit-shape-icon.png' | asset_url }}"
+                        alt=""
+                        width=""
+                        height="" />
+                      <p>Edit</p>
+                    </span>
+                  </div>
+
+                  <div>
+                    <p>{{ address.name }}</p>
+                    <p>{{ address.address1 }},</p>
+                    <p>{{ address.city }}, {{ address.province }}</p>
+                    <p>{{ address.country }}, {{ address.zip }}</p>
+                  </div>
+
+                  <div>
+                    <p>{{ address.phone }}</p>
+                  </div>
+                </div>
+              {% endunless %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+
+        <div class="addNewAddress">
+          <span>
+            <p>New Address</p>
+          </span>
+          <span>
+            <img
+              src="{{ 'plusIcon.png' | asset_url }}"
+              alt=""
+              width=""
+              height="" />
+            <p>Add</p>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordianSection" id="orderDetailsMobile">
+      <div class="sectionHeadingMobile" onclick="toggleAccordian('orderDetailsMobile')">
+        <h2>Order History</h2>
+      </div>
+      <div class="accordianSectionContent">
+        {% if customer %}
+          {% if customer.orders.size > 0 %}
+            {% for order in customer.orders %}
+              <div class="orderHistoryBox">
+                <div>
+                  <div>
+                    <span>
+                      <p>Order ID:</p>
+                      <p>{{ order.order_number }}</p>
+                    </span>
+
+                    <span>
+                      <p>{{ order.financial_status }}</p>
+                    </span>
+                  </div>
+
+                  <div>
+                    <span>
+                      <p>Order On:</p>
+                      <p>{{ order.created_at | date: "%a, %d %b %Y" }}</p>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <span>
+                    <p>Total:</p>
+                    <p>{{ order.total_price | money }}</p>
+                  </span>
+                  <button data-order-id="{{ order.id }}">
+                    <a href="#">View</a>
+                  </button>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p>No orders found.</p>
+          {% endif %}
+        {% else %}
+          <p>Please log in to view order history.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="accordianSection" id="productReviewMobile">
+      <div class="sectionHeadingMobile" onclick="toggleAccordian('productReviewMobile')">
+        <h2>Product Review</h2>
+      </div>
+      <div class="accordianSectionContent">
+        <div class="productReviewBoxMobile">
+          <div>
+            <div>
+              <img
+                src="{{ 'Activated Carbon Paint.png' |  asset_url}}"
+                alt=""
+                width=""
+                height="" />
+            </div>
+            <div>
+              <span>
+                <p>Nile Activated Charcoal & Oats Butter Bar</p>
+                <span><img
+                    src="{{'edit-shape-icon.png' |  asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                  <p>Edit</p>
+                </span>
+              </span>
+
+              <span>
+                <p>Rating:</p>
+                <img
+                  src="{{'4.5 star rating.png' |  asset_url}}"
+                  alt=""
+                  height=""
+                  width="" />
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <textarea
+              cols="50"
+              rows="3"
+              disabled
+              class="productReviewDesc">Trusted Products And Am A Big Fan Of Timeless Beauty. Their Products Stand By What They Say.
+            </textarea>
+          </div>
+        </div>
+
+        <div class="productReviewBoxMobile">
+          <div>
+            <div>
+              <img
+                src="{{ 'Activated Carbon Paint.png' |  asset_url}}"
+                alt=""
+                width=""
+                height="" />
+            </div>
+            <div>
+              <span>
+                <p>Nile Activated Charcoal & Oats Butter Bar</p>
+                <span><img
+                    src="{{'edit-shape-icon.png' |  asset_url }}"
+                    alt=""
+                    width=""
+                    height="" />
+                  <p>Edit</p>
+                </span>
+              </span>
+
+              <span>
+                <p>Rating:</p>
+                <img
+                  src="{{'4.5 star rating.png' |  asset_url}}"
+                  alt=""
+                  height=""
+                  width="" />
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <textarea
+              cols="50"
+              rows="3"
+              disabled
+              class="productReviewDesc">Trusted Products And Am A Big Fan Of Timeless Beauty. Their Products Stand By What They Say.
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordianSection" id="wishlistMobile">
+      <div class="sectionHeadingMobile" onclick="toggleAccordian('wishlistMobile')">
+        <h2>Wishlist</h2>
+      </div>
+      <div class="accordianSectionContent">
+        <div class="wishlistBoxMobileWrap">
+          <div class="wishlistBoxMobile">
+            <div>
+              <img
+                src="{{ 'Activated Carbon Paint.png' |  asset_url}}"
+                alt=""
+                width=""
+                height="" />
+            </div>
+            <div>
+              <p>Nile Activated Charcoal & Oats Butter Bar</p>
+              <span>
+                <p>₹595.00</p>
+                <button>ADD TO CART</button>
+              </span>
+            </div>
+          </div>
+          <hr style="width: 85%; margin: auto; border: 1px solid #707070" />
+        </div>
+
+        <div class="wishlistBoxMobileWrap">
+          <div class="wishlistBoxMobile">
+            <div>
+              <img
+                src="{{ 'Activated Carbon Paint.png' |  asset_url}}"
+                alt=""
+                width=""
+                height="" />
+            </div>
+            <div>
+              <p>Nile Activated Charcoal & Oats Butter Bar</p>
+              <span>
+                <p>₹595.00</p>
+                <button>ADD TO CART</button>
+              </span>
+            </div>
+          </div>
+          <hr style="width: 85%; margin: auto; border: 1px solid #707070" />
+        </div>
+
+        <div class="wishlistBoxMobileWrap">
+          <div class="wishlistBoxMobile">
+            <div>
+              <img
+                src="{{ 'Activated Carbon Paint.png' |  asset_url}}"
+                alt=""
+                width=""
+                height="" />
+            </div>
+            <div>
+              <p>Nile Activated Charcoal & Oats Butter Bar</p>
+              <span>
+                <p>₹595.00</p>
+                <button>ADD TO CART</button>
+              </span>
+            </div>
+          </div>
+          <hr style="width: 85%; margin: auto; border: 1px solid #707070" />
+        </div>
+
+        <div class="wishlistBoxMobileWrap">
+          <div class="wishlistBoxMobile">
+            <div>
+              <img
+                src="{{ 'Activated Carbon Paint.png' |  asset_url}}"
+                alt=""
+                width=""
+                height="" />
+            </div>
+            <div>
+              <p>Nile Activated Charcoal & Oats Butter Bar</p>
+              <span>
+                <p>₹595.00</p>
+                <button>ADD TO CART</button>
+              </span>
+            </div>
+          </div>
+          <hr style="width: 85%; margin: auto; border: 1px solid #707070" />
+        </div>
+      </div>
+    </div>
+
+    <div class="accordianSection" id="myReturnsMobile">
+      <div class="sectionHeadingMobile" onclick="toggleAccordian('myReturnsMobile')">
+        <h2>My Returns</h2>
+      </div>
+      <div class="accordianSectionContent">
+        {% assign returned_orders = customer.orders | where: 'financial_status', 'Refunded' %}
+        {% if returned_orders.size > 0 %}
+          {% for order in returned_orders %}
+            <div class="orderHistoryBox">
+              <div>
+                <div>
+                  <span>
+                    <p>Order ID:</p>
+                    <p>{{ order.order_number }}</p>
+                  </span>
+
+                  <span>
+                    <p>{{ order.financial_status }}</p>
+                  </span>
+                </div>
+
+                <div>
+                  <span>
+                    <p>Order On:</p>
+                    <p>{{ order.created_at | date: "%a, %d %b %Y" }}</p>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <span>
+                  <p>Total:</p>
+                  <p>{{ order.total_price | money }}</p>
+                </span>
+                <button>
+                  <a href="#">View</a>
+                </button>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No returned orders found.</p>
+        {% endif %}
+
+      </div>
+    </div>
+
+    <div class="accordianSection" id="timelessClubMobile">
+      <div class="sectionHeadingMobile" onclick="toggleAccordian('timelessClubMobile')">
+        <h2>Timeless Club</h2>
+      </div>
+      <div class="accordianSectionContent">
+        <div class="timelessTable">
+          <div>
+            <span>
+              <p>Available Points:</p>
+              <p>9999</p>
+            </span>
+            <span>
+              <p>History</p>
+            </span>
+          </div>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Bill</th>
+                  <th>Date</th>
+                  <th>Earned</th>
+                  <th>Redeemed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>TBS010203</td>
+                  <td>01/03/2024</td>
+                  <td>250</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>TBS010203</td>
+                  <td>01/03/2024</td>
+                  <td>250</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>TBS010203</td>
+                  <td>01/03/2024</td>
+                  <td>250</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>TBS010203</td>
+                  <td>01/03/2024</td>
+                  <td>250</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% render 'timelessSlider' %}
+{% render 'Animation' %}
+
+
+<script src="{{'myAccount.js'|  asset_url}}" defer></script>

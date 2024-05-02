@@ -2,9 +2,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <head>
-    <title>{{ page.title }}</title>
     {{ content_for_header }}
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
       rel="preconnect"
@@ -21,9 +19,9 @@
 
     {% unless template contains 'index' or template contains 'FAQ' or template contains 'cart' %}
       {% render 'Header' %}
-      
     {% endunless %}
-    <Script src="https://cdn.jsdelivr.net/npm/url-parse@1.4.3/dist/url-parse.min.js"> </Script>
+
+    <Script src="https://cdn.jsdelivr.net/npm/url-parse@1.4.3/dist/url-parse.min.js"></Script>
 
 
     <main id="main" role="main">

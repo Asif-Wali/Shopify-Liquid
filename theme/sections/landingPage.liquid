@@ -96,8 +96,20 @@
     height: 110px;
   }
 
+  .landingPage {
+    width: 100%;
+    height: auto;
+  }
+
+  .landingContent {
+    max-width: 1240px;
+    width: 95%;
+    height: auto;
+    margin: auto;
+  }
+
   .PageDescription {
-    width: 77%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -132,27 +144,27 @@
   }
 
   .actionTabs {
-    width: 77%;
+    width: 100%;
     height: auto;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 20px 0;
+    padding: 30px 0 0;
     gap: 20px;
   }
 
   .readyMadeLgScrn,
   .customMadeLgScrn {
     width: 340px;
-    height: 480px;
+    height: 500px;
     display: flex;
     text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
-    gap: 10px;
+    gap: 15px;
     border: 1px solid #707070;
     border-radius: 15px;
     padding-bottom: 20px;
@@ -166,7 +178,7 @@
   .readyMadeLgScrn > div:nth-child(1),
   .customMadeLgScrn > div:nth-child(1) {
     width: 306px;
-    height: 306px;
+    height: auto;
     text-align: center;
     position: relative;
   }
@@ -273,6 +285,10 @@
       padding-bottom: 30px;
     }
 
+    .iconBox > div:nth-child(9) {
+      display: block;
+    }
+
     .iconBox > div:nth-child(10) {
       display: none;
     }
@@ -308,24 +324,33 @@
       margin: auto;
     }
 
+    .landingPage {
+      width: 100%;
+      min-height: 100vh;
+    }
+
     .landingContent {
       width: 100%;
-      height: 620px;
+      height: calc(100vh - 140px);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
     }
 
     .landingContent > .PageDescription {
       width: 100%;
-      height: auto;
+      height: 200px;
       display: flex;
       flex-direction: column;
       gap: 5px;
       text-align: center;
       color: #70645c;
       margin: 0 auto auto;
-      padding: 39px 0;
+      padding: 15px;
     }
 
     .landingContent > .PageDescription > h1 {
+      width: 100%;
       font-family: "Amatic SC"
       , sans-serif;
       font-weight: 700;
@@ -338,7 +363,7 @@
     }
 
     .landingContent > .PageDescription > .DescsmallScreen {
-      width: 70%;
+      width: 80%;
       display: block;
       font-family: "Playfair Display"
       , serif;
@@ -352,13 +377,12 @@
     .landingContent > .actionTabs {
       width: 100%;
       height: auto;
-      margin: auto;
+      margin: 0;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 0;
-      padding: 0;
     }
 
     .readyMadeLgScrn,
@@ -370,17 +394,18 @@
     .customMadeSmScrn {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       margin: auto;
       gap: 10px;
-      padding: 10px 15px;
+      padding: 15px;
     }
 
     .readyMadeSmScrn {
       background-color: #e8e8e8;
+      padding: 20px;
     }
 
     .customMadeSmScrn {
@@ -390,7 +415,7 @@
     .readyMadeSmScrn > div:nth-child(1),
     .customMadeSmScrn > div:nth-child(2) {
       width: 65%;
-      height: 137px;
+      height: fit-content;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -417,8 +442,8 @@
 
     .readyMadeSmScrn > div > p,
     .customMadeSmScrn > div > p {
-      height: 67px;
       width: 95%;
+      height: auto;
       font-family: "Playfair Display"
       , serif;
       font-optical-sizing: auto;
@@ -431,7 +456,10 @@
     .readyMadeSmScrn > div:nth-child(2),
     .customMadeSmScrn > div:nth-child(1) {
       width: 35%;
-      height: 180px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
       margin: auto;
       position: relative;
@@ -447,22 +475,23 @@
     .readyMadeSmScrn > div > .tabTextSm {
       position: absolute;
       text-align: center;
-      text-align: center;
-      top: 38%;
-      left: 26%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
     }
 
     .customMadeSmScrn > div > .tabTextSm {
       position: absolute;
       text-align: center;
-      text-align: center;
-      top: 36%;
-      left: 24%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       margin: auto;
     }
 
     .tabTextSm > h2 {
-      width: 70%;
+      width: 100%;
       color: white;
       font-family: "Amatic SC"
       , sans-serif;
@@ -471,13 +500,63 @@
       font-size: 30px;
       line-height: 1;
       text-align: center;
+      margin: auto;
+    }
+  }
+
+  @media all and (max-width: 450px) {
+    .readyMadeSmScrn > div > .tabTextSm {
+      position: absolute;
+      text-align: center;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      margin: auto;
+    }
+
+    .customMadeSmScrn > div > .tabTextSm {
+      position: absolute;
+      text-align: center;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      margin: auto;
+    }
+
+    .tabTextSm > h2 {
+      width: 100%;
+      color: white;
+      font-family: "Amatic SC"
+      , sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      text-align: center;
+      margin: auto;
+    }
+  }
+
+  @media all and (max-width: 350px) {
+
+    .tabTextSm > h2 {
+      width: 100%;
+      color: white;
+      font-family: "Amatic SC"
+      , sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      text-align: center;
+      margin: auto;
     }
   }
 
 </style>
 
 <section>
-  
+
   <div class="loadingPage">
     <div class="loadingBg">
       <div class="logoBox">
@@ -627,7 +706,7 @@
               Our products are a re-imagination of treasured ancient beauty rituals from various civilizations. Melding ancient wisdom.
             </p>
           </div>
-          <div>
+          <div class="tab">
             <img
               width=""
               height=""
@@ -651,27 +730,7 @@
             </div>
           </div>
           <p>
-            You can create magical beauty elixirs with pure botanical extracts, organic butters, essential oils, potent herbals and
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-            phthalate free fragrances of your choice.
+            You can create magical beauty elixirs with pure botanical extracts, organic butters, essential oils, potent herbals and  phthalate free fragrances of your choice.
           </p>
           <button class="actionTabBtn">
             <a href="{{ shop.url }}/pages/Custom-Made">SHOP</a>
@@ -679,7 +738,7 @@
         </div>
 
         <div class="customMadeSmScrn">
-          <div>
+          <div class="tab">
             <img
               width=""
               height=""
@@ -730,5 +789,18 @@
   sessionStorage.setItem("visited", 1);
   } else {
   loadingRemove();
+  }
+  
+  window.onload = function() {
+  let windowHeight = window.innerHeight; 
+  let navbarHeight = document.querySelector('#defaultNavbar').offsetHeight; 
+  let pageDescriptionHeight = document.querySelector(".PageDescription").offsetHeight;
+  let landingContent = document.querySelector('.landingContent');
+  let actionTabs = document.querySelector(".actionTabs");
+  
+  let landingContentHeight = windowHeight - navbarHeight;
+  let actionTabsHeight = landingContentHeight - pageDescriptionHeight;
+  
+  landingContent.style.minHeight = landingContentHeight + 'px';
   }
 </script>

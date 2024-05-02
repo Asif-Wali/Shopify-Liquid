@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ 'Navbar.css' | asset_url }}">
 
 <header id="defaultNavbar" class="sticky top-0 z-[100] overflow-x-hidden  ">
-  <aside class="fixed hidden top-0 z-[200] bg-[#EDE9DD] left-0  h-screen overflow-y-auto" id="headersidebar">
+  <aside class="fixed hidden top-0 z-[700] bg-[#EDE9DD] left-0  h-screen overflow-y-auto" id="headersidebar">
     <div class="px-4 py-4  h-full">
       <div class=" flex flex-col justify-start h-full w-64 py-2">
         <!-- top-heading -->
@@ -47,7 +47,7 @@
           </div>
           <!-- face options -->
           <div class="hidden" id="faceOptions">
-            <div class="flex flex-col  mb-1 ">
+            {% comment %} <div class="flex flex-col  mb-1 ">
               <p class="mb-1 font-semibold">By Category</p>
 
               <div class="pl-4 mb-2">
@@ -105,7 +105,80 @@
               </div>
 
 
-            </div>
+            </div> {% endcomment %}
+
+            <form class="border-2 border-[red]" id="filter_form2">
+              
+              {%- for filter in collections.face.filters -%}
+                <details class="" open>
+                  {% comment %} this gives us headings {% endcomment %}
+                  <summary class="flex border-b ">
+                    <div class="flex py-2 px-2">
+                      <span class="text-sm font-semibold">{{ filter.label }}</span>
+                    </div>
+                  </summary>
+                  <hr class=""/>
+                  <div class="pl-2">
+                    <div class="mt-2">
+                      {%- if filter.active_values.size > 0 -%}
+                        <p class="hidden"><a href="{{ filter.url_to_remove }}">Reset</a></p>
+                      {%- endif -%}
+                    </div>
+                    {%- case filter.type -%}
+                      {% comment %} displays filter options {% endcomment %}
+                      {%- when 'list' -%}
+                      <ul class="">
+                        {%- for filter_value in filter.values -%}
+                          <li class="flex items-center  px-2 gap-2">
+                            <input type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}"
+                                 id="Filter-{{ filter.param_name }}-{{ forloop.index }}" {% if filter_value.active -%}checked{%- endif %}
+                                 {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                                 onChange="CheckFormData()" />
+                            <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}" class="">{{ filter_value.label }}</label>
+                          </li> 
+                        {%- endfor -%}
+                      </ul>
+                    {%- endcase -%}
+                  </div>
+                </details>
+              {%- endfor -%}
+      
+              <div class=" hidden">
+                <p class="hidden">
+                  <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a>
+                </p>
+      
+                {%- for filter in collection.filters -%}
+                  {%- for filter_value in filter.active_values -%}
+                    <p>
+                      <a href="{{ filter_value.url_to_remove }}">
+                        {{ filter.label }}: {{ filter_value.label }} X
+                      </a>
+                    </p>
+                  {%- endfor -%}
+                {%- endfor -%}
+              </div>
+            </form>
+      
+            <script>
+              function CheckFormData(){
+                console.log("CheckboxChanged");
+                form=document.getElementById("filter_form1");
+                const queryString = new URLSearchParams(new FormData(form)).toString()
+                console.log(queryString);
+                currentUrl= "body?"+queryString;
+                window.location.href=currentUrl
+              }
+      
+              function CheckFormData(){
+                console.log("CheckboxChanged");
+                form=document.getElementById("filter_form2");
+                const queryString = new URLSearchParams(new FormData(form)).toString()
+                console.log(queryString);
+                currentUrl= "body?"+queryString;
+                window.location.href=currentUrl
+              }
+            </script>
 
           </div>
 
@@ -517,7 +590,7 @@
   </aside>
 
   <!-- cart sidebar -->
-  <aside class="fixed hidden top-0 z-[300] bg-[#DEDEDE] right-0  h-screen overflow-y-auto overflow-x-hidden w-[380px]" id="CartSideBar">
+  <aside class="fixed hidden top-0 z-[600] bg-[#DEDEDE] right-0  h-screen overflow-y-auto overflow-x-hidden w-[380px]" id="CartSideBar">
 
     <!-- top heading -->
     <div class=" flex items-center justify-end gap-8 bg-[white] p-1  text-sm shadow-[black] shadow-sm">
@@ -541,65 +614,65 @@
         <div id="cartScroll" class="flex flex-col overflow-y-auto items-center space-y-2  ">
 
           {% comment %} {% for item in cart.items %}
-                      <div class="cartProduct " >
-                        <div class=" flex items-center px-4 gap-4 bg-[white] w-full  text-sm ">
-                          <div class="border-2 border-gray-700">
-                            <img class="w-32" height="" width="" src={{ item.image | img_url}}>
-                          </div>
-  
-                          <div class="flex flex-col py-2">
-                            <h1 class="mb-2">{{ item.title }}</h1>
-                            <div class="flex items-center justify-between text-xs"><p>Price</p> <span>{{ item.price }}</span></div>
-                            <div class="flex items-center justify-between  text-xs"><p>Weight</p> <span>{{ item.quantity }}</span></div>
-                            <div class="flex items-center justify-between  my-1 text-xs">
-                              <p>Quantity</p>
-                              <div class="border border-gray-700 rounded-3xl mr-[-5px]">
-                                  <div class="flex items-center justify-center gap-2  px-2">
-            
-                                      <div class=" rounded-r-2xl " >
-                                          <p class="text-center text-xs">
-                                            <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3">
-                                              <path fill-rule="evenodd" d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd" />
-                                            </svg>
-                                  
-                                  
-                                          </p>
-                                      </div>
-                                      <div class="" >
-                                          <p class="text-center text-md  font-semibold">{{ item.quantity }}</p>
-                                      </div>
-                                      <div class="  rounded-r-2xl " >
-                                          <p class="text-center text-xs">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3">
-                                              <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
-                                            </svg>
-                                  
-                                          </p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                  
-                          </div>
-                        </div>
-                        <hr>
-                        <div class="border-2  bg-[white] w-full px-2 py-2">
-                          <div class="flex items-center justify-between text-xs">
-                            <div class="flex items-center justify-center gap-2"><p>Subtotal</p> <span>₹ {{ item.final_line_price }} </span></div>
-                            <div>
-                              <a href="{{ item.url_to_remove }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                              </svg>
-  
-                              </a>
-                  
-                    
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    {% endfor %} {% endcomment %}
+                                                                                                                                                                                                                                                                      <div class="cartProduct " >
+                                                                                                                                                                                                                                                                        <div class=" flex items-center px-4 gap-4 bg-[white] w-full  text-sm ">
+                                                                                                                                                                                                                                                                          <div class="border-2 border-gray-700">
+                                                                                                                                                                                                                                                                            <img class="w-32" height="" width="" src={{ item.image | img_url}}>
+                                                                                                                                                                                                                                                                          </div>
+                                          
+                                                                                                                                                                                                                                                                          <div class="flex flex-col py-2">
+                                                                                                                                                                                                                                                                            <h1 class="mb-2">{{ item.title }}</h1>
+                                                                                                                                                                                                                                                                            <div class="flex items-center justify-between text-xs"><p>Price</p> <span>{{ item.price }}</span></div>
+                                                                                                                                                                                                                                                                            <div class="flex items-center justify-between  text-xs"><p>Weight</p> <span>{{ item.quantity }}</span></div>
+                                                                                                                                                                                                                                                                            <div class="flex items-center justify-between  my-1 text-xs">
+                                                                                                                                                                                                                                                                              <p>Quantity</p>
+                                                                                                                                                                                                                                                                              <div class="border border-gray-700 rounded-3xl mr-[-5px]">
+                                                                                                                                                                                                                                                                                  <div class="flex items-center justify-center gap-2  px-2">
+                                                    
+                                                                                                                                                                                                                                                                                      <div class=" rounded-r-2xl " >
+                                                                                                                                                                                                                                                                                          <p class="text-center text-xs">
+                                                                                                                                                                                                                                                                                            <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3">
+                                                                                                                                                                                                                                                                                              <path fill-rule="evenodd" d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd" />
+                                                                                                                                                                                                                                                                                            </svg>
+                                                                          
+                                                                          
+                                                                                                                                                                                                                                                                                          </p>
+                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                      <div class="" >
+                                                                                                                                                                                                                                                                                          <p class="text-center text-md  font-semibold">{{ item.quantity }}</p>
+                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                      <div class="  rounded-r-2xl " >
+                                                                                                                                                                                                                                                                                          <p class="text-center text-xs">
+                                                                                                                                                                                                                                                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3">
+                                                                                                                                                                                                                                                                                              <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                                                                                                                                                                                                                                                                                            </svg>
+                                                                          
+                                                                                                                                                                                                                                                                                          </p>
+                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                          </div>
+                                                          
+                                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                        <hr>
+                                                                                                                                                                                                                                                                        <div class="border-2  bg-[white] w-full px-2 py-2">
+                                                                                                                                                                                                                                                                          <div class="flex items-center justify-between text-xs">
+                                                                                                                                                                                                                                                                            <div class="flex items-center justify-center gap-2"><p>Subtotal</p> <span>₹ {{ item.final_line_price }} </span></div>
+                                                                                                                                                                                                                                                                            <div>
+                                                                                                                                                                                                                                                                              <a href="{{ item.url_to_remove }}">
+                                                                                                                                                                                                                                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                                                                                                                                                                                                                                                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                                                                                                                                                                                                                                                              </svg>
+                                          
+                                                                                                                                                                                                                                                                              </a>
+                                                          
+                                                            
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                            {% endfor %} {% endcomment %}
 
         </div>
 
@@ -653,6 +726,26 @@
           <h1 class="mb-1">Note</h1>
           <p class="leading-tight text-xs">Club points, Vouchers & Gift Cards can be redeemed
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
           during payment (cannot be clubbed with any other offer)
           *T&C apply.</p>
         </div>
@@ -670,10 +763,10 @@
       </div>
     </div>
   </aside>
-  
+
   <!-- my header -->
-  <div class="w-full z-[100] bg-white  overflow-x-hidden overflow-y-hidden" id="header-Scroll">
-    <div class="w-full flex items-center  justify-between  lg:px-[11rem] px-4 h-[80px]  overflow-x-hidden">
+  <div class=" w-full sticky top-0 z-[100] bg-white  overflow-x-hidden overflow-y-hidden" id="header-Scroll">
+    <div class="max-w-[1240px] w-[95%] mx-auto flex items-center  justify-between px-4 h-[80px]  overflow-x-hidden">
       <!-- Burger menu for small screen -->
       <div class="lg:hidden flex items-center justify-start">
         <!-- Burger menu icon -->
@@ -714,7 +807,7 @@
         <a href="/"><img
             height=""
             width=""
-            class="lg:h-20 md:h-12 h-12"
+            class="lg:h-20 md:h-12 h-12 cursor-pointer "
             src="{{ 'Group 1.png' | asset_url }}" /></a>
       </div>
 
@@ -722,43 +815,48 @@
       <div class="hidden lg:flex  items-center justify-center gap-6">
         <img
           id="showSearchPanel"
-          class="h-6"
+          class="h-6 cursor-pointer "
           height=""
           width=""
           src="{{ 'NoPath - Copy.png' | asset_url }}">
-        <a href="./myAccount.html">
-          <img
-            height=""
-            width=""
-            class="h-6"
-            src="{{ 'Icon feather-heart.png' | asset_url }}"></a>
+
         <a href="{{ shop.url }}/account">
           <img
             height=""
             width=""
-            class="h-6"
+            class="h-6 cursor-pointer "
+            src="{{ 'Icon feather-heart.png' | asset_url }}"></a>
+
+        <a href="{{ shop.url }}/account">
+          <img
+            height=""
+            width=""
+            class="h-6 cursor-pointer "
             src="{{ 'NoPath - Copy (11).png' | asset_url }}"></a>
         <img
-          class="h-6"
+          class="h-6 cursor-pointer "
           height=""
           width=""
           src="{{ 'NoPath - Copy (10).png' | asset_url }}"
           id="CartSideBarToggleButton">
       </div>
+
       <!-- right options on small screen -->
       <div class="lg:hidden flex items-center justify-start gap-2">
         <!--
         -->
         <button class="h-6 w-6  rounded flex items-center justify-center" id="profilemodalswitch">
+
           <img
-            class="h-6"
+            class="h-6 cursor-pointer"
             height=""
             width=""
             src="{{ 'NoPath - Copy (11).png' | asset_url}}">
-        </button>
-        <button class="h-6 w-6  rounded flex items-center justify-center">
 
-          <a href="./cartPage.html">
+        </button>
+
+        <button class="h-6 w-6  rounded flex items-center justify-center">
+          <a href="{{ shop.url }}/cart">
             <img
               class="h-6"
               height=""
@@ -774,7 +872,7 @@
     <hr>
 
     <!-- options -->
-    <div class="w-full flex items-center lg:justify-between  lg:px-[10rem] px-auto   overflow-x-auto  bg-white  text-[#70645C] " id="nav-Scroll">
+    <div class="max-w-[1240px] w-[95%] mx-auto flex items-center lg:justify-between  px-auto   overflow-x-auto  bg-white h-[32px] text-[#70645C] " id="nav-Scroll">
       <a href="{{ shop.url }}/pages/Ready-Made">
         <button class="text-base  px-4 py-1 hover:bg-[#70645C] hover:text-white focus:text-white focus:bg-[#70645C]">Home</button>
       </a>
@@ -812,38 +910,54 @@
     </div>
 
     <hr>
-     <!-- search panel -->
-     <div class="w-full bg-gray-400  p-4  flex items-center hidden" id="SearchPanel">
-       <div class="w-full flex justify-center items-center ">
-         <div class=" w-11/12 flex items-center justify-center "> 
-            <form action="{{ routes.search_url }}" class="relative w-full my-auto ">
-                  <input type="text" id="search-input"
-                    placeholder="Search the Web Store..."
-                    class="outline-none border border-black w-full p-2 
-                    text-[black]"
-                    name="q"
-                    value="{{ search.terms | escape }}"
-                   >
-                <button class=" absolute bottom-2 right-4 h-6 w-6 rounded flex items-center justify-center  " type="submit" value="Search">
-                  <img class="h-6" height="" width="" src="{{ 'NoPath - Copy.png' | asset_url }}">    
-                </button>
-            </form>
+    <!-- search panel -->
+    <div class="w-full bg-gray-400  p-4  flex items-center hidden" id="SearchPanel">
+      <div class="w-full flex justify-center items-center ">
+        <div class=" w-11/12 flex items-center justify-center ">
+          <form action="{{ routes.search_url }}" class="relative w-full my-auto ">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search the Web Store..."
+              class="outline-none border border-black w-full p-2 
+               text-[black]"
+              name="q"
+              value="{{ search.terms | escape }}">
+            <button
+              class=" absolute bottom-2 right-4 h-6 w-6 rounded flex items-center justify-center cursor-pointer "
+              type="submit"
+              value="Search">
+              <img
+                class="h-6"
+                height=""
+                width=""
+                src="{{ 'NoPath - Copy.png' | asset_url }}">
+            </button>
+          </form>
 
-         </div>
-         <div class="w-1/10" id="closeSearchPanel">
-           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-           class="w-10 h-10 rotate-45">
-             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-             
-           </svg>
-         </div>
-       </div>
- 
-     </div>
+        </div>
+        <div class="w-1/10" id="closeSearchPanel">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-10 h-10 rotate-45">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15" />
+
+          </svg>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <!-- profile modal -->
-  <div id="profilemodal" class="fixed hidden top-0 left-0 right-0 z-[300]  justify-center items-center w-full md:inset-0 h-screen  ">
+  <div id="profilemodal" class="fixed hidden top-0 left-0 right-0 z-[700]  justify-center items-center w-full md:inset-0 h-screen  ">
     <div class="relative ml-auto w-36 right-4 top-16  opacity-100 " onclick=" keepModalOpen(event)">
       <!-- Modal content -->
       <div class="relative  rounded-lg shadow bg-[#ede9dd] ">
@@ -867,7 +981,7 @@
 
 
               <p class="text-gray-700 text-md font-light">
-                Sign In
+                <a href="{{ shop.url }}/account/login">Sign In</a>
               </p>
 
 
@@ -890,7 +1004,7 @@
 
 
               <p class="text-gray-700 text-md font-light">
-                Register
+                <a href="{{ shop.url }}/account/register">Register</a>
               </p>
 
 
@@ -936,7 +1050,7 @@
 
 
               <p class="text-gray-700 text-md font-light">
-                My Account
+                <a href="{{ shop.url }}/account">My Account</a>
               </p>
 
 

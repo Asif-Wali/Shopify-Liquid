@@ -164,6 +164,9 @@ createCustomerForm.addEventListener("submit", function (event) {
   if (!formData.get("customer[email]")) {
     errors.email = "Email is required.";
   }
+  if (!formData.get("customer[phone]")) {
+    errors.email = "Number is required.";
+  }
   if (!formData.get("customer[password]")) {
     errors.password = "Password is required.";
   }
@@ -238,7 +241,7 @@ function calculatePasswordStrength(password) {
   } else if (score >= 1) {
     strength = "Weak";
   } else {
-    strength = "No Strength";
+    strength = "No Password";
   }
 
   return strength;

@@ -1,0 +1,946 @@
+@media all and (max-width: 599px) {
+  .myAccountMainContainer {
+    display: none;
+  }
+
+  .myAccountMobileView {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pageHeading {
+    width: 100%;
+    height: auto;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+    color: #70645c;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .accordianContainer,
+  .accordianSection {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .accordianContainer {
+    padding-top: 10px;
+  }
+
+  .accordianSection {
+    padding: 5px;
+  }
+
+  .accordianSectionContent {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 10px 0;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    transition: height 0.5s ease;
+  }
+
+  .accordianSectionContent.active {
+    display: flex;
+    height: auto;
+  }
+
+  .sectionHeadingMobile {
+    width: 100%;
+    height: auto;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+    color: #70645c;
+    text-align: left;
+    border-bottom: 1px solid #707070;
+    cursor: pointer;
+  }
+
+  /*Profile Dashboard*/
+  .verifiedUserEdit {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .verifiedUser {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .verifiedUser > img {
+    height: 28px;
+    width: 28px;
+  }
+
+  .verifiedUser > p {
+    font-family: "Noto Sans", sans-serif;
+    color: #70645c;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+  }
+
+  .editIcon {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .editIcon > span > img {
+    height: 14px;
+    width: 14px;
+  }
+
+  .editIcon > p {
+    font-family: "Noto Sans", sans-serif;
+    color: #70645c;
+    font-size: 14px;
+    font-weight: 400px;
+    font-style: normal;
+  }
+
+  .userDetailsMobile {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .userDetailsMobile > div {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 5px 0;
+    border-bottom: 1px solid #707070;
+  }
+
+  .userDetailsMobile > div:nth-child(4) {
+    border: none;
+  }
+
+  .userDetailsMobile > div > p:nth-child(1) {
+    font-family: "Noto Sans", sans-serif;
+    color: black;
+    font-size: 14px;
+    font-weight: 500px;
+    font-style: normal;
+  }
+
+  .userDetailsMobile > div > p:nth-child(2) {
+    font-family: "Noto Sans", sans-serif;
+    color: #70645c;
+    font-size: 14px;
+    font-weight: 400px;
+    font-style: normal;
+  }
+
+  .userDetailsMobile > div:nth-child(4) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .userDetailsMobile > div:nth-child(4) > span > p {
+    font-family: "Noto Sans", sans-serif;
+    color: black;
+    font-size: 14px;
+    font-weight: 500px;
+    font-style: normal;
+  }
+
+  .userDetailsMobile > div:nth-child(4) > span:nth-child(2) > p {
+    color: #70645c;
+    font-weight: 500px;
+  }
+
+  .userDetailsMobile > div:nth-child(4) > span > p:nth-child(2) {
+    color: #70645c;
+    font-weight: 400px;
+    font-style: italic;
+  }
+
+  .newsletter,
+  .whatsApp {
+    width: 100%;
+    height: auto;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 25px;
+  }
+
+  .newsletter > div,
+  .whatsApp > div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #707070;
+  }
+
+  .newsletter > div > h2,
+  .whatsApp > div > h2 {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 400;
+    color: #70645c;
+    letter-spacing: 1.5px;
+  }
+
+  .newsletter > div > span,
+  .whatsApp > div > span {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .newsletter > div > span > img,
+  .whatsApp > div > span > img {
+    width: 38px;
+    height: 20px;
+  }
+
+  .newsletter > div > span > p,
+  .whatsApp > div > span > p {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #70645c;
+    text-align: right;
+  }
+
+  .newsletter > p,
+  .whatsApp > p {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #70645c;
+    text-align: left;
+    margin: auto;
+    margin-top: 5px;
+  }
+
+  .whatsApp > p {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    width: 100%;
+    color: #70645c;
+    text-align: left;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  .whatsApp > p > span {
+    width: 18px;
+    height: 18px;
+    display: inline;
+  }
+
+  #addressBookMobile > .accordianSectionContent {
+    gap: 25px;
+  }
+
+  .addressBoxMobile {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  }
+
+  .addressBoxMobile > div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .addressBoxMobile > div:nth-child(1) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .addressBoxMobile > div:nth-child(1) > span:nth-child(1) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: last baseline;
+    gap: 15px;
+  }
+
+  .addressBoxMobile > div:nth-child(1) > span:nth-child(2) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0px;
+    margin-top: -10px;
+  }
+
+  .addressBoxMobile > div > span > p,
+  .addressBoxMobile > div > p {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+    letter-spacing: 0.5px;
+  }
+
+  .addressBoxMobile > div > span:nth-child(2) > p {
+    width: fit-content;
+    text-align: right;
+  }
+
+  .addressBoxMobile > div > span > p {
+    color: black;
+  }
+
+  .addressBoxMobile > div > p:nth-child(1) {
+    margin-bottom: 5px;
+    color: #70645c;
+  }
+
+  .addressBoxMobile > div:nth-child(3) > p {
+    color: black;
+    font-weight: 600;
+  }
+
+  .addNewAddress {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .addNewAddress > span:nth-child(1) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .addNewAddress > span:nth-child(1) > p {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+    letter-spacing: 1px;
+    color: black;
+  }
+
+  .addNewAddress > span:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .addNewAddress > span:nth-child(2) > img {
+    width: 13px;
+    height: 13px;
+  }
+
+  .addNewAddress > span:nth-child(2) > p {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+    letter-spacing: 1px;
+    color: black;
+  }
+
+  /* Order box */
+
+  #orderDetailsMobile > .accordianSectionContent {
+    gap: 25px;
+  }
+
+  .orderHistoryBox,
+  .orderHistoryBox > div {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .orderHistoryBox {
+    padding: 10px 0;
+    gap: 25px;
+    border-radius: 5px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  }
+
+  .orderHistoryBox > div {
+    align-items: flex-start;
+  }
+
+  .orderHistoryBox > div:nth-child(2) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #707070;
+  }
+
+  .orderHistoryBox > div:nth-child(2) > span {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .orderHistoryBox > div:nth-child(1) > div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .orderHistoryBox > div:nth-child(1) > div:nth-child(1) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .orderHistoryBox > div:nth-child(1) > div:nth-child(1) > span:nth-child(1),
+  .orderHistoryBox > div:nth-child(1) > div:nth-child(2) > span {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    gap: 10px;
+  }
+
+  .orderHistoryBox > div:nth-child(1) > div:nth-child(1) > span:nth-child(2) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+  }
+
+  .orderHistoryBox
+    > div:nth-child(1)
+    > div:nth-child(1)
+    > span:nth-child(1)
+    > p:nth-child(1),
+  .orderHistoryBox
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span
+    > p:nth-child(1),
+  .orderHistoryBox > div:nth-child(2) > span > p:nth-child(2) {
+    width: fit-content;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .orderHistoryBox
+    > div:nth-child(1)
+    > div:nth-child(1)
+    > span:nth-child(1)
+    > p:nth-child(2),
+  .orderHistoryBox
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span
+    > p:nth-child(2),
+  .orderHistoryBox > div:nth-child(2) > span > p:nth-child(1) {
+    width: fit-content;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .orderHistoryBox
+    > div:nth-child(1)
+    > div:nth-child(1)
+    > span:nth-child(2)
+    > p {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 14px;
+    text-align: right;
+    color: #009290;
+  }
+
+  /* Product Review Box */
+
+  #productReviewMobile > .accordianSectionContent {
+    gap: 15px;
+  }
+
+  .productReviewBoxMobile {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  }
+
+  .productReviewBoxMobile > div:nth-child(1) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .productReviewBoxMobile > div:nth-child(1) > div:nth-child(1) {
+    width: 100px;
+    height: 100px;
+  }
+
+  .productReviewBoxMobile > div:nth-child(1) > div:nth-child(2) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .productReviewBoxMobile
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span:nth-child(1) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .productReviewBoxMobile
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span:nth-child(2) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .productReviewBoxMobile
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span:nth-child(2)
+    > p {
+    width: fit-content;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+    color: black;
+  }
+
+  .productReviewBoxMobile
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span:nth-child(1)
+    > p,
+  .productReviewBoxMobile
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span:nth-child(1)
+    > span
+    > p {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+    color: black;
+  }
+
+  .productReviewBoxMobile
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span:nth-child(1)
+    > span {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .productReviewBoxMobile
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span:nth-child(1)
+    > span
+    > img {
+    width: 13px;
+    height: 13px;
+  }
+  .productReviewBoxMobile
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > span:nth-child(1)
+    > span
+    > p {
+    width: fit-content;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-align: right;
+    color: black;
+  }
+
+  .productReviewBoxMobile > div:nth-child(2) {
+    width: 100%;
+    height: auto;
+    text-align: left;
+  }
+  .productReviewBoxMobile > div:nth-child(2) > .productReviewDesc {
+    width: 100%;
+    height: auto;
+    border: 1px solid #707070;
+    outline: none;
+    background-color: transparent;
+    padding: 5px;
+    font-family: "Noto Sans", sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    width: 100%;
+    font-weight: 400;
+    color: black;
+    letter-spacing: 1px;
+  }
+
+  /* Wislist products */
+
+  #wishlistMobile > .accordianSectionContent {
+    gap: 20px;
+    position: relative;
+  }
+
+  .wishlistBoxMobileWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 10px;
+    padding-right: 15px;
+  }
+  .wishlistBoxMobile {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0 10px;
+    padding-right: 15px;
+  }
+
+  .wishlistBoxMobile > div:nth-child(1) {
+    width: 100px;
+    height: 100px;
+  }
+
+  .wishlistBoxMobile > div:nth-child(2) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .wishlistBoxMobile > div:nth-child(2) > P {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+    color: black;
+    letter-spacing: 1px;
+  }
+
+  .wishlistBoxMobile > div:nth-child(2) > span {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .wishlistBoxMobile > div:nth-child(2) > span > p {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-align: left;
+    color: black;
+    border-bottom: 1px solid #707070;
+  }
+
+  .wishlistBoxMobile > div:nth-child(2) > span > button {
+    width: 128px;
+    height: 32px;
+    border-radius: 70px;
+    border: 1px #707070 solid;
+    color: #70645c;
+    cursor: pointer;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 23px 2px -18px inset,
+      rgba(0, 0, 0, 0.3) 0px 15px 27px -27px inset;
+  }
+
+  .shareCartButtonsMobile {
+    width: 100%;
+    height: 49px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+  }
+
+  .shareCartButtonsMobile > button {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: block;
+    background-color: #70645c;
+    color: white;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* timelessTable */
+
+  .timelessTable {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .timelessTable > div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .timelessTable > div:nth-child(1) {
+    flex-direction: column;
+    gap: 12px;
+    padding: 4px 0;
+    margin-top: 6px;
+    border-bottom: 1px solid #707070;
+  }
+
+  .timelessTable > div:nth-child(1) > span {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .timelessTable > div:nth-child(1) > span > p:nth-child(1) {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .timelessTable > div:nth-child(1) > span:nth-child(1) > p:nth-child(2) {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .timelessTable > div:nth-child(2) > table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+  }
+
+  .timelessTable > div:nth-child(2) > table > thead {
+    width: 100%;
+    height: 32px;
+    border: 1px solid #707070;
+  }
+  .timelessTable > div:nth-child(2) > table > tbody {
+    width: 100%;
+    height: auto;
+  }
+
+  .timelessTable > div:nth-child(2) > table > thead > tr > th,
+  .timelessTable > div:nth-child(2) > table > tbody > tr > td {
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    padding: 0 5px;
+  }
+
+  .timelessTable > div:nth-child(2) > table > tbody > tr > td {
+    padding: 5px;
+  }
+
+  .timelessTable > div:nth-child(2) > table > thead > tr > th:nth-child(1),
+  .timelessTable > div:nth-child(2) > table > tbody > tr > td:nth-child(1) {
+    text-align: left;
+  }
+
+  .timelessTable > div:nth-child(2) > table > tbody > tr {
+    width: 100%;
+    height: auto;
+  }
+}

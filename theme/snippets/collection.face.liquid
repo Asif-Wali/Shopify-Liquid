@@ -1,0 +1,51 @@
+<form class="" id="filter_form2">
+        {%- for filter in collection.filters -%}
+          <details class="" open>
+            {% comment %} this gives us headings {% endcomment %}
+            <summary class="flex border-b ">
+              <div class="flex py-2 px-2">
+                <span class="text-sm font-semibold">{{ filter.label }}</span>
+              </div>
+            </summary>
+            <hr class=""/>
+            <div class="pl-2">
+              <div class="mt-2">
+                {%- if filter.active_values.size > 0 -%}
+                  <p class="hidden"><a href="{{ filter.url_to_remove }}">Reset</a></p>
+                {%- endif -%}
+              </div>
+              {%- case filter.type -%}
+                {% comment %} displays filter options {% endcomment %}
+                {%- when 'list' -%}
+                <ul class="">
+                  {%- for filter_value in filter.values -%}
+                    <li class="flex items-center  px-2 gap-2">
+                      <input type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}"
+                           id="Filter-{{ filter.param_name }}-{{ forloop.index }}" {% if filter_value.active -%}checked{%- endif %}
+                           {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                           onChange="CheckFormData()" />
+                      <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}" class="">{{ filter_value.label }}</label>
+                    </li> 
+                  {%- endfor -%}
+                </ul>
+              {%- endcase -%}
+            </div>
+          </details>
+        {%- endfor -%}
+
+        <div class=" hidden">
+          <p class="hidden">
+            <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a>
+          </p>
+
+          {%- for filter in collection.filters -%}
+            {%- for filter_value in filter.active_values -%}
+              <p>
+                <a href="{{ filter_value.url_to_remove }}">
+                  {{ filter.label }}: {{ filter_value.label }} X
+                </a>
+              </p>
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
+      </form>

@@ -1,17 +1,23 @@
 <section>
   <!-- top image -->
-  <div class="relative border border-[blue] flex  items-start">
-    
-      <img
-        class="w-full h-full object-contain"
-        width=""
-        height=""
-        src="{{ 'Mask Group 8.png' | asset_url }}" />
-  
-        <div class="absolute top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:top-[50%] lg:left-[25%] flex items-center justify-center gap-2 border border-[red]">
-        <a href="/account/login" class="text-white lg:text-xs text-[0.55rem] lg:px-10 px-3 py-2 rounded-full bg-[#009290]">JOIN CLUB &#8594;</a>
-        <a href="/account/login" class="text-white lg:text-xs text-[0.55rem] lg:px-10 px-3 py-2 rounded-full bg-[#009290]">SIGN IN &#8594;</a>
-      </div>
+  <div class="relative flex  items-start">
+
+    <img
+      class="w-full h-full object-contain hidden md:block"
+      width=""
+      height=""
+      src="{{ 'Mask Group 8.png' | asset_url }}" />
+
+    <img
+      class="w-full h-full object-contain block md:hidden"
+      width=""
+      height=""
+      src="{{ 'Mobile Slide banner.png' | asset_url }}" />
+
+    <div class="absolute top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:top-[50%] lg:left-[25%] flex items-center justify-center gap-2 w-[80%] md:w-auto ">
+      <a href="/account/login" class="text-white text-base px-10 py-2 rounded-full bg-[#009290]">JOIN CLUB &#8594;</a>
+      <a href="/account/login" class="text-white text-base px-10 py-2 rounded-full bg-[#009290]">SIGN IN &#8594;</a>
+    </div>
   </div>
 
   <!-- paragraph -->

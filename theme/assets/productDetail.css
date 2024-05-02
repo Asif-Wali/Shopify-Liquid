@@ -1,0 +1,38 @@
+.heardSwiper {
+  padding: 10px 0;
+}
+
+.ingredientsSwiper > .swiper-wrapper,
+.heardSwiper > .swiper-wrapper,
+.BuySwiper > .swiper-wrapper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.ingredientsSwiperContainer > .swiper-button-prev {
+  position: absolute;
+  opacity: 1;
+  left: -10px;
+}
+
+.ingredientsSwiperContainer > .swiper-button-next {
+  right: -10px;
+  position: absolute;
+  opacity: 1;
+}
+
+.ingredientsSwiperContainer > .swiper-button-prev::after,
+.ingredientsSwiperContainer > .swiper-button-next::after {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.ingredientsSwiperContainer > .swiper-pagination,
+.BuySwiper > .swiper-pagination {
+  margin-top: 10px;
+}

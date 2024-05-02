@@ -1,0 +1,2225 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.myAccountMobileView {
+  display: none;
+}
+
+.myAccountMainContainer {
+  max-width: 1240px;
+  width: 95%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: auto;
+  gap: 120px;
+  margin-top: 15px;
+  padding-bottom: 25px;
+  border-bottom: 0.25px solid #707070;
+}
+
+.myAccountSidebar {
+  width: 176px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.myAccountSidebar > span {
+  width: 100%;
+  height: auto;
+}
+
+.myAccountSidebar > span > h2 {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  width: 100%;
+  color: #70645c;
+  text-align: center;
+}
+
+.accountTabs {
+  width: 100%;
+  height: 375px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #707070;
+  background-color: #ede9ed;
+  padding: 10px 0 0 10px;
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+
+.accountTabs > p {
+  width: 100%;
+  height: auto;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #000000;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accountTabs > p.activeTab {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: #707070;
+  text-decoration-skip-ink: none;
+}
+
+.tabContentContainer {
+  width: calc(100% - 176px);
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Tab Content Css and Common Section Heading  */
+.tabContent {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.tabContent {
+  display: none;
+}
+
+.tabContent.active {
+  display: flex;
+}
+
+.sectionHeading {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #707070;
+}
+
+.sectionHeading > span:nth-child(1) {
+  width: 100%;
+  height: auto;
+}
+
+.sectionHeading > span:nth-child(1) > h2 {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  color: #70645c;
+  text-align: left;
+  letter-spacing: 1.5px;
+}
+
+.sectionHeading > span:nth-child(2) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.sectionHeading > span:nth-child(2) > img {
+  width: 36px;
+  height: 36px;
+}
+
+.sectionHeading > span:nth-child(2) > p {
+  width: fit-content;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400px;
+  font-style: normal;
+  font-size: 14px;
+  color: #70645c;
+  text-align: right;
+}
+
+.productReturnSectionHeading,
+.productReturnSectionHeading > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+
+.productReturnSectionHeading > span > h2 {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  color: #70645c;
+  text-align: left;
+  letter-spacing: 1.5px;
+}
+
+.productReturnSectionHeading > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400px;
+  font-style: normal;
+  font-size: 14px;
+  color: #70645c;
+  text-align: left;
+}
+
+/* Profile Dashboard */
+
+.sectionContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 5px 0;
+}
+
+.userSignOut,
+.userDetail {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userDetail {
+  padding: 0 5px;
+}
+
+.userSignOut > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 2px;
+}
+
+.userSignOut > span > img {
+  width: 28px;
+  height: 28px;
+}
+.userSignOut > span > p {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #70645c;
+}
+
+.userSignOut > p {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  color: #70645c;
+  text-align: right;
+}
+
+.userDetail > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.userDetail > span > p {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.userDetail > span > p:nth-child(1) {
+  font-weight: 500;
+  color: #70645c;
+}
+
+.userDetail > span > p:nth-child(2) {
+  font-weight: 400;
+  color: black;
+}
+
+.newsletter,
+.whatsApp {
+  width: 93%;
+  height: auto;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 25px;
+  padding: 3px;
+}
+
+.newsletter > div,
+.whatsApp > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #707070;
+}
+
+.newsletter > div > h2,
+.whatsApp > div > h2 {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: 400;
+  color: #70645c;
+  letter-spacing: 1.5px;
+}
+
+.newsletter > div > span,
+.whatsApp > div > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+}
+
+.newsletter > div > span > img,
+.whatsApp > div > span > img {
+  width: 38px;
+  height: 20px;
+}
+
+.newsletter > div > span > p,
+.whatsApp > div > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #70645c;
+  text-align: right;
+}
+
+.newsletter > p,
+.whatsApp > p {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #70645c;
+  text-align: left;
+  margin: auto;
+  margin-top: 5px;
+}
+
+.whatsApp > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  width: 100%;
+  color: #70645c;
+  text-align: left;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.whatsApp > p > span {
+  width: 18px;
+  height: 18px;
+  display: inline;
+}
+
+/*-------- Address Content-----------*/
+.addressContent {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 10px 0;
+}
+
+.addressBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.addressBox > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: last baseline;
+  gap: 10px;
+}
+
+.addressBox > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.addressBox > span > p,
+.addressBox > div > p {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.addressBox > span > p {
+  color: #70645c;
+}
+
+.addressBox > div > p:nth-child(1) {
+  margin-bottom: 5px;
+  color: #70645c;
+}
+
+.addressBox > div:nth-child(3) > p {
+  color: black;
+  font-weight: 600;
+}
+
+/* Order nd RetURN CARD*/
+
+.orderContent,
+.returnContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 10px 0;
+}
+
+.orderBox,
+.returnBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 10px 0 10px 10px;
+  border-radius: 5px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.orderDetails,
+.returnOrderDetails {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.orderDetails > div,
+.returnOrderDetails > div {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.orderDetails > div > div,
+.returnOrderDetails > div > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.orderDetails > div > div:nth-child(1),
+.returnOrderDetails > div > div:nth-child(1) {
+  border-right: 1px solid #707070;
+}
+
+.orderDetails > div > div > span,
+.returnOrderDetails > div > div > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.orderDetails > div > div > span > p,
+.returnOrderDetails > div > div > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  width: fit-content;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.orderDetails > div > div > span > p:nth-child(1),
+.returnOrderDetails > div > div > span > p:nth-child(1) {
+  font-weight: 600;
+}
+
+.orderDetails > div > div > span > p:nth-child(2),
+.returnOrderDetails > div > div > span > p:nth-child(2) {
+  font-weight: 300;
+}
+
+.orderDetails > div > div:nth-child(2) span:nth-child(1) > p:nth-child(2),
+.returnOrderDetails
+  > div
+  > div:nth-child(2)
+  span:nth-child(1)
+  > p:nth-child(2) {
+  color: #009290;
+  font-style: italic;
+}
+
+.orderDetails > span,
+.returnOrderDetails > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin: auto 0;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.orderDetails > span > p:nth-child(1),
+.returnOrderDetails > span > p:nth-child(1) {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  text-align: left;
+  width: 25%;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.orderDetails > span > p:nth-child(2),
+.returnOrderDetails > span > p:nth-child(2) {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 300;
+  width: auto;
+}
+
+.orderBox > button,
+.returnBox > button {
+  display: block;
+  width: 128px;
+  height: 32px;
+  margin: auto;
+  border-radius: 70px;
+  border: 1px #707070 solid;
+  color: #70645c;
+  cursor: pointer;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 23px 2px -18px inset,
+    rgba(0, 0, 0, 0.3) 0px 15px 27px -27px inset;
+}
+
+/* Product Review Content */
+.productReviewContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 10px 0;
+}
+
+.productReviewBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.productReviewBox > div:nth-child(1) {
+  width: fit-content;
+  height: auto;
+}
+.productReviewBox > div:nth-child(2) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+.productReviewBox > div:nth-child(2) > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+
+.productReviewBox > div:nth-child(2) > span > p:nth-child(1) {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.productReviewBox > div:nth-child(2) > span > p:nth-child(2) {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+  font-weight: 300;
+}
+
+.productReviewBox > div:nth-child(2) > .productReviewDesc {
+  width: 100%;
+  height: auto;
+  border: 1px solid #707070;
+  outline: none;
+  background-color: transparent;
+  text-align: left;
+  padding: 5px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: italic;
+  font-size: 14px;
+  width: 100%;
+  font-weight: 400;
+  color: #70645c;
+  letter-spacing: 0.5px;
+}
+
+/* Product Return Section */
+
+.productsToReturn {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 10px 20px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+.productsToReturn > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.returnProductsContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.returnProductBoxLg {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.returnProductBoxLg > div:nth-child(1) {
+  width: fit-content;
+  height: auto;
+}
+
+.returnProductBoxLg > div:nth-child(1) > img {
+  width: 100px;
+  height: 65px;
+}
+
+.returnProductBoxLg > div:nth-child(2) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.returnProductBoxLg > div:nth-child(2) > span {
+  width: fit-content;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.returnProductBoxLg > div:nth-child(2) > p,
+.returnProductBoxLg > div:nth-child(2) > span > p,
+.returnProductBoxLg > div:nth-child(3) > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.returnProductBoxLg > div:nth-child(3) {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.returnProductBoxLg > div:nth-child(3) > span:nth-child(2) {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #707070;
+  padding: 2px;
+}
+
+.totalReturnValue {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #70645c;
+  padding: 0 15px;
+}
+
+.totalReturnValue > div:nth-child(1) {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.totalReturnValue > div:nth-child(2) {
+  width: 40%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.totalReturnValue > div > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.whyReturnReasonBoxMobile {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 30px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.whyReturnReasonBoxMobile > span > h2 {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 18px;
+  color: black;
+  letter-spacing: 1.5px;
+  padding: 5px 0;
+}
+
+.whyReturnReasonBoxMobile > div,
+.whyReturnReasonBoxMobile > div > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.whyReturnReasonBoxMobile > div > span {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+}
+
+.whyReturnReasonBoxMobile > div > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  color: black;
+}
+
+.whyReturnReasonBoxMobile > div:nth-child(3) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
+.whyReturnReasonBoxMobile > div:nth-child(3) > textarea {
+  width: calc(100% - 20px);
+  height: auto;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+}
+
+.returnProductBtnLg {
+  width: 432px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #70645c;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+
+.returnProductBtnLg > button {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.wishListContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #707070;
+}
+
+.wishlistProductBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #707070;
+}
+
+.wishlistProductBox > div:nth-child(1) {
+  width: fit-content;
+  height: auto;
+}
+
+.wishlistProductBox > div:nth-child(2) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.wishlistProductBox > div:nth-child(2) > p:nth-child(1) {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.wishlistProductBox > div:nth-child(2) > p:nth-child(2) {
+  font-family: "Book Antiqua", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  width: 97%;
+}
+
+.wishlistProductBox > div:nth-child(2) > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: last baseline;
+  gap: 10px;
+}
+
+.wishlistProductBox > div:nth-child(2) > span > p {
+  width: auto;
+  height: auto;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 2px;
+  text-align: center;
+  border-bottom: 1px solid #707070;
+}
+
+.wishlistProductBox > div:nth-child(2) > span > button {
+  width: 128px;
+  height: 32px;
+  border-radius: 70px;
+  border: 1px #707070 solid;
+  color: #70645c;
+  cursor: pointer;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 23px 2px -18px inset,
+    rgba(0, 0, 0, 0.3) 0px 15px 27px -27px inset;
+}
+
+.shareCartButtons {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-top: 25px;
+}
+
+.shareCartButtons > button {
+  width: 200px;
+  height: 37px;
+  border-radius: 70px;
+  border: 1px #009290 solid;
+  background-color: #009290;
+  color: white;
+  cursor: pointer;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.mayLikeProduct {
+  width: 75%;
+  height: auto;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.mayLikeProduct {
+  display: none;
+}
+
+.mayLikeProduct.active {
+  display: flex;
+}
+
+.mayLikeProduct > h1 {
+  font-family: "Billgrotia Sans", sans-serif;
+  font-style: normal;
+  font-size: 75px;
+  font-weight: 400;
+  text-align: center;
+  color: #70645c;
+  letter-spacing: 5px;
+}
+
+.productConatiner2 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 15px;
+  padding-bottom: 0;
+  border-bottom: 1px solid #707070;
+}
+
+.ProductCard {
+  width: calc(100% / 4);
+  height: 388px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  margin: auto;
+  gap: 10px;
+  padding-bottom: 25px;
+}
+
+.ProductCard > img:nth-child(1) {
+  width: 284px;
+  height: 284px;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.ProductCard > h4 {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.ProductCard > div {
+  width: 90%;
+  height: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.ProductCard > div > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+}
+
+.ProductCard > p {
+  width: auto;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.ProductCard > button {
+  width: 128px;
+  height: 32px;
+  border-radius: 70px;
+  border: 1px #707070 solid;
+  color: #70645c;
+  cursor: pointer;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 23px 2px -18px inset,
+    rgba(0, 0, 0, 0.3) 0px 15px 27px -27px inset;
+}
+
+/*Timeless Club*/
+.timelessContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 10px 0;
+  position: relative;
+}
+
+.imgAndSlogan {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.imgAndSlogan > .backgroundImg {
+  width: 100%;
+  height: 261px;
+}
+
+.backgroundImg > img {
+  width: 100%;
+  height: 261px;
+}
+
+.clubSlogan {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-family: "Billgrotia Sans", sans-serif;
+  font-style: normal;
+  font-size: 75px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 1.5px;
+  color: white;
+  margin: auto;
+}
+
+.imgAndSlogan > div:nth-child(3) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #ede9ed;
+  padding: 8px 6px;
+}
+
+.imgAndSlogan > div:nth-child(3) > h2,
+.imgAndSlogan > div:nth-child(3) > p {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 26px;
+  width: auto;
+  text-align: left;
+  font-weight: 400;
+}
+
+.imgAndSlogan > div:nth-child(3) > h2 {
+  font-size: 26px;
+  color: #70645c;
+}
+
+.imgAndSlogan > div:nth-child(3) > p {
+  font-size: 14px;
+  color: black;
+}
+
+.benefitSlogan {
+  width: 95%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-right: 15px;
+}
+
+.benefitSlogan > h1 {
+  width: 100%;
+  height: auto;
+  font-family: "Billgrotia Sans", sans-serif;
+  font-style: normal;
+  font-size: 75px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 1.5px;
+  color: #70645c;
+  margin: auto;
+}
+
+.benefitSlogan > p {
+  font-family: "Noto Sans", sans-serif;
+  height: 19px;
+  font-style: normal;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+  margin-top: -25px;
+}
+
+.timelessIcons {
+  width: 95%;
+  height: auto;
+  margin: auto;
+}
+
+.timelessIcons > img {
+  width: 100%;
+  height: auto;
+}
+.timelessContent > button {
+  width: 432px;
+  height: 48px;
+  margin: auto;
+  border-radius: 15px;
+  border: 1px #707070 solid;
+  background-color: #70645c;
+  color: white;
+  cursor: pointer;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* @media all and (max-width: 1500px) {
+  .myAccountMainContainer {
+    width: 80%;
+    gap: 90px;
+  }
+
+  .tabContentContainer {
+    width: calc(100% - 176px);
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .mayLikeProduct {
+    width: 80%;
+    height: auto;
+  }
+
+  .ProductCard {
+    width: calc(100% / 4);
+    height: auto;
+  }
+} */
+
+@media all and (min-width: 900px) and (max-width: 1099px) {
+  .myAccountMainContainer {
+    width: 90%;
+    gap: 70px;
+  }
+
+  .tabContentContainer {
+    width: calc(100% - 176px);
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .benefitSlogan > h1 {
+    font-size: 67px;
+  }
+}
+
+@media all and (min-width: 800px) and (max-width: 899px) {
+  .myAccountMainContainer {
+    width: 98%;
+    gap: 40px;
+  }
+
+  .myAccountSidebar {
+    width: 160px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .tabContentContainer {
+    width: 98%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .benefitSlogan > h1 {
+    font-size: 64px;
+  }
+}
+
+@media all and (min-width: 550px) and (max-width: 799px) {
+  .myAccountMainContainer {
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: auto;
+    gap: 40px;
+    margin-top: 15px;
+    padding-bottom: 25px;
+    padding-left: 10px;
+    border-bottom: 0.25px solid #707070;
+  }
+
+  .myAccountSidebar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .myAccountSidebar > span {
+    width: 100%;
+    height: auto;
+  }
+
+  .myAccountSidebar > span > h2 {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 26px;
+    width: 100%;
+    color: #70645c;
+    text-align: left;
+  }
+
+  .accountTabs {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid #707070;
+    background-color: #ede9ed;
+    padding: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 25px;
+    white-space: nowrap;
+  }
+
+  .accountTabs > p {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #000000;
+    text-align: right;
+    cursor: pointer;
+  }
+
+  .accountTabs::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .accountTabs::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .accountTabs::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+
+  .tabContentContainer {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .mayLikeProduct.active {
+    display: none;
+  }
+
+  .benefitSlogan > h1 {
+    font-size: 60px;
+  }
+}
+
+/*  View Order dETAILS MOAL BOX  **/
+.viewOrderDetailsModal,
+.returnOrderDetailsModal {
+  max-width: 912px;
+  width: 90%;
+  height: 581px;
+  display: none;
+  padding: 10px 30px;
+  padding-top: 0px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 18px;
+  border-radius: 25px;
+  z-index: 25;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.viewOrderDetailsModal::backdrop,
+.returnOrderDetailsModal::backdrop {
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.viewOrderDetailsModal > div:nth-child(1),
+.returnOrderDetailsModal > div:nth-child(1) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+.viewOrderDetailsModal > div:nth-child(1) > h2,
+.returnOrderDetailsModal > div:nth-child(1) > h2 {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  color: #70645c;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.viewOrderDetailsModal > div:nth-child(1) > span,
+.returnOrderDetailsModal > div:nth-child(1) > span {
+  width: 17px;
+  height: 17px;
+  text-align: right;
+  cursor: pointer;
+}
+
+.viewOrderDetailBoxLg {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.viewOrderDetailBoxLg > div {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 10px;
+}
+
+.viewOrderDetailBoxLg > div > span {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.viewOrderDetailBoxLg > div:nth-child(1) > span:nth-child(2) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: center;
+}
+
+.viewOrderDetailBoxLg > div > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+}
+
+.viewOrderDetailBoxLg > div > span > p:nth-child(1) {
+  font-weight: 600;
+}
+
+.OrderShippingAddresslg {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.OrderShippingAddresslg > div {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 10px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+}
+
+.OrderShippingAddresslg > div:nth-child(2) {
+  flex-direction: column;
+}
+
+.OrderShippingAddresslg > div:nth-child(2) > p {
+  font-weight: 400;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+}
+
+.OrderShippingAddresslg > div:nth-child(1) > p {
+  font-weight: 600;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+}
+
+.shipmentOrderProductDetail {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.shipmentOrderProductDetail > div:nth-child(1) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 0 10px;
+}
+
+.shipmentOrderProductDetail > div:nth-child(1) > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+}
+
+.shipmentOrderProductDetail > div:nth-child(2) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 10px;
+}
+
+.shipmentOrderProductDetail > div:nth-child(2) > span {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.shipmentOrderProductDetail > div:nth-child(2) > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+}
+
+.shipmentOrderProductDetail > div:nth-child(2) > span:nth-child(2) {
+  justify-content: last baseline;
+  align-items: last baseline;
+}
+
+.shipmentOrderProductDetail > div:nth-child(3) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 10px;
+}
+
+.shipmentOrderProductDetail > div:nth-child(3) > div {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shipmentOrderProductDetail > div:nth-child(3) > div > span:nth-child(1) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.shipmentOrderProductDetail > div:nth-child(3) > div > span:nth-child(2) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.shipmentOrderProductDetail > div:nth-child(3) > div > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+}
+
+.shipmentOrderProductDetail > div:nth-child(3) > span {
+  width: 1px;
+  height: 30px;
+  border: 1px solid #009290;
+  margin-left: 7px;
+  border-radius: 1px;
+}
+
+.viewOrderProducts {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.viewProductItem {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.viewProductItem > div:nth-child(1) {
+  width: auto;
+  height: auto;
+}
+
+.viewProductItem > div:nth-child(2) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.viewProductItem > div:nth-child(2) > p {
+  width: 80%;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  margin-top: -2px;
+}
+.viewProductItem > div:nth-child(2) > span {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.viewProductItem > div:nth-child(2) > span:nth-child(3) {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.viewProductItem > div:nth-child(2) > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.replacementiNFOLGButton,
+.replacementiNFOLGButton > div:nth-child(1) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 2px;
+}
+
+.replacementiNFOLGButton > div > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #009290;
+  letter-spacing: 1px;
+}
+
+.replacementiNFOLGButton > div > span {
+  width: fit-content;
+  height: auto;
+  margin-top: 1px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.replacementiNFOLGButton > div:nth-child(2) {
+  width: fit-content;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+}
+
+.replacementiNFOLGButton > div:nth-child(2) > button {
+  width: 200px;
+  height: 37px;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: white;
+  letter-spacing: 1px;
+  background-color: #009290;
+  border-radius: 25px;
+}
+
+.deliveryInvoiceHelpLg {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.deliveryInvoiceHelpLg > div {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #707070;
+  padding-bottom: 10px;
+}
+
+.deliveryInvoiceHelpLg > div:nth-child(1) > span {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.deliveryInvoiceHelpLg > div:nth-child(1) > span:nth-child(2) {
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.deliveryInvoiceHelpLg > div > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+}
+
+.deliveryInvoiceHelpLg > div:nth-child(3) {
+  border: none;
+  padding-bottom: 0;
+}
+
+.paymentDetailsLg {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.paymentDetailsLg > span:nth-child(1) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.paymentDetailsLg > span:nth-child(1) > h2 {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  color: #70645c;
+  text-align: left;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.paymentDetailsLg > div {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.paymentDetailsLg > span:nth-child(3) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #70645c;
+}
+
+.paymentDetailsLg > span:nth-child(3) > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}
+
+.paymentDetailsLg > div > span {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paymentDetailsLg > div > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.paymentDetailsLg > div > span:nth-child(3) > p:nth-child(2) {
+  color: red;
+}
+
+.paymentDetailsLg > div > span:last-child > p {
+  font-weight: 600;
+}
+
+@media all and (min-width: 550px) and (max-width: 799px) {
+  .viewOrderDetailsModal {
+    display: none;
+  }
+}
+
+/* review product modal */
+.reviewProductModal {
+  max-width: 558px;
+  width: 90%;
+  height: 362px;
+  display: none;
+  padding: 10px 30px;
+  padding-bottom: 20px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  border-radius: 25px;
+  z-index: 25;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ede9ed;
+}
+
+.reviewProductModal::backdrop {
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.reviewProductModal > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.reviewProductModal > div:nth-child(2) {
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: -15px;
+}
+
+.reviewProductModal > div:nth-child(1) > h2 {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  color: black;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.reviewProductModal > div:nth-child(1) > span {
+  width: 17px;
+  height: 17px;
+  text-align: right;
+  cursor: pointer;
+}
+
+.reviewProductModal > div:nth-child(2) > div:nth-child(1) {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.reviewProductModal > div:nth-child(2) > div:nth-child(2) {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviewProductModal > div:nth-child(2) > div:nth-child(2) > p,
+.reviewProductModal > div:nth-child(2) > div:nth-child(2) > span > p {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+}
+
+.reviewProductModal > div:nth-child(2) > div:nth-child(2) > span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: -5px;
+}
+
+.reviewProductModal > div:nth-child(3) > textarea {
+  width: 100%;
+  height: 110px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
+  color: black;
+  text-align: left;
+  border-top: 1px solid #707070;
+  border-bottom: 1px solid #707070;
+  outline: none;
+  padding: 2px;
+  background-color: #ede9ed;
+}
+
+.reviewProductModal > button {
+  display: inline-block;
+  width: 104px;
+  height: 40px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: #009290;
+}
+
+/*--- successfullLottieFileModalReview Styling  ---*/
+.successfullLottieFileModalReview {
+  display: none;
+  max-width: 558px;
+  width: 100%;
+  height: 362px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ede9dd;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 50;
+}
+
+.successfullLottieFileModalReview::backdrop {
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.successfullLottieFileModalReview > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+}
+
+.successfullLottieFileModalReview > div > h3 {
+  width: 100%;
+  height: 36px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: 500;
+  text-align: center;
+  color: black;
+}
+
+.successfullLottieFileModalReview > div > span {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.successfullLottieFileModalReview > div > span > img {
+  width: 17px;
+  height: 17px;
+}
+
+.successfullLottieFileModalReview > dotlottie-player {
+  width: 220px;
+  height: 220px;
+}
+
+.successfullLottieFileModalReview > div > p {
+  width: 100%;
+  height: 19px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  color: black;
+}

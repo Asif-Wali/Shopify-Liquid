@@ -2,29 +2,32 @@
   summary::-webkit-details-marker {
     display: none;
   }
+
   .Pagination-Parent {
-  width: fit-content;
-  margin: 0 auto;
- 
-}
+    width: fit-content;
+    margin: 0 auto;
+  }
 
-.Pagination-Parent > .page{
-  border: 1px solid gray;
-  border-radius: 5px;
-  padding: 4px 10px;
-}
+  .Pagination-Parent > .page{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 4px 10px;
+  }
 
-.Pagination-Parent > .prev,
-.Pagination-Parent > .next{
-  border: 1px solid gray;
-  border-radius: 5px;
-  padding: 4px 6px;
-}
+  .Pagination-Parent > .prev,
+  .Pagination-Parent > .next{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 4px 6px; 
+  }
 
-.Pagination-Parent>.current{
-  border: 1px solid black;
- 
-}
+  .Pagination-Parent>.current{
+    border: 1px solid black;
+  }
+
+  #sort-by:focus{
+    outline: none;
+  }
 </style>
 
 
@@ -188,51 +191,62 @@
           currentUrl= "hair?"+queryString;
           window.location.href=currentUrl
         }
+//        async function getcollection (){
+//         try {
+//           const res= await fetch("/collections/hair?view=json")
+//           const data=await res.json();
+//           console.log(data);
+//         } catch (error) {
+//           console.log(error)
+// ;        }
+          
+//         }
+//         getcollection();
+
+console.log({{ collections["hair"].product | json }});
       </script>
     </aside>
    
-    <div class="px-4 pt-16 w-full  relative">
-      <div class="px-4 flex items-center justify-between">
-        <!-- ist option -->
-        <div class="lg:hidden z-50 bg-white text-black border border-black  w-fit px-4 py-2 mt-3 ml-auto absolute top-0 left-12">
-          <button type="button" class="flex items-center justify-between bg-white px-2 text-base font-light  gap-1" id="sidefilterbutton">
+    <div class="px-4 pt-6 lg:pt-16 w-full  relative">
+      <div class="w-full flex items-center justify-between h-auto mb-4 px-2 gap-6 lg:block lg:text-end  ">
+        <div class="w-[90%]  md:w-[210px] lg:hidden z-50 bg-white text-black border border-black m-auto pl-[5px] " >
+          <button type="button" class="w-[90%] md:w-[200px] flex items-center justify-between bg-white py-[5px] text-black gap-4 sm:text-xs md:text-normal lg:text-normal px-1 h-[40px]" id="sidefilterbutton">
             <span>FILTERS</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class=" text-black mb-2 h-6 w-6">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class=" text-black mb-2 h-5 w-5">
               <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
-            </svg>
-          </button>
+          </svg>
+         </button>
         </div>
-
-        <!-- 2nd option -->
-        <select id="sort-by" class="accordian z-50 bg-white flex flex-col items-center justify-center text-black border sm:text-xs      md:text-normal lg:text-normal  border-black lg:rounded-xl w-fit px-4 py-2 mt-3   absolute top-0 right-12">
-          {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
-            {% for option in collection.sort_options %}
-              <option value="{{ option.value }}" {% if option.value == sort_by %} selected="selected"{% endif %}>
-                {{ option.name }}
-              </option>
-            {% endfor %}
-        </select>
-
-        <script>
-          Shopify.queryParams = {};
-          // Preserve existing query parameters
-          if (location.search.length) {
-            var params = location.search.substr(1).split('&');
-            for (var i = 0; i < params.length; i++) {
-              var keyValue = params[i].split('=');
-              if (keyValue.length) {
-                Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+        <div class=" w-[90%] md:w-[210px] z-50 text-center bg-white text-black border border-black m-auto lg:rounded-xl lg:absolute lg:top-4 lg:right-12 pl-[5px]">
+          <select id="sort-by" class="accordian z-50 bg-white flex flex-col items-center justify-center text-black text-normal lg:rounded-xl w-[90%] md:w-[200px] px-1 py-2 h-[40px]">
+            {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+              {% for option in collection.sort_options %}
+                <option value="{{ option.value }}" {% if option.value == sort_by %} selected="selected"{% endif %}>
+                  {{ option.name }}
+                </option>
+              {% endfor %}
+          </select>
+          <script>
+            Shopify.queryParams = {};
+            // Preserve existing query parameters
+            if (location.search.length) {
+              var params = location.search.substr(1).split('&');
+              for (var i = 0; i < params.length; i++) {
+                var keyValue = params[i].split('=');
+                if (keyValue.length) {
+                  Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+                }
               }
             }
-          }
-              
-          // Update sort_by query parameter on select change
-          document.querySelector('#sort-by').addEventListener('change', function(e) {
-            var value = e.target.value;
-            Shopify.queryParams.sort_by = value;
-            location.search = new URLSearchParams(Shopify.queryParams).toString();
-          });
-        </script>
+                
+            // Update sort_by query parameter on select change
+            document.querySelector('#sort-by').addEventListener('change', function(e) {
+              var value = e.target.value;
+              Shopify.queryParams.sort_by = value;
+              location.search = new URLSearchParams(Shopify.queryParams).toString();
+            });
+          </script>
+        </div>
       </div>
 
       {% paginate collection.products by 6 %}
@@ -240,11 +254,22 @@
           {% for product in collection.products %}
             <div class=" w-full">
               {% form "product", product %}
-                <div class="block relative  rounded overflow-hidden ">
+                <div class="hidden md:block relative rounded overflow-hidden ">
                   <img   height="" width="" class="" src="{{ product.featured_image.src | image_url }}" />
                 </div>
+
+                <div class="block md:hidden relative rounded overflow-hidden ">
+                  <a href="{{ product.url }}">
+                    <img   height="" width="" class="" src="{{ product.featured_image.src | image_url }}" />
+                  </a>
+                </div>
+
                 <div class=" text-center ">
-                  <h3 class="text-gray-500 text-xs mb-2">{{ product.title }}</h3>
+                  <h3 class="hidden md:block text-gray-500 text-xs mb-2 ">{{ product.title }}</h3>
+                  
+                  <a href="{{ product.url }}" class="block md:hidden" >
+                    <h3 class="text-gray-500 text-xs mb-2">{{ product.title }}</h3>
+                  </a>
                   <div class="flex items-center justify-center gap-8">
                     <img   height="" width=""  src="{{ 'ratings.png' | asset_url }}" />
                   </div>
@@ -259,7 +284,7 @@
                       {% endif %}
                     </button>
                   </div>
-                  <div class="flex justify-center items-center mt">
+                  <div class=" hidden md:flex justify-center items-center mt">
                     <a href="{{ product.url }}">
                       <p class="text-gray-700 underline text-xs">
                         Quick View 
@@ -271,7 +296,7 @@
             </div>
           {% endfor %}
         </div> 
-        <div class="Pagination-Parent flex gap-2 items-center justify-center"> {{- paginate | default_pagination -}} </div> 
+       <div class="Pagination-Parent flex gap-2 items-center justify-center"> {{- paginate | default_pagination -}} </div> 
       {% endpaginate %}
             <script>
 
@@ -286,7 +311,7 @@
                     </svg>`
             </script>
 
-         
+   
     </div>
   </div>
 </div>
