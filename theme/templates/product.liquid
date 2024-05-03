@@ -9,6 +9,9 @@
     background-color:#70645C;
     color: white
   }
+  .option, .quantity-minus, .quantity-plus{
+    cursor: pointer;
+  }
 </style>
 
 <main class="">
@@ -126,25 +129,20 @@
             <div class="ml-2 mt-2">
               <p>Class</p>
               <div class="flex  lg:justify-start justify-center">
-                <div class=" rounded-2xl border-2 border-gray-700  flex items-center w-full">
+                <div class=" rounded-2xl border border-gray-700  flex items-center w-full">
                   
                   
-                  <div class="w-full text-center rounded-l-2xl option" value="Exotic" id="Exotic" onclick="handleOptionClick(this)">
+                  <div class="w-full text-center rounded-l-2xl option SelectedClass" value="Exotic" id="Exotic" >
                     <p>Exotic</p>
                   </div>
-                  <div class="w-full text-center rounded-r-2xl SelectedClass option" value="Premium" id="Premium" onclick="handleOptionClick(this)">
+                  <div class="w-full text-center rounded-r-2xl  option" value="Premium" id="Premium" >
                     <p>Premium</p>
                   </div>
                 
                 </div>
               </div>
             </div>
-            <script>
-               
-
-
-           
-            </script>
+        
            
 
 
@@ -160,23 +158,23 @@
                   id="weightOptions"
                   class="w-full border border-gray-700 rounded-3xl px-2 py-2 w-full bg-white"
                   style="outline: none;"
-                  default="{{ product.selected_or_first_available_variant }}">
-                  {% if product.variants.size > 1 %}
+                  >
+                  {% comment %} {% if product.variants.size > 1 %}
                     {% for option in product.options_with_values %}
                       {% if option.name == "Size"  %}
                         {% for value in option.values %}
-                          <option
+                           <option
                             name="{{ option.name }}"
                             value={{ value }}
                             id="{{ option.name |  handleize}}-{{ value | handleize }}"
                             {% if value == product.selected_or_first_available_variant.option1 %}
                             selected
                             {% endif %}>
-                            {{ value }}</option> 
+                            {{ value }}</option>  
                         {% endfor %}
                       {% endif %}
                     {% endfor %}
-                  {% endif %}
+                  {% endif %} {% endcomment %}
                 </select>
 
               </div>
@@ -187,7 +185,7 @@
                 <div class="w-full border border-gray-700 rounded-3xl py-2 ">
                   <div class="flex items-center justify-between px-4 ">
                     <div class="  rounded-r-2xl ">
-                      <p class="text-center text-xs">
+                      <button class="text-center text-xs quantity-minus" type="button">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
@@ -199,13 +197,14 @@
                             clip-rule="evenodd" />
                         </svg>
 
-                      </p>
+                      </button>
                     </div>
-                    <div class="">
-                      <p class="text-center text-md  font-semibold">5</p>
+                    <div class=" items-center">
+                      {% comment %} <p class="text-center text-md  font-semibold">5</p> {% endcomment %}
+                      <input id="quantity" name="quantity" value="1" class="text-center text-md  font-semibold"/>
                     </div>
                     <div class="  rounded-r-2xl ">
-                      <p class="text-center text-xs">
+                      <button class="text-center text-xs quantity-plus" type="button" >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
@@ -214,7 +213,7 @@
                           <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
                         </svg>
 
-                      </p>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -300,23 +299,9 @@
             <script>
 
                 const product= {{ product | json }}
-                  console.log(product);
+                  
 
-                document.getElementById("weightOptions").addEventListener("change", (e)=>{
-                        
-                  let newvariant;
-                    for(var i=0; i<product.variants.length; i++){
-                      if(product.variants[i].option1==e.target.value){
-                        newvariant=product.variants[i];
-                      }
-                    }
-                    let productValue= document.getElementById("product-id")
-                    productValue.value=newvariant.id;
-                    document.getElementById("product-price").textContent=formatMoney(newvariant.price, "{{ shop.money_format }}");
-                    let newUrl = new URLParse(window.location.href, true);
-                    newUrl.query.variant= newvariant.id;
-                    window.history.replaceState(null, null, newUrl.toString());
-                })
+               
               
                 document.querySelectorAll(".productswatches img").forEach(img=>{
                     img.addEventListener("click", (e)=>{
@@ -339,27 +324,101 @@
                       form.submit();
                 });
 
-                function handleOptionClick(clickedElement) {
-                      // Remove selected class from all options
-                      let allOptions = document.querySelectorAll(".option");
-                      allOptions.forEach(option => {
-                        console.log(option)
-                      option.classList.remove("SelectedClass");
-                      });
-                        console.log(SelectedClass);
-                      // Add selected class to the clicked option
-                      clickedElement.classList.add("SelectedClass");
-                      console.log(SelectedClass);
-                      
-                }
-                const Selected="Exotic"
 
-                for(var i=0; i<product.variants.length; i++){
+             
+                let Selected="Exotic"
+                function GenerateSizeOption(){
+                  var selectTag=document.getElementById("weightOptions");
+                      selectTag.innerHTML="";
+              
+                  for(var i=0; i<product.variants.length; i++){
+                        if(product.variants[i].option1==Selected){
+                     
+                        var option= document.createElement("option");
+                        option.setAttribute("name", product.variants[i].option2);
+                            option.textContent=product.variants[i].option2
+                  
+                         
+                          selectTag.appendChild(option);
+                          };
+                  }
+                }
+
+                // change class
+                let allOptions = document.querySelectorAll(".option");
+                  allOptions.forEach((option)=>{
+                      option.addEventListener("click", function() {
+                    // Remove 'SelectedClass' from all options
+                      allOptions.forEach(opt => {
+                          opt.classList.remove("SelectedClass");
+                      });
+                          // Add 'SelectedClass' to the clicked option
+                      this.classList.add("SelectedClass");
+                      
+                      // Extract the value and text content from the clicked option
+                      const optionValue = this.getAttribute("value"); // Get the value attribute
+                      const optionText = this.textContent.trim(); // Get the text content (trimmed to remove whitespace)
+                      
+                    Selected=optionValue;
+                    for(var i=0; i<product.variants.length; i++){
                       if(product.variants[i].option1==Selected){
-                       console.log(product.variants[i].option1);
-                       console.log("I was Clicked");
+                          document.getElementById("product-price").textContent=formatMoney(product.variants[i].price, "{{ shop.money_format }}");
+                          let productValue= document.getElementById("product-id");
+                          productValue.value=product.variants[i].id;
+                          let newUrl = new URLParse(window.location.href, true);
+                          newUrl.query.variant= product.variants[i].id;
+                          window.history.replaceState(null, null, newUrl.toString());
+                            break;
+                      } 
+                    
+                     }
+                        
+                  
+                 
+                      GenerateSizeOption();
+
+                  });
+
+                })
+
+              
+                
+                GenerateSizeOption();
+
+                document.getElementById("weightOptions").addEventListener("change", (e)=>{
+                  let newvariant;
+                    for(var i=0; i<product.variants.length; i++){
+                      if(product.variants[i].option1==Selected && product.variants[i].option2==e.target.value ){
+                        newvariant=product.variants[i];
                       }
-                    };
+                    }
+                    console.log(newvariant);
+                    let productValue= document.getElementById("product-id")
+                    productValue.value=newvariant.id;
+                    document.getElementById("product-price").textContent=formatMoney(newvariant.price, "{{ shop.money_format }}");
+                    let newUrl = new URLParse(window.location.href, true);
+                    newUrl.query.variant= newvariant.id;
+                    window.history.replaceState(null, null, newUrl.toString());
+                })
+                document.querySelector(".quantity-plus").addEventListener("click", ()=>{
+                  var currentVal= Number(document.querySelector("#quantity").value);
+                  if(currentVal<5){
+                    document.querySelector("#quantity").value=currentVal+1;
+                    
+                  }
+                  console.log(document.querySelector("#quantity").value);
+                  
+                });
+                document.querySelector(".quantity-minus").addEventListener("click", ()=>{
+                var currentVal= Number(document.querySelector("#quantity").value);
+                if(currentVal>1){
+                  document.querySelector("#quantity").value=currentVal-1;
+                  
+                }
+                console.log(document.querySelector("#quantity").value);
+               
+                });
+
 
             </script>
 
