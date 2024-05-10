@@ -12,6 +12,14 @@
   .option, .quantity-minus, .quantity-plus{
     cursor: pointer;
   }
+  /* input#quantity:focus {
+    border: none; 
+    outline: none; 
+  } */
+  input#quantity{
+    width:50%;
+  }
+  .productSwatchesContainer{}
 </style>
 
 <main class="">
@@ -52,7 +60,7 @@
           {% endif %}
 
 
-          <div class="mt-2 overflow-x-auto ">
+          <div class="mt-2 overflow-x-auto productSwatchesContainer">
             <div class=" flex items-center gap-2 productswatches">
 
               {% for image in product.images %}
@@ -132,21 +140,18 @@
                 <div class=" rounded-2xl border border-gray-700  flex items-center w-full">
                   
                   
-                  <div class="w-full text-center rounded-l-2xl option SelectedClass" value="Exotic" id="Exotic" >
-                    <p>Exotic</p>
-                  </div>
-                  <div class="w-full text-center rounded-r-2xl  option" value="Premium" id="Premium" >
+                  <div class="w-full text-center rounded-l-2xl option SelectedClass" value="Premium" id="Premium" >
                     <p>Premium</p>
+                  </div>
+                  <div class="w-full text-center rounded-r-2xl  option" value="Exotic" id="Exotic" >
+                    <p>Exotic</p>
                   </div>
                 
                 </div>
               </div>
             </div>
-        
-           
 
-
-            <div class="ml-2 mt-2 flex items-center justify-between gap-10 w-full">
+            <div class="  w-full ml-2 mt-2 flex items-center justify-between gap-2">
               <input
                 type="hidden"
                 id="product-id"
@@ -199,9 +204,9 @@
 
                       </button>
                     </div>
-                    <div class=" items-center">
+                    <div class="flex items-center justify-center">
                       {% comment %} <p class="text-center text-md  font-semibold">5</p> {% endcomment %}
-                      <input id="quantity" name="quantity" value="1" class="text-center text-md  font-semibold"/>
+                      <input id="quantity" name="quantity" value="1" class="text-center text-md  font-semibold w-auto mx-auto focus:outline-none" readonly/>
                     </div>
                     <div class="  rounded-r-2xl ">
                       <button class="text-center text-xs quantity-plus" type="button" >
@@ -299,10 +304,8 @@
             <script>
 
                 const product= {{ product | json }}
-                  
-
-               
-              
+                console.log(product);
+    
                 document.querySelectorAll(".productswatches img").forEach(img=>{
                     img.addEventListener("click", (e)=>{
                     document.querySelector(".productswatches img.selected").classList.remove("selected");
@@ -326,24 +329,8 @@
 
 
              
-                let Selected="Exotic"
-                function GenerateSizeOption(){
-                  var selectTag=document.getElementById("weightOptions");
-                      selectTag.innerHTML="";
-              
-                  for(var i=0; i<product.variants.length; i++){
-                        if(product.variants[i].option1==Selected){
-                     
-                        var option= document.createElement("option");
-                        option.setAttribute("name", product.variants[i].option2);
-                            option.textContent=product.variants[i].option2
-                  
-                         
-                          selectTag.appendChild(option);
-                          };
-                  }
-                }
-
+                let Selected="Premium"
+               
                 // change class
                 let allOptions = document.querySelectorAll(".option");
                   allOptions.forEach((option)=>{
@@ -361,7 +348,9 @@
                       
                     Selected=optionValue;
                     for(var i=0; i<product.variants.length; i++){
+
                       if(product.variants[i].option1==Selected){
+
                           document.getElementById("product-price").textContent=formatMoney(product.variants[i].price, "{{ shop.money_format }}");
                           let productValue= document.getElementById("product-id");
                           productValue.value=product.variants[i].id;
@@ -373,6 +362,8 @@
                     
                      }
                         
+
+
                   
                  
                       GenerateSizeOption();
@@ -383,7 +374,7 @@
 
               
                 
-                GenerateSizeOption();
+               
 
                 document.getElementById("weightOptions").addEventListener("change", (e)=>{
                   let newvariant;
@@ -392,14 +383,16 @@
                         newvariant=product.variants[i];
                       }
                     }
-                    console.log(newvariant);
+                   
                     let productValue= document.getElementById("product-id")
                     productValue.value=newvariant.id;
                     document.getElementById("product-price").textContent=formatMoney(newvariant.price, "{{ shop.money_format }}");
                     let newUrl = new URLParse(window.location.href, true);
                     newUrl.query.variant= newvariant.id;
                     window.history.replaceState(null, null, newUrl.toString());
-                })
+                });
+
+                        // to increase the quantity
                 document.querySelector(".quantity-plus").addEventListener("click", ()=>{
                   var currentVal= Number(document.querySelector("#quantity").value);
                   if(currentVal<5){
@@ -409,16 +402,101 @@
                   console.log(document.querySelector("#quantity").value);
                   
                 });
+                        // to decrease the quantity
                 document.querySelector(".quantity-minus").addEventListener("click", ()=>{
-                var currentVal= Number(document.querySelector("#quantity").value);
-                if(currentVal>1){
-                  document.querySelector("#quantity").value=currentVal-1;
-                  
-                }
-                console.log(document.querySelector("#quantity").value);
+                  var currentVal= Number(document.querySelector("#quantity").value);
+                    if(currentVal>1){
+                      document.querySelector("#quantity").value=currentVal-1;
+                      
+                    }
+                  console.log(document.querySelector("#quantity").value);
                
                 });
+                var formatMoney = function (cents, format) {
+                  if (typeof cents == "string") {
+                  cents = cents.replace(".", "");
+                  }
 
+                  var value = "";
+                  var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+                  var formatString = format || this.money_format;
+
+                  function defaultOption(opt, def) {
+                  return typeof opt == "undefined" ? def : opt;
+                  }
+
+                  function formatWithDelimiters(number, precision, thousands, decimal) {
+                  precision = defaultOption(precision, 2);
+                  thousands = defaultOption(thousands, ",");
+                  decimal = defaultOption(decimal, ".");
+
+                  if (isNaN(number) || number == null) {
+                  return 0;
+                  }
+
+                  number = (number / 100.0).toFixed(precision);
+
+                  var parts = number.split("."),
+                  dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1" + thousands),
+                  cents = parts[1] ? decimal + parts[1] : "";
+
+                  return dollars + cents;
+                  }
+
+                  switch (formatString.match(placeholderRegex)[1]) {
+                  case "amount":
+                  value = formatWithDelimiters(cents, 2);
+                  break;
+                  case "amount_no_decimals":
+                  value = formatWithDelimiters(cents, 0);
+                  break;
+                  case "amount_with_comma_separator":
+                  value = formatWithDelimiters(cents, 2, ".", ",");
+                  break;
+                  case "amount_no_decimals_with_comma_separator":
+                  value = formatWithDelimiters(cents, 0, ".", ",");
+                  break;
+                  }
+
+                  return formatString.replace(placeholderRegex, value);
+                };
+
+                function GenerateSizeOption(){
+                  var selectTag=document.getElementById("weightOptions");
+                      selectTag.innerHTML="";
+                  
+                      // to get the of first premium product price
+                  for(var i=0; i<product.variants.length; i++){
+                        
+                      if(product.variants[i].option1==Selected){
+
+                        let productValue= document.getElementById("product-id")
+                        productValue.value=product.variants[i].id;
+                        document.getElementById("product-price").textContent=formatMoney(product.variants[i].price, "{{ shop.money_format }}");
+                        console.log(product.variants[i].id);
+
+                        let newUrl = new URLParse(window.location.href, true);
+                        newUrl.query.variant= product.variants[i].id
+                        window.history.replaceState(null, null, newUrl.toString());
+                        break;
+                      }
+                  };
+
+                  for(var i=0; i<product.variants.length; i++){
+                        
+                        if(product.variants[i].option1==Selected){
+                     
+                        var option= document.createElement("option");
+                        option.setAttribute("name", product.variants[i].option2);
+                            option.textContent=product.variants[i].option2
+                  
+                         
+                          selectTag.appendChild(option);
+                          };
+                  }
+                }
+
+                GenerateSizeOption();
 
             </script>
 

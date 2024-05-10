@@ -76,8 +76,7 @@ function keepModalOpen(event) {
       document.getElementById("hairoptionsToggle").innerText = "+";
       document.getElementById("MiniOptions").style.display = "none";
       document.getElementById("minioptionsToggle").innerText = "+";
-      document.getElementById("ShopConcernOptions").style.display = "none";
-      document.getElementById("shopConcernOptionsToggle").innerText = "+";
+      
     } else {
       FaceDiv.style.display = "none";
       let button = document.getElementById("faceoptionsToggle");
@@ -102,8 +101,7 @@ function keepModalOpen(event) {
       document.getElementById("bodyoptionsToggle").innerText = "+";
       document.getElementById("MiniOptions").style.display = "none";
       document.getElementById("minioptionsToggle").innerText = "+";
-      document.getElementById("ShopConcernOptions").style.display = "none";
-      document.getElementById("shopConcernOptionsToggle").innerText = "+";
+      
     } else {
       HairDiv.style.display = "none";
       let button = document.getElementById("hairoptionsToggle");
@@ -128,8 +126,7 @@ function keepModalOpen(event) {
       document.getElementById("hairoptionsToggle").innerText = "+";
       document.getElementById("MiniOptions").style.display = "none";
       document.getElementById("minioptionsToggle").innerText = "+";
-      document.getElementById("ShopConcernOptions").style.display = "none";
-      document.getElementById("shopConcernOptionsToggle").innerText = "+";
+     
     } else {
       BodyDiv.style.display = "none";
       let button = document.getElementById("bodyoptionsToggle");
@@ -154,8 +151,7 @@ function keepModalOpen(event) {
       document.getElementById("hairoptionsToggle").innerText = "+";
       document.getElementById("BodyOptions").style.display = "none";
       document.getElementById("bodyoptionsToggle").innerText = "+";
-      document.getElementById("ShopConcernOptions").style.display = "none";
-      document.getElementById("shopConcernOptionsToggle").innerText = "+";
+     
     } else {
       MiniDiv.style.display = "none";
       let button = document.getElementById("minioptionsToggle");
@@ -168,33 +164,34 @@ function keepModalOpen(event) {
 
   // shop by concern
 
-  function ToggleShopConcernOptions() {
-    let ShopConcernDiv = document.getElementById("ShopConcernOptions");
-    if (
-      ShopConcernDiv.style.display === "none" ||
-      ShopConcernDiv.style.display === ""
-    ) {
-      ShopConcernDiv.style.display = "block";
-      let button = document.getElementById("shopConcernOptionsToggle");
-      button.innerText = "-";
-      document.getElementById("faceOptions").style.display = "none";
-      document.getElementById("faceoptionsToggle").innerText = "+";
-      document.getElementById("HairOptions").style.display = "none";
-      document.getElementById("hairoptionsToggle").innerText = "+";
-      document.getElementById("BodyOptions").style.display = "none";
-      document.getElementById("bodyoptionsToggle").innerText = "+";
-      document.getElementById("MiniOptions").style.display = "none";
-      document.getElementById("minioptionsToggle").innerText = "+";
-    } else {
-      ShopConcernDiv.style.display = "none";
-      let button = document.getElementById("shopConcernOptionsToggle");
-      button.innerText = "+";
-    }
-  }
+//   function ToggleShopConcernOptions() {
+//     let ShopConcernDiv = document.getElementById("ShopConcernOptions");
+//     if (
+//       ShopConcernDiv.style.display === "none" ||
+//       ShopConcernDiv.style.display === ""
+//     ) {
+//       ShopConcernDiv.style.display = "block";
+//       let button = document.getElementById("shopConcernOptionsToggle");
+//       button.innerText = "-";
+//       document.getElementById("faceOptions").style.display = "none";
+//       document.getElementById("faceoptionsToggle").innerText = "+";
+//       document.getElementById("HairOptions").style.display = "none";
+//       document.getElementById("hairoptionsToggle").innerText = "+";
+//       document.getElementById("BodyOptions").style.display = "none";
+//       document.getElementById("bodyoptionsToggle").innerText = "+";
+//       document.getElementById("MiniOptions").style.display = "none";
+//       document.getElementById("minioptionsToggle").innerText = "+";
+//     } else {
+//       ShopConcernDiv.style.display = "none";
+//       let button = document.getElementById("shopConcernOptionsToggle");
+//       button.innerText = "+";
+//     }
+//   }
 
-  let ShopConcernToggle = document.getElementById("shopConcernOptionsToggle");
-  ShopConcernToggle.addEventListener("click", ToggleShopConcernOptions);
-}
+//   let ShopConcernToggle = document.getElementById("shopConcernOptionsToggle");
+//   ShopConcernToggle.addEventListener("click", ToggleShopConcernOptions);
+//
+ }
 
 function toggleCartSideBar() {
   const CartSideBar = document.getElementById("CartSideBar");
